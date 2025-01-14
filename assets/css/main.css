@@ -1,0 +1,92 @@
+/* Reset y configuración global */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: white;
+}
+
+/* Estilo del nav */
+nav {
+    background-color: #222;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: rgb(255, 0, 0);
+}
+
+/* Estilo de botones */
+button, .secondary-btn {
+    background: linear-gradient(90deg, #9b1c4c, #6a1b9a);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+button:hover, .secondary-btn:hover {
+    background: linear-gradient(90deg, #F50057, #8E24AA);
+    box-shadow: 0 0 20px rgba(255, 0, 87, 0.7);
+}
+
+/* Carrusel de Restaurantes */
+.carousel-container {
+    display: flex;
+    overflow-x: scroll;
+    margin: 20px 0;
+}
+
+.carousel-item {
+    width: 300px;
+    margin: 0 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #333;
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-item .restaurant-logo {
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+    border-radius: 50%;
+}
+
+.carousel-item .restaurant-info {
+    color: #fff;
+    padding: 10px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

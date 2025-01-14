@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Usuario/Restaurante | Géminis</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/create.css">
+</head>
+<body>
+
+    <!-- Main Content -->
+    <main class="create-container">
+        <div class="create-card">
+            <h1>Crear Usuario o Restaurante</h1>
+            <form id="create-form">
+                <label for="tipo">Tipo:</label>
+                <select name="tipo" id="tipo" required>
+                    <option value="usuario">Usuario</option>
+                    <option value="restaurante">Restaurante</option>
+                </select>
+
+                <!-- Campos para usuario -->
+                <div id="usuario-fields">
+                    <input type="number" name="documento" placeholder="Documento" required>
+                    <input type="text" name="nombres" placeholder="Nombres" required>
+                    <input type="text" name="apellido" placeholder="Apellido" required>
+                    <input type="text" name="telefono" placeholder="Teléfono" required>
+                    <input type="text" name="direccion" placeholder="Dirección" required>
+                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <br>
+                    <br>
+                    <br>
+
+                    <label for="es-admin">¿Es administrador de algún restaurante?</label>
+                    <select name="esAdmin" id="es-admin">
+                        <option value="no">No</option>
+                        <option value="si">Sí</option>
+                    </select>
+
+                    <div id="admin-nit" style="display: none;">
+                        <label for="nit-restaurante">Seleccione el NIT del restaurante:</label>
+                        <select name="nitRestaurante" id="nit-restaurante"></select>
+                    </div>
+                </div>
+
+                <!-- Campos para restaurante -->
+                <div id="restaurante-fields" style="display: none;">
+                    <input type="number" name="nit" placeholder="NIT">
+                    <input type="text" name="nombre" placeholder="Nombre del Restaurante">
+                    <input type="file" name="logo" placeholder="Logo">
+                    <input type="text" name="ubicacionLogo" placeholder="Ubicación del Logo">
+                </div>
+
+                <button type="submit">Crear</button>
+                <p id="error-message"></p>
+            </form>
+            <button id="go-to-login" class="secondary-btn">Volver al Login</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/create.js"></script>
+</body>
+</html>
