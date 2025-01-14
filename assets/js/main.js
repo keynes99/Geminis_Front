@@ -1,43 +1,35 @@
 // Cargar componentes comunes
-const loadComponent = async (id, file) => {
+const loadComponent = async (id, file, userName = null) => {
     const element = document.getElementById(id);
     if (element) {
-        const response = await fetch(`../components/${file}`);
-        const html = await response.text();
-        element.innerHTML = html;
+        try {
+            const response = await fetch(`../components/${file}`);
+            if (!response.ok) throw new Error(`No se pudo cargar el archivo ${file}`);
+            const html = await response.text();
+            element.innerHTML = html;
+
+            // Si el archivo es nav.html y tenemos un userName, actualizar el enlace
+            if (id === 'nav' && userName) {
+                const enlace = document.getElementById("userName");
+                if (enlace) {
+                    enlace.textContent = userName;
+                    enlace.href = "./profile.html";
+                }
+            }
+        } catch (error) {
+            console.error(`Error cargando el componente ${file}:`, error);
+        }
     }
 };
 
-// Cargar Nav y Footer
-loadComponent('nav', 'nav.html');
-loadComponent('footer', 'footer.html');
-
-//Usuario y documento
-
+// Usuario y documento
 const userName = localStorage.getItem('nombre');
 const userDocument = localStorage.getItem('documento');
-console.log(userName,userDocument);
+// console.log(userName, userDocument);
 
-
-// Cargar el componente nav
-document.addEventListener("DOMContentLoaded", async () => {
-    const navContainer = document.getElementById("nav");
-
-    try {
-        // Cargar el contenido del archivo nav.html
-        const response = await fetch('../components/nav.html');
-        if (!response.ok) throw new Error('No se pudo cargar el archivo nav.html');
-        const navHTML = await response.text();
-
-        // Insertar el contenido en el contenedor
-        navContainer.innerHTML = navHTML;
-
-        // Actualizar el enlace dentro del nav
-        const enlace = document.getElementById("userName");
-        enlace.textContent = userName;
-        enlace.href = "./profile.html";
-    } catch (error) {
-        console.error("Error cargando el componente nav:", error);
-    }
+// Cargar Nav y Footer
+document.addEventListener("DOMContentLoaded", () => {
+    loadComponent('nav', 'nav.html', userName);
+    loadComponent('footer', 'footer.html');
 });
 

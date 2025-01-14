@@ -17,7 +17,7 @@ const loadProfile = async () => {
 
         // Mostrar empresa si existe
         if (data.Empresa) {
-            document.getElementById('empresa').value = data.Empresa.Nombre;
+            document.getElementById('empresa').value = data.Empresa;
             empresaContainer.style.display = 'block';
         }
     } catch (error) {
