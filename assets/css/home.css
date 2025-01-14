@@ -1,23 +1,33 @@
 /* Carrusel de restaurantes */
-#restaurant-carousel {
+.carousel-container {
     display: flex;
-    overflow-x: auto;
-    padding: 1rem;
+    
+    margin: 20px 0;
 }
 
-.restaurant-item {
-    background-color: #111;
-    border: 1px solid #333;
-    border-radius: 5px;
-    color: white;
-    margin-right: 10px;
-    padding: 1rem;
+.carousel-item {
+    width: 300px;
+    margin: 0 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #333;
     text-align: center;
-    min-width: 200px;
 }
 
-.restaurant-item img {
+.carousel-item img {
     width: 100%;
-    border-radius: 5px;
-    margin-bottom: 1rem;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-item .restaurant-logo {
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+    border-radius: 50%;
+}
+
+.carousel-item .restaurant-info {
+    color: #fff;
+    padding: 10px;
 }

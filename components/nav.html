@@ -1,8 +1,26 @@
 <nav>
-    <img src="../assets/images/logoGeminis.png" alt="Logo Géminis" class="logo">
-    <a href="home.html">Home</a>
-    <a href="about.html">Sobre Nosotros</a>
-    <a href="terms.html">Términos y Condiciones</a>
-    <a href="profile.html">Perfil</a>
-    <a href="login.html">Cerrar Sesión</a>
+    <img src="../assets/images/logoGeminis.png" alt="Logotipo de Géminis" class="logo">
+    <ul class="nav-menu">
+
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">Sobre Nosotros</a></li>
+        <!-- <a href="terms.html">Términos y Condiciones</a> -->
+        <li class="dropdown">
+            <a href="#"><script>{$userName}</script>
+                
+            </a>
+            <ul class="dropdown-content">
+
+                <li>
+                    <a href="profile.html">Perfil</a>
+                </li>
+                <li>
+                    <a href="login.html">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </li>
+
+
+    </ul>
+
 </nav>
