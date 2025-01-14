@@ -21,6 +21,9 @@ form.addEventListener('submit', async (event) => {
         }
 
         const data = await response.json();
+        let userName=data.user.Nombres+' '+data.user.Apellido;
+        localStorage.setItem('nombre', userName); // Guardar el nombre del usuario
+        localStorage.setItem('documento',data.user.Documento);
         localStorage.setItem('token', data.token); // Guardar el token
         window.location.href = './home.html'; // Redirigir al home
     } catch (error) {
