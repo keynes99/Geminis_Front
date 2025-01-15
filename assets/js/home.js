@@ -1,38 +1,37 @@
-// Cargar los restaurantes (ficticios por ahora)
 const loadRestaurants = () => {
     const carousel = document.getElementById('restaurant-carousel');
     const restaurants = [
         {
+            id: "123", // Identificador único
             name: "Restaurante El Buen Sabor",
-            logo: "../assets/images/logoRestaurante1.webp", // Logo del restaurante
+            logo: "../assets/images/logoRestaurante1.webp",
             description: "Un lugar perfecto para disfrutar de comida casera.",
             distance: "2.5 km",
-            image: "../assets/images/restaurante.jpg", // Imagen del restaurante
-            link: "restaurant.html"
+            image: "../assets/images/restaurante.jpg"
         },
         {
+            id: "234",
             name: "Comida Rápida Express",
-            logo: "../assets/images/logoRestaurante2.webp", // Logo del restaurante
+            logo: "../assets/images/logoRestaurante2.webp",
             description: "Comida rápida para disfrutar en familia.",
             distance: "5.0 km",
-            image: "../assets/images/restaurante.jpg", // Imagen del restaurante
-            link: "restaurant.html"
+            image: "../assets/images/restaurante.jpg"
         },
         {
+            id: "345",
             name: "Comida tradicional",
-            logo: "../assets/images/logoRestaurante3.webp", // Logo del restaurante
-            description: "Comida rápida para disfrutar en familia.",
+            logo: "../assets/images/logoRestaurante3.webp",
+            description: "Comida tradicional de la región.",
             distance: "5.0 km",
-            image: "../assets/images/restaurante.jpg", // Imagen del restaurante
-            link: "restaurant.html"
+            image: "../assets/images/restaurante.jpg"
         },
         {
+            id: "456",
             name: "Comida oriental",
-            logo: "../assets/images/logoRestaurante4.webp", // Logo del restaurante
-            description: "Comida rápida para disfrutar en familia.",
+            logo: "../assets/images/logoRestaurante4.webp",
+            description: "Sabores auténticos del este asiático.",
             distance: "5.0 km",
-            image: "../assets/images/restaurante.jpg", // Imagen del restaurante
-            link: "restaurant.html"
+            image: "../assets/images/restaurante.jpg"
         }
     ];
 
@@ -43,12 +42,12 @@ const loadRestaurants = () => {
             <div class="restaurant-logo">
                 <img src="${restaurant.logo}" alt="logotipo de ${restaurant.name}">
             </div>
-            <img class="restaurant-img" src="${restaurant.image}" alt=" ${restaurant.name}">
+            <img class="restaurant-img" src="${restaurant.image}" alt="${restaurant.name}">
             <div class="restaurant-info">
                 <h3>${restaurant.name}</h3>
                 <p>${restaurant.description}</p>
                 <p>Distancia: ${restaurant.distance}</p>
-                <a href="${restaurant.link}" class="secondary-btn">Ver Menú</a>
+                <a href="restaurant.html?id=${restaurant.id}" class="secondary-btn">Ver Restaurante</a>
             </div>
         `;
         carousel.appendChild(item);

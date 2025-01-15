@@ -1,0 +1,82 @@
+.background-highlight {
+    grid-column: 1 / 7; /* De la columna 1 a la 5 */
+    grid-row: 1 / -1; /* Cubre todas las filas */
+    background-color: #333; /* Color de fondo semitransparente */
+    border-radius: 1em; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra para el efecto flotante */
+    margin: 0 0 1em 1em;
+    z-index: -1; /* Manda el fondo detrás del contenido */
+    position: relative; /* Asegura que el card no afecte otros elementos */
+}
+
+
+.restaurant-details {
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    display: grid;
+    width: 100%;
+    margin: 5% auto;
+    border-radius: 1em;
+    column-gap: 1.25em;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+        "t t t t  l l i i  i i i i"
+        "p p p p  p p i i  i i i i"
+        "p p p p  p p d d  d d d d"
+        "p p p p  p p b b  b b b b";
+    overflow: hidden;
+}
+.restaurant-details h1 {
+    grid-area: t;
+    place-self: center;
+    justify-self: center;
+    text-align: center;
+    word-wrap: break-word; /* Evita que textos largos se desborden */
+    color: white;
+    padding-left: 2em;
+}
+
+.restaurant-details .restaurant-logo {
+    grid-area: l;
+    margin: 1em 0 0 0;
+    padding: 0.25em ;
+    max-width: 70%;
+    height: auto;
+    object-fit: contain; /* Asegura que las imágenes no se deformen */
+    background: #fdedef;
+    border-radius: 50%;
+    aspect-ratio: 1/1; /* Relación de aspecto 1:1 */
+}
+
+.restaurant-details .descripcion {
+    grid-area: p;
+    overflow-wrap: break-word; /* Controla textos largos en esta área */
+    color: white;
+    margin-left: 2em;
+    padding-right: 1em;
+}
+
+.restaurant-details .restaurant-img {
+    grid-area: i;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 1em;
+    object-fit: cover; /* Ajusta la imagen sin desbordarla */
+}
+
+.restaurant-details .distancia {
+    grid-area: d;
+    justify-self: center;
+    text-align: center;
+}
+
+.restaurant-details a {
+    grid-area: b;
+    justify-self: center;
+    text-align: center;
+    width: 50%;
+    max-width: 100%;
+    overflow: hidden; /* Evita desbordes de contenido */
+    text-overflow: ellipsis; /* Maneja textos largos */
+    white-space: nowrap; /* Opcional: Forzar que el texto no haga saltos */
+}
