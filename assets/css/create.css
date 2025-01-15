@@ -3,8 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #eef2f3;
+    height: auto;
+    margin: 2em 0;
+    background-color: #fdedef;
 }
 
 .create-card {
@@ -29,10 +30,11 @@ form input, form select, form button {
 }
 
 form button {
-    background-color: #007BFF;
+    
     color: white;
     border: none;
     cursor: pointer;
+    align-self: center;
 }
 
 form button:hover {

@@ -3,8 +3,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #eef2f3;
+    height: auto;
+    margin: 2em 0;
+    background-color: #fdedef;
+
 }
 
 .login-card {

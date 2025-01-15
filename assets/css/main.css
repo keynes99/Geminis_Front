@@ -6,8 +6,9 @@ html {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     height: 100%;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
+    box-sizing: border-box;
 }
 main{
     flex: 1;

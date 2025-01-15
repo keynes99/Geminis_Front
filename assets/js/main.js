@@ -7,7 +7,7 @@ const loadComponent = async (id, file, userName = null) => {
             if (!response.ok) throw new Error(`No se pudo cargar el archivo ${file}`);
             const html = await response.text();
             element.innerHTML = html;
-
+            const userToken = localStorage.getItem("userToken");
             // Si el archivo es nav.html y tenemos un userName, actualizar el enlace
             if (id === 'nav' && userName) {
                 const enlace = document.getElementById("userName");
@@ -16,15 +16,29 @@ const loadComponent = async (id, file, userName = null) => {
                     enlace.href = "./profile.html";
                 }
             }
-            if (id === 'footer' && window.location.pathname === '/pages/login.html') {
+             
+            if (!userToken && id === 'footer') {
                 const footerElement = document.querySelector(".footer-container");
-                if (footerElement) {
+                if (footerElement ) {
                     const elementsToHide = footerElement.querySelectorAll(".hide-on-login");
-                    elementsToHide.forEach((element) => {
-                        element.style.display = "none";
+                    elementsToHide.forEach((e) => {
+                        e.style.display = "none";
                     });
                 }
+
             }
+            if (!userToken) {
+                if (id === 'nav') {
+                    console.log("No hay sesión activa");
+                    const user = document.querySelector(".dropdown");
+                    const home = document.querySelector(".inicio");
+                    user.style.display = "none";
+                    home.innerText = "Iniciar sesión";
+                    home.href = "./login.html";
+                    
+                }
+            }
+
         } catch (error) {
             console.error(`Error cargando el componente ${file}:`, error);
         }
@@ -40,7 +54,7 @@ const userDocument = localStorage.getItem('documento');
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('nav', 'nav.html', userName);
     loadComponent('footer', 'footer.html');
-    
+
 });
 
 
