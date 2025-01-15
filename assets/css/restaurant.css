@@ -8,8 +8,6 @@
     z-index: -1; /* Manda el fondo detrás del contenido */
     position: relative; /* Asegura que el card no afecte otros elementos */
 }
-
-
 .restaurant-details {
     position: relative; /* Necesario para posicionar el pseudo-elemento */
     display: grid;

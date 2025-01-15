@@ -16,7 +16,7 @@ const loadComponent = async (id, file, userName = null) => {
                     enlace.href = "./profile.html";
                 }
             }
-             
+
             if (!userToken && id === 'footer') {
                 const footerElement = document.querySelector(".footer-container");
                 if (footerElement ) {
