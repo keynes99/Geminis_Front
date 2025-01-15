@@ -16,6 +16,15 @@ const loadComponent = async (id, file, userName = null) => {
                     enlace.href = "./profile.html";
                 }
             }
+            if (id === 'footer' && window.location.pathname === '/pages/login.html') {
+                const footerElement = document.querySelector(".footer-container");
+                if (footerElement) {
+                    const elementsToHide = footerElement.querySelectorAll(".hide-on-login");
+                    elementsToHide.forEach((element) => {
+                        element.style.display = "none";
+                    });
+                }
+            }
         } catch (error) {
             console.error(`Error cargando el componente ${file}:`, error);
         }
@@ -31,5 +40,7 @@ const userDocument = localStorage.getItem('documento');
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('nav', 'nav.html', userName);
     loadComponent('footer', 'footer.html');
+    
 });
+
 
