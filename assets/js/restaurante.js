@@ -32,7 +32,7 @@ const getRestaurantData = () => {
             name: "Comida tradicional",
             logo: "../assets/images/logoRestaurante3.webp",
             description: "Comida tradicional de la región.",
-            distance: "5.0 km",
+            distance: "3.2 km",
             image: "../assets/images/restaurante.jpg"
         },
         {
@@ -40,7 +40,7 @@ const getRestaurantData = () => {
             name: "Comida oriental",
             logo: "../assets/images/logoRestaurante4.webp",
             description: "Sabores auténticos del este asiático.",
-            distance: "5.0 km",
+            distance: "1.1 km",
             image: "../assets/images/restaurante.jpg"
         }
     ];
