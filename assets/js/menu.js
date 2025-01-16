@@ -14,16 +14,16 @@ const getRestaurantData = () => {
         ];
 
         const menus = [
-            { id: "123", menu: [{ nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 8.99, tipo: "Vegetariano" }, { nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 10.99, tipo: "Carnes" }] },
-            { id: "234", menu: [{ nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 9.99, tipo: "Carnes" }, { nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 8.49, tipo: "Vegetariano" }] },
+            { id: "123", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 39000, tipo: "Vegetariano" }, { img:"../assets/images/img-pizza1.webp", nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 39000, tipo: "Carnes" }] },
+            { id: "234", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 25000, tipo: "Carnes" }, { img:"../assets/images/img-pizza1.webp", nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 28000, tipo: "Vegetariano" }] },
             {
                 id: "345",
 
                 menu: [
-                    { nombre: "California Roll", descripcion: "Rollo de sushi con aguacate, cangrejo y pepino", precio: 12.99, tipo: "Mariscos" },
-                    { nombre: "Salmon Nigiri", descripcion: "Arroz de sushi cubierto con salmón fresco", precio: 10.99, tipo: "Mariscos" },
-                    { nombre: "Veggie Roll", descripcion: "Rollo de sushi con zanahoria, pepino y aguacate", precio: 9.49, tipo: "Vegetariano" },
-                    { nombre: "Dragon Roll", descripcion: "Rollo de sushi con camarón tempura y aguacate", precio: 14.99, tipo: "Mariscos" }
+                    {img:"../assets/images/img-pizza1.webp", nombre: "California Roll", descripcion: "Rollo de sushi con aguacate, cangrejo y pepino", precio: 32990, tipo: "Mariscos" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Salmon Nigiri", descripcion: "Arroz de sushi cubierto con salmón fresco", precio: 29900, tipo: "Mariscos" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Veggie Roll", descripcion: "Rollo de sushi con zanahoria, pepino y aguacate", precio: 20000, tipo: "Vegetariano" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Dragon Roll", descripcion: "Rollo de sushi con camarón tempura y aguacate", precio: 28900, tipo: "Mariscos" }
                 ]
             },
             // Restaurante 4
@@ -31,10 +31,10 @@ const getRestaurantData = () => {
                 id: "456",
 
                 menu: [
-                    { nombre: "Taco de Carnitas", descripcion: "Taco con cerdo desmenuzado y salsa verde", precio: 3.99, tipo: "Carnes" },
-                    { nombre: "Taco de Pollo", descripcion: "Taco con pollo a la parrilla y salsa roja", precio: 3.49, tipo: "Aves" },
-                    { nombre: "Taco Vegetariano", descripcion: "Taco con frijoles negros, aguacate y pico de gallo", precio: 3.29, tipo: "Vegetariano" },
-                    { nombre: "Taco de Pescado", descripcion: "Taco con pescado empanizado y crema de chipotle", precio: 4.49, tipo: "Mariscos" }
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Carnitas", descripcion: "Taco con cerdo desmenuzado y salsa verde", precio: 18900, tipo: "Carnes" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Pollo", descripcion: "Taco con pollo a la parrilla y salsa roja", precio: 20000, tipo: "Aves" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco Vegetariano", descripcion: "Taco con frijoles negros, aguacate y pico de gallo", precio: 18000, tipo: "Vegetariano" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Pescado", descripcion: "Taco con pescado empanizado y crema de chipotle", precio: 20900, tipo: "Mariscos" }
                 ]
             },
             // Restaurante 5
@@ -42,10 +42,10 @@ const getRestaurantData = () => {
                 id: "567",
 
                 menu: [
-                    { nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 13.99, tipo: "Carnes" },
-                    { nombre: "Fettuccine Alfredo", descripcion: "Pasta con salsa cremosa de queso y mantequilla", precio: 12.49, tipo: "Vegetariano" },
-                    { nombre: "Penne Arrabbiata", descripcion: "Pasta con salsa de tomate picante", precio: 11.49, tipo: "Vegetariano" },
-                    { nombre: "Lasagna", descripcion: "Capas de pasta, carne molida y queso gratinado", precio: 14.99, tipo: "Carnes" }
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 49900, tipo: "Carnes" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Fettuccine Alfredo", descripcion: "Pasta con salsa cremosa de queso y mantequilla", precio: 44900, tipo: "Vegetariano" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Penne Arrabbiata", descripcion: "Pasta con salsa de tomate picante", precio: 41900, tipo: "Vegetariano" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Lasagna", descripcion: "Capas de pasta, carne molida y queso gratinado", precio: 52900, tipo: "Carnes" }
                 ]
             },
             // Restaurante 6
@@ -53,10 +53,10 @@ const getRestaurantData = () => {
                 id: "678",
 
                 menu: [
-                    { nombre: "Acai Bowl", descripcion: "Tazón con acai, frutas frescas y granola", precio: 9.99, tipo: "Vegetariano" },
-                    { nombre: "Quinoa Salad", descripcion: "Ensalada de quinoa con aguacate, pepino y limón", precio: 8.49, tipo: "Vegetariano" },
-                    { nombre: "Chicken Bowl", descripcion: "Tazón con pollo a la parrilla, arroz integral y vegetales", precio: 10.99, tipo: "Aves" },
-                    { nombre: "Shrimp Bowl", descripcion: "Tazón con camarones, espinaca y aderezo asiático", precio: 12.49, tipo: "Mariscos" }
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Acai Bowl", descripcion: "Tazón con acai, frutas frescas y granola", precio: 35900, tipo: "Vegetariano" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Quinoa Salad", descripcion: "Ensalada de quinoa con aguacate, pepino y limón", precio: 30900, tipo: "Vegetariano" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Chicken Bowl", descripcion: "Tazón con pollo a la parrilla, arroz integral y vegetales", precio: 39900, tipo: "Aves" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Shrimp Bowl", descripcion: "Tazón con camarones, espinaca y aderezo asiático", precio: 44900, tipo: "Mariscos" }
                 ]
             }
         ];
@@ -73,15 +73,17 @@ const getRestaurantData = () => {
             <div class="restaurante-info">
                 <h1>${restaurant.name}</h1>
                 <img class="restaurant-logo" src="${restaurant.logo}" alt="logotipo de ${restaurant.name}">
-                <p class="descripcion">${restaurant.description}</p>
+
             </div>
             <div class="menu">
                 ${menu.menu.map(item => `
-                    <div class="menu-item">
-                        <img class="restaurant-logo" src="${item.img}" alt="imagen de ${item.nombre}">
-                        <h2 class="menu-name">${item.nombre}</h2>
-                        <p class="menu-description">${item.descripcion}</p>
-                        <p class="menu-price">$${item.precio}</p>
+                    <div class="card">
+                        <div class="menu-item">
+                            <img class="item-img" src="${item.img}" alt="imagen de ${item.nombre}">
+                            <h2 class="menu-name">${item.nombre}</h2>
+                            <p class="menu-description">${item.descripcion}</p>
+                            <p class="menu-price">$${item.precio}</p>
+                        </div>
                     </div>
                 `).join('')}
             </div>
