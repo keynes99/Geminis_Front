@@ -2,7 +2,7 @@ const loadRestaurants = () => {
     const carousel = document.getElementById('restaurant-carousel');
     const restaurants = [
         {
-            id: "123", // Identificador único
+            id: "1", // Identificador único
             name: "Restaurante El Buen Sabor",
             logo: "../assets/images/logoRestaurante1.webp",
             description: "Un lugar perfecto para disfrutar de comida casera.",
@@ -10,7 +10,7 @@ const loadRestaurants = () => {
             image: "../assets/images/restaurante.jpg"
         },
         {
-            id: "234",
+            id: "2",
             name: "Comida Rápida Express",
             logo: "../assets/images/logoRestaurante2.webp",
             description: "Comida rápida para disfrutar en familia.",
@@ -18,7 +18,7 @@ const loadRestaurants = () => {
             image: "../assets/images/restaurante.jpg"
         },
         {
-            id: "345",
+            id: "3",
             name: "Comida tradicional",
             logo: "../assets/images/logoRestaurante3.webp",
             description: "Comida tradicional de la región.",
@@ -26,7 +26,7 @@ const loadRestaurants = () => {
             image: "../assets/images/restaurante.jpg"
         },
         {
-            id: "456",
+            id: "4",
             name: "Comida oriental",
             logo: "../assets/images/logoRestaurante4.webp",
             description: "Sabores auténticos del este asiático.",

@@ -12,7 +12,7 @@ const getRestaurantData = () => {
     // Datos de los restaurantes
     const restaurants = [
         {
-            id: "123",
+            id: "1",
             name: "Restaurante El Buen Sabor",
             logo: "../assets/images/logoRestaurante1.webp",
             description: "Un lugar perfecto para disfrutar de comida casera.",
@@ -20,7 +20,7 @@ const getRestaurantData = () => {
             image: "../assets/images/restaurante.jpg"
         },
         {
-            id: "234",
+            id: "2",
             name: "Comida Rápida Express",
             logo: "../assets/images/logoRestaurante2.webp",
             description: "Comida rápida para disfrutar en familia.",
@@ -28,7 +28,7 @@ const getRestaurantData = () => {
             image: "../assets/images/restaurante.jpg"
         },
         {
-            id: "345",
+            id: "3",
             name: "Comida tradicional",
             logo: "../assets/images/logoRestaurante3.webp",
             description: "Comida tradicional de la región.",
@@ -36,7 +36,7 @@ const getRestaurantData = () => {
             image: "../assets/images/restaurante.jpg"
         },
         {
-            id: "456",
+            id: "4",
             name: "Comida oriental",
             logo: "../assets/images/logoRestaurante4.webp",
             description: "Sabores auténticos del este asiático.",
@@ -56,15 +56,18 @@ const getRestaurantData = () => {
     // Mostrar los datos del restaurante
     const container = document.getElementById('restaurant-details');
     container.innerHTML = `
-            <div class="background-highlight"></div>
-            <h1>${restaurant.name}</h1>
-            <img class="restaurant-logo" src="${restaurant.logo}" alt="logotipo de ${restaurant.name}">
-            <p class="descripcion">${restaurant.description}</p>  
-            <img class="restaurant-img" src="${restaurant.image}" alt="Imagen de ${restaurant.name}">
-            <p class="distancia">Distancia: ${restaurant.distance}</p>
+        <div class="background-highlight"></div>
+        <h1>${restaurant.name}</h1>
+        <img class="restaurant-logo" src="${restaurant.logo}" alt="logotipo de ${restaurant.name}">
+        <p class="descripcion">${restaurant.description}</p>  
+        <img class="restaurant-img" src="${restaurant.image}" alt="Imagen de ${restaurant.name}">
+        <p class="distancia">Distancia: ${restaurant.distance}</p>
+
+        <!-- Contenedor para los botones -->
+        <div class="button-container">
             <a href="menu.html?id=${restaurant.id}" class="secondary-btn">Ver Menú</a>
-        
-        
+            <a href="CrearDomicilio.html?id=${restaurant.id}" class="secondary-btn">Domicilio</a>
+        </div>
     `;
 };
 

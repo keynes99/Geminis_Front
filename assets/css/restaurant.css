@@ -78,3 +78,27 @@
     text-overflow: ellipsis; /* Maneja textos largos */
     white-space: nowrap; /* Opcional: Forzar que el texto no haga saltos */
 }
+/* Contenedor para los botones */
+.button-container {
+    grid-area: b; /* Puedes mantenerlo en la misma área de la cuadrícula */
+    display: flex; /* Usar Flexbox para alinear los botones */
+    gap: 10px; /* Espacio entre los botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 1em; /* Espacio superior */
+}
+
+/* Estilo de los botones */
+.secondary-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 150px; /* Establece un ancho fijo para los botones */
+    text-align: center; /* Asegura que el texto esté centrado */
+    font-weight: bold;
+}
+
+.secondary-btn:hover {
+    background-color: #45a049;
+}

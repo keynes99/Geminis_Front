@@ -1,0 +1,143 @@
+/* Estilo general para el contenedor del formulario */
+.domicilio-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3em;
+    max-width: 100%;
+}
+
+.create-domicilio-form {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 0.8em;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+    margin-bottom: 3em;
+}
+
+/* Estilo para los títulos */
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5em;
+}
+
+/* Estilo para las columnas */
+.container {
+    display: flex;
+    justify-content: center;
+    background-color: #f7f7f7;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+/* Estilos de los menús */
+.menu-section {
+    margin-bottom: 2em;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 1.2em;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    background-color: #f9f9f9;
+}
+
+.menu-item span {
+    font-size: 1.1em;
+}
+
+.item-price {
+    margin-left: 1em;
+    color: #007bff;
+}
+
+/* Información adicional del domicilio */
+.domicilio-additional-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los botones */
+.primary-btn, .add-to-cart-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover, .add-to-cart-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para los detalles */
+.domicilio-info h2 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.domicilio-info p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Select de método de pago */
+.domicilio-additional-info select {
+    padding: 1em;
+    font-size: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* Estilos para la columna de detalles del domicilio */
+.col-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2em;
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 1em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* Mejora en la responsividad */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-7, .col-4 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .create-domicilio-form {
+        padding: 1.5em;
+    }
+}
