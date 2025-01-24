@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domicilios Activos | Géminis</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/domicilios.css">
+    <link rel="icon" href="../assets/images/logoGeminis.ico">
+</head>
+
+<body id="domicilios-page">
+    <!-- Main Content -->
+    <main class="domicilios-container">
+        <div id="nav"></div>
+        <div class="header-bar">
+            <h1>Domicilios</h1>
+        </div>
+
+        <div class="domicilios-list">
+            <!-- La lista de domicilios se llenará dinámicamente aquí -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer">           
+    </div>
+
+    <!-- Cargar scripts al final -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/domicilios.js"></script>
+    <script>
+        // Llamar a la función para obtener los domicilios al cargar la página
+        getDomicilios(localStorage.getItem('documento'));
+    </script>
+</body>
+
+</html>
