@@ -101,3 +101,61 @@ const renderMenus = (menus) => {
         menuList.appendChild(menuCard);
     });
 };
+
+
+
+
+
+// Función para cargar datos al cargar la pagina
+
+window.onload = function() {
+    // Obtener los valores del localStorage
+    var documento = localStorage.getItem('documento');
+    console.log('Documento:', documento);
+    var nombre = localStorage.getItem('nombre');
+    console.log('Nombre:', nombre);
+
+    // Obtener la fecha y la hora
+    var fecha = today(); 
+    var hora = now();
+
+    // Asignar los valores al HTML
+    document.getElementById("cliente-nombre").textContent = nombre || "Nombre no disponible"; 
+    document.getElementById("fecha").textContent = fecha;
+    document.getElementById("hora").textContent = hora;
+}
+
+// Función de fecha
+function today() {
+    var today = new Date();
+    var day = today.getDate().toString().padStart(2, '0');
+    var month = (today.getMonth() + 1).toString().padStart(2, '0');
+    var year = today.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
+// Función de hora
+function now() {
+    var currentDate = new Date();
+    var hours = currentDate.getHours().toString().padStart(2, '0');
+    var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+    var seconds = currentDate.getSeconds().toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+}
+function updateTotal() {
+    let totalPagar = 0;
+
+    // Sumar todos los totales de los menús
+    document.querySelectorAll('.cantidad').forEach(input => {
+        const cantidad = input.value;
+        const precio = input.dataset.precio;
+        const totalMenu = cantidad * precio;
+        const totalElement = document.getElementById(`total-${input.id.split('-')[1]}`);
+        totalElement.textContent = totalMenu;
+
+        totalPagar += totalMenu;
+    });
+
+    // Actualizar el total a pagar
+    document.getElementById('total-pagar').textContent = totalPagar;
+}

@@ -7,28 +7,17 @@ const getRestaurantData = () => {
         return;
     } else {
         const restaurants = [
-            { id: "123", name: "Restaurante El Buen Sabor", logo: "../assets/images/logoRestaurante1.webp", description: "Un lugar perfecto para disfrutar de comida casera.", distance: "2.5 km", image: "../assets/images/restaurante.jpg" },
-            { id: "234", name: "Comida Rápida Express", logo: "../assets/images/logoRestaurante2.webp", description: "Comida rápida para disfrutar en familia.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" },
-            { id: "345", name: "Comida tradicional", logo: "../assets/images/logoRestaurante3.webp", description: "Comida tradicional de la región.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" },
-            { id: "456", name: "Comida oriental", logo: "../assets/images/logoRestaurante4.webp", description: "Sabores auténticos del este asiático.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" }
+            { id: "1", name: "Restaurante El Buen Sabor", logo: "../assets/images/logoRestaurante1.webp", description: "Un lugar perfecto para disfrutar de comida casera.", distance: "2.5 km", image: "../assets/images/restaurante.jpg" },
+            { id: "2", name: "Comida Rápida Express", logo: "../assets/images/logoRestaurante2.webp", description: "Comida rápida para disfrutar en familia.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" },
+            { id: "3", name: "Comida tradicional", logo: "../assets/images/logoRestaurante3.webp", description: "Comida tradicional de la región.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" },
+            { id: "4", name: "Comida oriental", logo: "../assets/images/logoRestaurante4.webp", description: "Sabores auténticos del este asiático.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" }
         ];
 
         const menus = [
-            { id: "123", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 39000, tipo: "Vegetariano" }, { img:"../assets/images/img-pizza1.webp", nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 39000, tipo: "Carnes" }] },
-            { id: "234", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 25000, tipo: "Carnes" }, { img:"../assets/images/img-pizza1.webp", nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 28000, tipo: "Vegetariano" }] },
+            { id: "1", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 39000, tipo: "Vegetariano" }, { img:"../assets/images/img-pizza1.webp", nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 39000, tipo: "Carnes" }] },
+            { id: "2", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 25000, tipo: "Carnes" }, { img:"../assets/images/img-pizza1.webp", nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 28000, tipo: "Vegetariano" }] },
             {
-                id: "456",
-
-                menu: [
-                    {img:"../assets/images/img-pizza1.webp", nombre: "California Roll", descripcion: "Rollo de sushi con aguacate, cangrejo y pepino", precio: 32990, tipo: "Mariscos" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Salmon Nigiri", descripcion: "Arroz de sushi cubierto con salmón fresco", precio: 29900, tipo: "Mariscos" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Veggie Roll", descripcion: "Rollo de sushi con zanahoria, pepino y aguacate", precio: 20000, tipo: "Vegetariano" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Dragon Roll", descripcion: "Rollo de sushi con camarón tempura y aguacate", precio: 28900, tipo: "Mariscos" }
-                ]
-            },
-            // Restaurante 4
-            {
-                id: "345",
+                id: "3",
 
                 menu: [
                     {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Carnitas", descripcion: "Taco con cerdo desmenuzado y salsa verde", precio: 18900, tipo: "Carnes" },
@@ -37,9 +26,20 @@ const getRestaurantData = () => {
                     {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Pescado", descripcion: "Taco con pescado empanizado y crema de chipotle", precio: 20900, tipo: "Mariscos" }
                 ]
             },
+            // Restaurante 4
+            {
+                id: "4",
+
+                menu: [
+                    {img:"../assets/images/img-pizza1.webp", nombre: "California Roll", descripcion: "Rollo de sushi con aguacate, cangrejo y pepino", precio: 32990, tipo: "Mariscos" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Salmon Nigiri", descripcion: "Arroz de sushi cubierto con salmón fresco", precio: 29900, tipo: "Mariscos" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Veggie Roll", descripcion: "Rollo de sushi con zanahoria, pepino y aguacate", precio: 20000, tipo: "Vegetariano" },
+                    {img:"../assets/images/img-pizza1.webp", nombre: "Dragon Roll", descripcion: "Rollo de sushi con camarón tempura y aguacate", precio: 28900, tipo: "Mariscos" }
+                ]
+            },          
             // Restaurante 5
             {
-                id: "567",
+                id: "5",
 
                 menu: [
                     {img:"../assets/images/img-pizza1.webp", nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 49900, tipo: "Carnes" },
@@ -50,7 +50,7 @@ const getRestaurantData = () => {
             },
             // Restaurante 6
             {
-                id: "678",
+                id: "6",
 
                 menu: [
                     {img:"../assets/images/img-pizza1.webp", nombre: "Acai Bowl", descripcion: "Tazón con acai, frutas frescas y granola", precio: 35900, tipo: "Vegetariano" },

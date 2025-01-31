@@ -69,3 +69,7 @@ const renderDomicilios = (domicilios) => {
         domiciliosList.appendChild(domicilioCard);
     });
 };
+
+
+// Llamar a la función para obtener los domicilios al cargar la página
+getDomicilios(localStorage.getItem('documento'));

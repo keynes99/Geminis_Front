@@ -13,54 +13,55 @@
 <body>
     <div id="nav"></div>
     
-    <div class="container">
-        <div class="col-7">
-            <div id="domicilio-details" class="domicilio-details">
-                <h1>Nuevo Domicilio</h1>
-                <input type="hidden" id="sede-id" value="">
-                <input type="hidden" id="cliente-id" value="">
-                <input type="hidden" id="Fecha" value="">
-                <input type="hidden" id="Hora" value="">
+    <main>
+        <div class="container-principal">
+            <div class="col-7">
+                <div id="domicilio-details" class="domicilio-details">
+                    <h1>Nuevo Domicilio</h1>
+                    <input type="hidden" id="sede-id" value="">
+                    <input type="hidden" id="cliente-id" value="">
+                    <input type="hidden" id="Fecha" value="">
+                    <input type="hidden" id="Hora" value="">
 
-                <form id="create-domicilio-form" class="create-domicilio-form">
-                    <!-- Aquí se cargará la lista de menús dinámicamente -->
-                    <div id="menu-list"></div>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Separador entre columnas -->
-        <div class="col-1"></div>
-        
-        <div class="col-4">
-            <div id="Info-details" class="Info-details">
-                <h1>Detalles del Domicilio</h1>
-                <div class="domicilio-info">
-                    <h2>Cliente</h2>
-                    <p id="cliente-nombre"></p>
-                    <h2>Sede</h2>
-                    <p id="sede-nombre"></p>
-                    <h2>Fecha</h2>
-                    <p id="fecha"></p>
-                    <h2>Hora</h2>
-                    <p id="hora"></p>
-                </div>
-
-                <!-- Información adicional del domicilio -->
-                <div class="domicilio-additional-info">
-                    <h2>Total a Pagar</h2>
-                    <p id="total-pagar">0</p>
-                    <h2>Método de Pago</h2>
-                    <select id="metodo-pago" aria-label="Método de pago">
-                        <option value="1">Efectivo</option>
-                        <option value="2">Tarjeta</option>
-                    </select>
-                    <button type="submit" class="primary-btn" aria-label="Solicitar Domicilio">Solicitar</button>
+                    <form id="create-domicilio-form" class="create-domicilio-form">
+                        <!-- Aquí se cargará la lista de menús dinámicamente -->
+                        <div id="menu-list"></div>
+                    </form>
                 </div>
             </div>
+            
+            <!-- Separador entre columnas -->
+            <div class="col-1"></div>
+            
+            <div class="col-4">
+                <div id="Info-details" class="Info-details">
+                    <h1>Detalles del Domicilio</h1>
+                    <div class="domicilio-info">
+                        <h2>Cliente</h2>
+                        <p id="cliente-nombre"></p>
+                        <h2>Sede</h2>
+                        <p id="sede-nombre"></p>
+                        <h2>Fecha</h2>
+                        <p id="fecha"></p>
+                        <h2>Hora</h2>
+                        <p id="hora"></p>
+                    </div>
+
+                    <!-- Información adicional del domicilio -->
+                    <div class="domicilio-additional-info">
+                        <h2>Total a Pagar</h2>
+                        <p id="total-pagar">0</p>
+                        <h2>Método de Pago</h2>
+                        <select id="metodo-pago" aria-label="Método de pago">
+                            <option value="1">Efectivo</option>
+                            <option value="2">Tarjeta</option>
+                        </select>
+                        <button type="submit" class="primary-btn" aria-label="Solicitar Domicilio">Solicitar</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    
+    </main>
     <div id="footer"></div>
 
     <script src="../assets/js/main.js"></script>
@@ -77,59 +78,6 @@
             getMenusDomicilios(id);
         } else {
             console.error('No se encontró el parámetro "id" en la URL');
-        }
-    </script>
-    <script>
-        window.onload = function() {
-            // Obtener los valores del localStorage
-            var documento = localStorage.getItem('documento');
-            console.log('Documento:', documento);
-            var nombre = localStorage.getItem('nombre');
-            console.log('Nombre:', nombre);
-    
-            // Obtener la fecha y la hora
-            var fecha = today(); 
-            var hora = now();
-    
-            // Asignar los valores al HTML
-            document.getElementById("cliente-nombre").textContent = nombre || "Nombre no disponible"; 
-            document.getElementById("fecha").textContent = fecha;
-            document.getElementById("hora").textContent = hora;
-        }
-    
-        // Función de fecha
-        function today() {
-            var today = new Date();
-            var day = today.getDate().toString().padStart(2, '0');
-            var month = (today.getMonth() + 1).toString().padStart(2, '0');
-            var year = today.getFullYear();
-            return `${day}/${month}/${year}`;
-        }
-    
-        // Función de hora
-        function now() {
-            var currentDate = new Date();
-            var hours = currentDate.getHours().toString().padStart(2, '0');
-            var minutes = currentDate.getMinutes().toString().padStart(2, '0');
-            var seconds = currentDate.getSeconds().toString().padStart(2, '0');
-            return `${hours}:${minutes}:${seconds}`;
-        }
-        function updateTotal() {
-            let totalPagar = 0;
-
-            // Sumar todos los totales de los menús
-            document.querySelectorAll('.cantidad').forEach(input => {
-                const cantidad = input.value;
-                const precio = input.dataset.precio;
-                const totalMenu = cantidad * precio;
-                const totalElement = document.getElementById(`total-${input.id.split('-')[1]}`);
-                totalElement.textContent = totalMenu;
-
-                totalPagar += totalMenu;
-            });
-
-            // Actualizar el total a pagar
-            document.getElementById('total-pagar').textContent = totalPagar;
         }
     </script>
     
