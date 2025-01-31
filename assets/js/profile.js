@@ -34,8 +34,12 @@ form.addEventListener('submit', async (event) => {
         Apellido: document.getElementById('apellido').value,
         Telefono: document.getElementById('telefono').value,
         Direccion: document.getElementById('direccion').value,
-        Contrasena: document.getElementById('contrasena').value,
     };
+
+    const contrasena = document.getElementById('contrasena').value;
+    if (contrasena) {
+        updatedUser.Contrasena = contrasena;
+    }
 
     try {
         const response = await fetch(`http://localhost:3000/api/users/${userDocument}`, {
