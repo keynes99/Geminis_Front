@@ -53,8 +53,10 @@ const loadComponent = async (id, file, userName = null) => {
                 if (id === 'nav') {
                     console.log("No hay sesión activa");
                     const user = document.querySelector(".dropdown");
+                    const domi = document.querySelector(".domicilios");
                     const home = document.querySelector(".inicio");
                     user.style.display = "none";
+                    domi.style.display = "none";
                     home.innerText = "Iniciar sesión";
                     home.href = "./login.html";
                     
