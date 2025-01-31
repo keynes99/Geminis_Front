@@ -1,5 +1,5 @@
 // Cargar componentes comunes
-const loadComponent = async (id, file, userName = null) => {
+const loadComponent = async (id, file) => {
     const element = document.getElementById(id);
     if (element) {
         try {
@@ -15,6 +15,14 @@ const loadComponent = async (id, file, userName = null) => {
                     enlace.textContent = userName;
                     enlace.href = "./profile.html";
                 }
+                // Mostrar "Mi restaurante" si userEmpresa no es null
+                console.log("Empresa:",userEmpresa);
+                if (userEmpresa!=='null') {
+                    const miRestauranteLink = document.getElementById("miRestaurante");
+                    if (miRestauranteLink) {
+                        miRestauranteLink.style.display = 'block';
+                    }
+                }
                 // Agregar listener al enlace "Cerrar Sesión"
                 const cerrarSesionLink = document.getElementById("CerrarSes");
                 if (cerrarSesionLink) {
@@ -24,12 +32,14 @@ const loadComponent = async (id, file, userName = null) => {
                         localStorage.removeItem('nombre');
                         localStorage.removeItem('documento');
                         localStorage.removeItem("token");
+                        localStorage.removeItem("empresa");
 
                         //Borrar variables con info de la persona
 
                         userName='';
                         userDocument=0;
                         userToken=null;
+                        userEmpresa = null;
 
                         // Redirigir a login.html
                         window.location.href = "login.html";
@@ -72,11 +82,12 @@ const loadComponent = async (id, file, userName = null) => {
 // Usuario y documento
 let userName = localStorage.getItem('nombre');
 let userDocument = localStorage.getItem('documento');
+let userEmpresa = localStorage.getItem('empresa');
 // console.log(userName, userDocument);
 
 // Cargar Nav y Footer
 document.addEventListener("DOMContentLoaded", () => {
-    loadComponent('nav', 'nav.html', userName);
+    loadComponent('nav', 'nav.html');
     loadComponent('footer', 'footer.html');
 });
 
