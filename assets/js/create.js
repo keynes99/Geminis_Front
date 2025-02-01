@@ -26,9 +26,20 @@ tipoSelect.addEventListener('change', () => {
 
         // Activar campos de restaurante
         usuarioFields.querySelectorAll('input').forEach(input => input.required = false);
-        restauranteFields.querySelectorAll('input').forEach(input => input.required = true);
+        restauranteFields.querySelectorAll('input, textarea, select').forEach(input => input.required = true);
     }
 });
+
+// Convertir ArrayBuffer a base64
+function arrayBufferToBase64(buffer) {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+}
 
 // Enviar datos al backend
 form.addEventListener('submit', async (event) => {
@@ -38,14 +49,31 @@ form.addEventListener('submit', async (event) => {
     const formData = new FormData(form);
     const body = {};
     formData.forEach((value, key) => (body[key] = value));
-    console.log(body);
+
+    // Convertir el logo a base64 si existe
+    if (formData.get('logo')) {
+        const logoFile = formData.get('logo');
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(logoFile);
+        reader.onload = async () => {
+            body.logo = arrayBufferToBase64(reader.result); // Convertir ArrayBuffer a base64
+            await sendFormData(body);
+        };
+        reader.onerror = (error) => {
+            errorMessage.textContent = 'Error al leer el archivo de logo';
+        };
+    } else {
+        await sendFormData(body);
+    }
+});
+
+async function sendFormData(body) {
     try {
         const response = await fetch('http://localhost:3000/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
         });
-        
 
         if (!response.ok) {
             throw new Error('Error al crear usuario o restaurante');
@@ -57,7 +85,7 @@ form.addEventListener('submit', async (event) => {
     } catch (error) {
         errorMessage.textContent = error.message;
     }
-});
+}
 
 goToLogin.addEventListener('click', () => {
     window.location.href = 'login.html';
