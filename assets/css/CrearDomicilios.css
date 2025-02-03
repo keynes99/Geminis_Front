@@ -65,12 +65,11 @@ h1 {
 .domicilio-additional-info {
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
     align-items: flex-start;
     background-color: #fff;
     padding: 1.5em;
     border-radius: 1em;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo para los botones */

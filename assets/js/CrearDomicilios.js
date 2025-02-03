@@ -74,19 +74,12 @@ const renderMenus = (menus) => {
         const inputCantidad = document.createElement('input');
         inputCantidad.type = 'number';
         inputCantidad.value = 0; // Valor predeterminado de la cantidad
-        inputCantidad.min = 0; // La cantidad mínima es 1
+        inputCantidad.min = 0; // La cantidad mínima es 0
         inputCantidad.classList.add('cantidad-input');
+        inputCantidad.dataset.precio = menu.Precio; // Almacenar el precio en un atributo de datos
 
-        // Crear un botón para agregar el menú al domicilio
-        const buttonAgregar = document.createElement('button');
-        buttonAgregar.textContent = 'Agregar al Domicilio';
-        buttonAgregar.classList.add('add-to-cart-btn');
-
-        // Acción al hacer clic en el botón "Agregar al Domicilio"
-        buttonAgregar.addEventListener('click', () => {
-            const cantidad = inputCantidad.value;
-            addMenuToDomicilio(menu, cantidad); // Llamar a la función para agregar el menú con la cantidad
-        });
+        // Agregar un evento de cambio para actualizar el total
+        inputCantidad.addEventListener('change', updateTotal);
 
         // Contenido de la tarjeta
         menuCard.innerHTML = `
@@ -95,19 +88,14 @@ const renderMenus = (menus) => {
             <p><strong>Precio:</strong> $${menu.Precio}</p>
         `;
         
-        // Agregar el input de cantidad y el botón a la tarjeta
+        // Agregar el input de cantidad a la tarjeta
         menuCard.appendChild(inputCantidad);
         
         menuList.appendChild(menuCard);
     });
 };
 
-
-
-
-
-// Función para cargar datos al cargar la pagina
-
+// Función para cargar datos al cargar la página
 window.onload = function() {
     // Obtener los valores del localStorage
     var documento = localStorage.getItem('documento');
@@ -123,6 +111,9 @@ window.onload = function() {
     document.getElementById("cliente-nombre").textContent = nombre || "Nombre no disponible"; 
     document.getElementById("fecha").textContent = fecha;
     document.getElementById("hora").textContent = hora;
+
+    // Calcular el total inicial
+    updateTotal();
 }
 
 // Función de fecha
@@ -142,20 +133,26 @@ function now() {
     var seconds = currentDate.getSeconds().toString().padStart(2, '0');
     return `${hours}:${minutes}:${seconds}`;
 }
+
+// Función para actualizar el total a pagar
 function updateTotal() {
     let totalPagar = 0;
 
-    // Sumar todos los totales de los menús
-    document.querySelectorAll('.cantidad').forEach(input => {
-        const cantidad = input.value;
-        const precio = input.dataset.precio;
-        const totalMenu = cantidad * precio;
-        const totalElement = document.getElementById(`total-${input.id.split('-')[1]}`);
-        totalElement.textContent = totalMenu;
+    // Obtener todos los inputs de cantidad
+    const cantidadInputs = document.querySelectorAll('.cantidad-input');
 
-        totalPagar += totalMenu;
+    // Recorrer cada input de cantidad
+    cantidadInputs.forEach(input => {
+        const cantidad = parseFloat(input.value) || 0; // Obtener la cantidad (convertir a número)
+        const precio = parseFloat(input.dataset.precio) || 0; // Obtener el precio desde el atributo de datos
+
+        // Calcular el subtotal para este ítem
+        const subtotal = cantidad * precio;
+
+        // Sumar al total general
+        totalPagar += subtotal;
     });
 
-    // Actualizar el total a pagar
-    document.getElementById('total-pagar').textContent = totalPagar;
+    // Actualizar el total a pagar en el DOM
+    document.getElementById('total-pagar').textContent = totalPagar.toFixed(2); // Mostrar con 2 decimales
 }
