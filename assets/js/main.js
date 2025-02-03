@@ -22,6 +22,10 @@ const loadComponent = async (id, file) => {
                     if (miRestauranteLink) {
                         miRestauranteLink.style.display = 'block';
                     }
+                    const sedesLink = document.getElementById("misSedes");
+                    if (sedesLink) {
+                        sedesLink.style.display = 'block';
+                    }
                 }
                 // Agregar listener al enlace "Cerrar Sesión"
                 const cerrarSesionLink = document.getElementById("CerrarSes");

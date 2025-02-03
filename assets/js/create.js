@@ -82,6 +82,7 @@ async function sendFormData(body) {
         const data = await response.json();
         alert(data.message);
         form.reset();
+        location.reload(); // Recargar la página
     } catch (error) {
         errorMessage.textContent = error.message;
     }
