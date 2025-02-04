@@ -1,10 +1,12 @@
 // Función para crear un domicilio
 const createDomicilio = async (sedeId, documentoUsuario, direccionEntrega, tipoPago, numeroDomicilio) => {
     try {
+        const token = localStorage.getItem('token');
         const response = await fetch(`http://localhost:3000/api/domicilio/${sedeId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 documentoUsuario,
@@ -45,7 +47,10 @@ document.querySelector('#create-domicilio-form').addEventListener('submit', asyn
 // Función para obtener los menús de una sede
 const getMenusDomicilios = async (sedeId) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/domicilio/Menus/${sedeId}`);
+        const token = localStorage.getItem('token');
+        const response = await fetch(`http://localhost:3000/api/domicilio/Menus/${sedeId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
         if (response.ok) {
             const menus = await response.json();
             renderMenus(menus); // Llama a la función correcta para renderizar los menús

@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const nit = localStorage.getItem('empresa');
     if (nit) {
         try {
-            const response = await fetch(`http://localhost:3000/api/restaurantes/${nit}`);
+            const token = localStorage.getItem('token');
+            const response = await fetch(`http://localhost:3000/api/restaurantes/${nit}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
             if (!response.ok) throw new Error('Error al obtener la información del restaurante');
             const restaurant = await response.json();
             console.log(restaurant);
@@ -55,10 +58,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function sendFormData(data) {
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch(`http://localhost:3000/api/restaurantes/${data.NIT}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(data)
             });

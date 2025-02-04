@@ -56,10 +56,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         async function sendBranchData(branchData) {
             console.log(branchData);
             try {
+                const token = localStorage.getItem('token');
                 const response = await fetch('http://localhost:3000/api/sedes/', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify(branchData)
                 });
@@ -76,7 +78,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             const selectedBranch = branchList.value;
             if (selectedBranch) {
                 try {
-                    const response = await fetch(`http://localhost:3000/api/sedes/${selectedBranch}`);
+                    const token = localStorage.getItem('token');
+                    const response = await fetch(`http://localhost:3000/api/sedes/${selectedBranch}`, {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
                     if (!response.ok) throw new Error('Error al obtener la información de la sede');
                     const branch = await response.json();
                     
@@ -135,10 +140,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         async function updateBranchData(branchData) {
             const selectedBranch = branchList.value;
             try {
+                const token = localStorage.getItem('token');
                 const response = await fetch(`http://localhost:3000/api/sedes/${selectedBranch}`, {
                     method: 'PUT',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify(branchData)
                 });
@@ -153,7 +160,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function loadBranches() {
         try {
-            const response = await fetch(`http://localhost:3000/api/sedes?empresa=${nit}`);
+            const token = localStorage.getItem('token');
+            const response = await fetch(`http://localhost:3000/api/sedes?empresa=${nit}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
             if (!response.ok) throw new Error('Error al obtener la lista de sedes');
             const branches = await response.json();
             branchList.innerHTML = branches.map(branch => `<option value="${branch.Rowid}">${branch.Direccion}</option>`).join('');

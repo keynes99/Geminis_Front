@@ -69,9 +69,13 @@ form.addEventListener('submit', async (event) => {
 
 async function sendFormData(body) {
     try {
+        const token = localStorage.getItem('token');
         const response = await fetch('http://localhost:3000/api/auth/register', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify(body),
         });
 
@@ -106,7 +110,10 @@ esAdminSelect.addEventListener('change', () => {
 // Cargar NITs de restaurantes desde el backend
 const cargarNITsRestaurantes = async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/restaurantes/nits'); // Ruta para obtener NITs
+        const token = localStorage.getItem('token');
+        const response = await fetch('http://localhost:3000/api/restaurantes/nits', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
         if (!response.ok) {
             throw new Error('Error al cargar NITs de restaurantes');
         }
