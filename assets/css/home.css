@@ -69,7 +69,8 @@
     flex: 0 0 auto;
     /* Evitar que los elementos se encojan */
     min-height: 469px;
-    width: 300px;
+    min-width: 100%;
+    max-width: 380px;
     margin: 0 10px;
     border-radius: 8px;
     overflow: hidden;
