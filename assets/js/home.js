@@ -15,7 +15,7 @@ const loadRestaurants = () => {
             logo: "../assets/images/logoRestaurante2.webp",
             description: "Comida rápida para disfrutar en familia.",
             distance: "5.0 km",
-            image: "../assets/images/restaurante.jpg"
+            image: "../assets/images/restaurante2.jpg"
         },
         {
             id: "3",
@@ -23,7 +23,7 @@ const loadRestaurants = () => {
             logo: "../assets/images/logoRestaurante3.webp",
             description: "Comida tradicional de la región.",
             distance: "3.2 km",
-            image: "../assets/images/restaurante.jpg"
+            image: "../assets/images/restaurante3.jpg"
         },
         {
             id: "4",
@@ -31,7 +31,7 @@ const loadRestaurants = () => {
             logo: "../assets/images/logoRestaurante4.webp",
             description: "Sabores auténticos del este asiático.",
             distance: "1.1 km",
-            image: "../assets/images/restaurante.jpg"
+            image: "../assets/images/restaurante4.jpg"
         }
     ];
 
@@ -54,4 +54,6 @@ const loadRestaurants = () => {
     });
 };
 
-loadRestaurants();
+document.addEventListener("DOMContentLoaded", async () => {
+    loadRestaurants();
+});
