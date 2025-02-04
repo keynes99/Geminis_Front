@@ -57,3 +57,34 @@ const loadRestaurants = () => {
 document.addEventListener("DOMContentLoaded", async () => {
     loadRestaurants();
 });
+
+(function ($) {
+    $(document).ready(function () {
+        $(".carousel-container").owlCarousel({
+            nav: true,
+            dots: false,
+            autoHeight: true,
+            center: true,
+            loop: true,
+            // stagePadding: 2,
+            autoplay: false,
+            navText: ["<i class=\"fa-solid fa-chevron-left\"></i>", "<i class=\"fa-solid fa-chevron-right\"></i>"],
+            autoWidth: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                578: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 3
+                }
+            }
+        });
+    });
+})(jQuery);
+
