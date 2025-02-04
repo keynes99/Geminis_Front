@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             nav: true,
             dots: false,
             autoHeight: true,
-            center: true,
             loop: true,
-            // stagePadding: 2,
+            margin: 40,
+            stagePadding: 2,
             autoplay: false,
             navText: ["<i class=\"fa-solid fa-chevron-left\"></i>", "<i class=\"fa-solid fa-chevron-right\"></i>"],
             autoWidth: false,
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     items: 3
                 },
                 992: {
-                    items: 3
+                    items: 3.6
                 }
             }
         });

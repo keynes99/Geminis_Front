@@ -16,11 +16,20 @@
 
 .carousel-container .owl-nav {
     position: absolute;
-    top: 175.875px;
-    left: -80px;
-    width: 110%;
+    /* btn chiquitos */
+    /* top: 175.875px;
+    left: -52px;
+    width: 109%;
     max-width: 120%;
-    height: 117.25px;
+    height: 117.25px; */
+
+    /* btn grandes */
+    top: 0;
+    left: -47px;
+    width: 109.5%;
+    max-width: 120%;
+    height: 469px;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
