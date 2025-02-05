@@ -1,7 +1,12 @@
 // Función para obtener los domicilios de un usuario
 const getDomicilios = async (userId) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/domicilio/${userId}`);
+        const token = localStorage.getItem('token'); // Obtener el token del localStorage
+        const response = await fetch(`http://localhost:3000/api/domicilio/${userId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}` // Agregar el encabezado de autorización
+            }
+        });
 
         if (response.ok) {
             const domicilios = await response.json();

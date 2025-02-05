@@ -4,7 +4,10 @@ const empresaContainer = document.getElementById('empresa-container');
 // Función para cargar los datos del perfil
 const loadProfile = async () => {
     try {
-        const response = await fetch(`http://localhost:3000/api/users/${userDocument}`);
+        const token = localStorage.getItem('token');
+        const response = await fetch(`http://localhost:3000/api/users/${userDocument}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
         if (!response.ok) throw new Error('Error al cargar los datos del perfil');
         const data = await response.json();
 
@@ -42,9 +45,13 @@ form.addEventListener('submit', async (event) => {
     }
 
     try {
+        const token = localStorage.getItem('token');
         const response = await fetch(`http://localhost:3000/api/users/${userDocument}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify(updatedUser),
         });
         if (!response.ok) throw new Error('Error al actualizar el perfil');

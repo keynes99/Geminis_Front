@@ -8,9 +8,9 @@ const getRestaurantData = () => {
     } else {
         const restaurants = [
             { id: "1", name: "Restaurante El Buen Sabor", logo: "../assets/images/logoRestaurante1.webp", description: "Un lugar perfecto para disfrutar de comida casera.", distance: "2.5 km", image: "../assets/images/restaurante.jpg" },
-            { id: "2", name: "Comida Rápida Express", logo: "../assets/images/logoRestaurante2.webp", description: "Comida rápida para disfrutar en familia.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" },
-            { id: "3", name: "Comida tradicional", logo: "../assets/images/logoRestaurante3.webp", description: "Comida tradicional de la región.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" },
-            { id: "4", name: "Comida oriental", logo: "../assets/images/logoRestaurante4.webp", description: "Sabores auténticos del este asiático.", distance: "5.0 km", image: "../assets/images/restaurante.jpg" }
+            { id: "2", name: "Comida Rápida Express", logo: "../assets/images/logoRestaurante2.webp", description: "Comida rápida para disfrutar en familia.", distance: "5.0 km", image: "../assets/images/restaurante2.jpg" },
+            { id: "3", name: "Comida tradicional", logo: "../assets/images/logoRestaurante3.webp", description: "Comida tradicional de la región.", distance: "5.0 km", image: "../assets/images/restaurante3.jpg" },
+            { id: "4", name: "Comida oriental", logo: "../assets/images/logoRestaurante4.webp", description: "Sabores auténticos del este asiático.", distance: "5.0 km", image: "../assets/images/restaurante4.jpg" }
         ];
 
         const menus = [

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sedes - Restaurante</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/editarRestaurante.css">
+</head>
+<body>
+    <div id="nav"></div>
+
+    <main>
+        <div class="editarRestaurante-container">
+            <h1>Gestión de Sedes</h1>
+            <button id="showCreateBranchFormBtn">Nueva Sede</button>
+            <button id="showEditBranchFormBtn">Editar Sede</button>
+
+            <form id="crearSede-form" style="display: none;">
+                <h2>Crear Sede</h2>
+                <div class="input-group">
+                    <label for="direccionSede">Dirección Sede</label>
+                    <input type="text" id="direccionSede" name="direccionSede" required>
+                </div>
+                <div class="input-group">
+                    <label for="telefonoSede">Teléfono Sede</label>
+                    <input type="text" id="telefonoSede" name="telefonoSede" required>
+                </div>
+                <div class="input-group">
+                    <label for="mesasTotales">Mesas Totales</label>
+                    <input type="number" id="mesasTotales" name="mesasTotales" required>
+                </div>
+                <div class="input-group">
+                    <label for="mesasDisponibles">Mesas Disponibles</label>
+                    <input type="number" id="mesasDisponibles" name="mesasDisponibles" required>
+                </div>
+                <div class="input-group">
+                    <label for="reservasMaximas">Reservas Máximas</label>
+                    <input type="number" id="reservasMaximas" name="reservasMaximas" required>
+                </div>
+                <div class="input-group">
+                    <label for="horario">Horario</label>
+                    <input type="text" id="horario" name="horario" required>
+                </div>
+                <div class="input-group">
+                    
+                    <label for="imagenes">Imágenes</label>
+                    <input type="file" id="imagenes" name="imagenes" accept="image/*" multiple>
+                </div>
+                <button type="submit">Crear Sede</button>
+            </form>
+
+            <form id="editarMenu-form" style="display: none;">
+                <h2>Editar Menú</h2>
+                <div class="input-group">
+                    <label for="sedeMenu">Seleccionar Sede para Editar Menú</label>
+                    <select id="sedeMenu" name="sedeMenu" required>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                <button type="button" id="editarMenuBtn">Editar Menú</button>
+            </form>
+
+            <form id="editarSede-form" style="display: none;">
+                <h2>Editar Sede</h2>
+                <div class="input-group">
+                    <label for="branchList">Seleccionar Sede para Editar</label>
+                    <select id="branchList" name="branchList" required>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                <button type="button" id="editarSedeBtn">Cargar Sede</button>
+                <div class="input-group">
+                    <label for="direccionSede1">Dirección Sede</label>
+                    <input type="text" id="direccionSede1" name="direccionSede1" required>
+                </div>
+                <div class="input-group">
+                    <label for="telefonoSede1">Teléfono Sede</label>
+                    <input type="text" id="telefonoSede1" name="telefonoSede1" required>
+                </div>
+                <div class="input-group">
+                    <label for="mesasTotales1">Mesas Totales</label>
+                    <input type="number" id="mesasTotales1" name="mesasTotales1" required>
+                </div>
+                <div class="input-group">
+                    <label for="mesasDisponibles1">Mesas Disponibles</label>
+                    <input type="number" id="mesasDisponibles1" name="mesasDisponibles1" required>
+                </div>
+                <div class="input-group">
+                    <label for="reservasMaximas1">Reservas Máximas</label>
+                    <input type="number" id="reservasMaximas1" name="reservasMaximas1" required>
+                </div>
+                <div class="input-group">
+                    <label for="horario1">Horario</label>
+                    <input type="text" id="horario1" name="horario1" required>
+                </div>
+                <div class="input-group">
+                    <label for="imagenes1">Imágenes</label>
+                    <input type="file" id="imagenes1" name="imagenes1" accept="image/*">
+                    <!-- Image container -->
+                    <img src="../assets/images/logoRestaurante1.webp" alt="image Container" class="image-container" id="imageContainer" width="500" height="300">
+                </div>
+                <button type="submit">Guardar Cambios</button>
+            </form>
+
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/sedes.js"></script>
+
+</body>
+</html>
