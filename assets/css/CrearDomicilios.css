@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3em;
     max-width: 100%;
 }
 
@@ -37,39 +36,33 @@ h1 {
 }
 
 /* Estilos de los menús */
-.menu-section {
-    margin-bottom: 2em;
-}
-
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-    padding: 1.2em;
+.menu-card {
+    display: flex; /* Activar Flexbox */
+    justify-content: space-between; /* Alinear contenido a los extremos */
+    align-items: flex-start; /* Alinear elementos en la parte superior */
+    padding: 1em;
     border: 1px solid #ddd;
     border-radius: 0.5em;
+    margin-bottom: 1em;
     background-color: #f9f9f9;
 }
 
-.menu-item span {
-    font-size: 1.1em;
+.menu-content {
+    flex: 1; /* Hacer que el contenido principal ocupe el espacio restante */
+    gap: 0.5em; /* Espacio entre elementos */
 }
 
-.item-price {
-    margin-left: 1em;
-    color: #007bff;
-}
-.cantidad-input{
+.cantidad-input {
     width: 50px;
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 0.5em;
     text-align: center;
+    margin-left: 1em; /* Separación entre el contenido y el input */
 }
+
 /* Información adicional del domicilio */
 .domicilio-additional-info {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     background-color: #fff;
@@ -79,7 +72,7 @@ h1 {
 }
 
 /* Estilo para los botones */
-.primary-btn, .add-to-cart-btn {
+.primary-btn {
     background-color: #007bff;
     color: white;
     padding: 1em 2em;
@@ -91,7 +84,7 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-.primary-btn:hover, .add-to-cart-btn:hover {
+.primary-btn:hover {
     background-color: #0056b3;
 }
 
@@ -106,7 +99,6 @@ h1 {
     color: #555;
 }
 
-/* Select de método de pago */
 .domicilio-additional-info select {
     padding: 1em;
     font-size: 1em;
