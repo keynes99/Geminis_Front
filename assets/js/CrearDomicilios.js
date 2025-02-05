@@ -76,7 +76,7 @@ const renderMenus = (menus) => {
         inputCantidad.value = 0; // Valor predeterminado de la cantidad
         inputCantidad.min = 0; // La cantidad mínima es 0
         inputCantidad.classList.add('cantidad-input');
-        inputCantidad.dataset.precio = menu.Precio; // Almacenar el precio en un atributo de datos
+        inputCantidad.dataset.precio = menu.Precio;
 
         // Agregar un evento de cambio para actualizar el total
         inputCantidad.addEventListener('change', updateTotal);
@@ -85,7 +85,7 @@ const renderMenus = (menus) => {
         menuCard.innerHTML = `
             <h2>${menu.Nombre}</h2>
             <p><strong>Descripción:</strong> ${menu.Descripcion || 'Sin descripción'}</p>
-            <p><strong>Precio:</strong> $${menu.Precio}</p>
+            <p><strong>Precio:</strong> $${Math.floor(menu.Precio)}</p> <!-- Mostrar precio sin decimales -->
         `;
         
         // Agregar el input de cantidad a la tarjeta
@@ -153,6 +153,6 @@ function updateTotal() {
         totalPagar += subtotal;
     });
 
-    // Actualizar el total a pagar en el DOM
-    document.getElementById('total-pagar').textContent = totalPagar.toFixed(2); // Mostrar con 2 decimales
+    // Actualizar el total a pagar en el DOM (sin decimales)
+    document.getElementById('total-pagar').textContent = Math.floor(totalPagar); // Mostrar sin decimales
 }

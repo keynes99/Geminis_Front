@@ -60,7 +60,13 @@ h1 {
     margin-left: 1em;
     color: #007bff;
 }
-
+.cantidad-input{
+    width: 50px;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    text-align: center;
+}
 /* Información adicional del domicilio */
 .domicilio-additional-info {
     display: flex;
