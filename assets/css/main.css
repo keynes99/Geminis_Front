@@ -4,7 +4,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,9 @@ body {
     background-color: #fdedef;
     color: black;
 }
-
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", serif;
+}
 .container {
     padding: 0 12%;
 }

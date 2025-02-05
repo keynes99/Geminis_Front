@@ -1,0 +1,362 @@
+/* BANNER */
+#nav{
+    position:sticky;
+    top: 0;
+    z-index: 1000;
+}
+.home-intro{
+    text-align: center;
+    padding: 2em 2em 3em;
+    background: linear-gradient(180deg, #120204 70%,  #e22c42);
+    color: white;
+    border-radius:0  0 1em 1em;
+    margin-bottom: 20px;
+}
+
+/* CARRUSEL */
+#restaurants-section h1{
+    text-align: center;
+    padding-top: 4em;
+}
+
+/* Carrusel de restaurantes */
+.owl-carousel,
+.owl-carousel.owl-loaded {
+    display: flex !important;
+}
+
+.owl-carousel .owl-stage-outer {
+    max-width: 100%;
+}
+
+.owl-carousel .owl-item.active {
+    display: flex;
+
+}
+.carousel-container{
+    max-height: 30em;
+}
+.carousel-container .owl-nav {
+    position: absolute;
+    /* btn chiquitos */
+    /* top: 175.875px;
+    left: -52px;
+    width: 109%;
+    max-width: 120%;
+    height: 117.25px; */
+
+    /* btn grandes */
+    top: 0;
+    left: -47px;
+    width: 107.5%;
+    max-width: 120%;
+    height: 469px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: -1;
+    background: transparent;
+
+}
+
+.carousel-container.owl-carousel .owl-nav button.owl-prev,
+.carousel-container.owl-carousel .owl-nav button.owl-next {
+    background: linear-gradient(90deg, #120204, #333, #120204) 0 0 ;
+    min-width: 45px;
+    width: 45px;
+    height: 100%;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(18, 2, 4, 0.6);
+    transition: 0.6s;
+}
+
+.carousel-container.owl-carousel .owl-nav button.owl-prev:hover,
+.carousel-container.owl-carousel .owl-nav button.owl-next:hover  {
+    
+    background: rgb(18, 2, 4);
+    background: linear-gradient(270deg, rgba(18, 2, 4, 0.8) 0%, rgba(226, 44, 66, 1) 60%);
+    color: rgb(4, 4, 38);
+    transform: none;
+}
+
+.carousel-container {
+    display: flex;
+    margin: 4em 0 ;
+    height: fit-content;
+}
+
+.carousel-item {
+    flex-direction: column;
+    flex: 0 0 auto;
+    /* Evitar que los elementos se encojan */
+    min-height: 469px;
+    max-height: 469px;
+    min-width: 350px;
+    max-width: 350px;
+    margin: 0 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #333;
+    text-align: center;
+    scroll-snap-align: start;
+    /* Alineación de ajuste */
+    position: relative;
+    /* Asegura que quede encima */
+    display: flex;
+    /* Centra la imagen dentro del contenedor */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.carousel-item .restaurant-img {
+    flex-basis: 100%;
+    width: 100%;
+    height: 200px;
+    max-height: 200px;
+
+    object-fit: cover;
+}
+
+.carousel-item .restaurant-logo {
+    position: absolute;
+    /* Cambiado de relativo a absoluto */
+    top: 10px;
+    /* Ajusta según la posición deseada */
+    left: 10px;
+    /* Ajusta según la posición deseada */
+    background: #fdedef;
+    padding: 0.75em;
+    overflow: hidden;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 100%;
+    z-index: 10;
+    /* Asegura que quede encima */
+    display: flex;
+    /* Centra la imagen dentro del contenedor */
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item .restaurant-logo img {
+    aspect-ratio: 1/1;
+    max-width: 100%;
+    height: auto;
+}
+
+.carousel-item .restaurant-info {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    padding: 1em 1.25em;
+}
+.carousel-item .restaurant-info p{
+    margin: 0.75em;
+}
+@media (min-width: 300px) and (max-width: 767.99px) { 
+    .carousel-item {
+        min-width: 300px;
+        max-width: 300px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.99px) { 
+    .carousel-container .owl-nav {
+        width:117%;
+    }
+}
+/* planes */
+.pricing-plans-section {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(103, 19, 29, 0.8);
+    color: white;
+    margin: 4em .5em;
+    border-radius: 1em;
+    padding: 3em 0 4em;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.pricing-plans-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/planes-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
+}
+
+/* Boton */
+/* From Uiverse.io by JaydipPrajapati1910 */
+.pricing-plan-btn-container{
+    display: table;
+    width: 100%;
+    text-align: center;
+
+}
+.btn-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    
+}
+
+.btn-color-mode-switch {
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+}
+
+.btn-color-mode-switch>label.btn-color-mode-switch-inner {
+    margin: 0;
+    width: 14vw;
+    height: 40px;
+    background-color: #120204;
+    border-radius: 26px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+    content: attr(data-on);
+    position: absolute;
+    font-size: 20px;
+    font-weight: 600;
+    top: 7px;
+    right: 20px;
+    color: #fff;
+}
+
+.btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+    content: attr(data-off);
+    width: 7vw;
+    height: 25px;
+    background: linear-gradient(#901422, #e22c42, #901422);
+    border-radius: 26px;
+    position: absolute;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    left: 0.2vw;
+    top: 2px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 6px -2px #111;
+    padding: 5px 0px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-color-mode-switch input[type="checkbox"] {
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    margin: 0px;
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner {
+    background-color: #120204;
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
+    content: attr(data-on);
+    left: 6.8vw;
+}
+
+.btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+    content: attr(data-off);
+    right: auto;
+    left: 20px;
+}
+
+/* Cards */
+.pricing-container {
+    text-align: center;
+    padding: 3em 1.25em 4em;
+    
+}
+
+.pricing-card-container-personal,
+.pricing-card-container-empresa {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.pricing-card {
+    background: #fdedef;
+    color: #120204;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 .25em .5em rgba(255, 255, 255, 0.1);
+    width: 25%;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: scale(1.05);
+}
+
+.pricing-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    font-weight: 700;
+    font-style: normal;
+}
+ .pricing-container button{
+    box-shadow: 0 0 0.5em#120204;
+ }
+.price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e22c42;
+    margin: 10px 0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 2, 4, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #fdedef;
+    padding: 30px;
+    border-radius: 8px;
+    width: 60%;
+    text-align: center;
+}
+
+.close-btn {
+    font-size: 25px;
+    color: #e22c42;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
+    right: -549px;
+}

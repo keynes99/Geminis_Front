@@ -6,92 +6,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Géminis Sistema de Reservas - Home</title>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/carousel.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/css/planes.css">
     <link rel="icon" href="../assets/images/logoGeminis.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../assets/lib/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/lib/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <div id="nav"></div>
 
     <main>
+        <section class="home-intro">
+            <h1>Acerca de Nosotros</h1>
+            <p>En nuestra plataforma trabajamos por empoderar los restaurantes locales y ofrecer experiencias
+                gastronómicas únicas y personalizadas.</p>
+        </section>
+        <section id="restaurants-section">
+            <div class="container">
 
-
-        <div class="container">
-            <section id="restaurants-section">
                 <h1>Encuentra un restaurante</h1>
                 <div class="owl-carousel carousel-container" id="restaurant-carousel">
                     <!-- Restaurantes cargados dinámicamente aquí -->
                 </div>
-            </section>
 
-            <section id="pricing-plans-section">
-                <!-- From Uiverse.io by JaydipPrajapati1910 -->
-                <div class="pricing-plan-btn-container">
-                    <div class="btn-container">
-                        <label class="switch btn-color-mode-switch">
-                            <input value="1" id="color_mode" name="color_mode" type="checkbox">
-                            <label class="btn-color-mode-switch-inner" data-off="Personal" data-on="Empresa"
-                                for="color_mode"></label>
-                        </label>
+                <hr>
+            </div>
+        </section>
+        <section id="pricing-plans-section" class="pricing-plans-section">
+            <!-- From Uiverse.io by JaydipPrajapati1910 -->
+            <div class="pricing-plan-btn-container">
+                <div class="btn-container">
+                    <label class="switch btn-color-mode-switch">
+                        <input value="1" id="color_mode" name="color_mode" type="checkbox">
+                        <label class="btn-color-mode-switch-inner" data-off="Personal" data-on="Empresa"
+                            for="color_mode"></label>
+                    </label>
+                </div>
+            </div>
+            <div class="pricing-container">
+                <h1>Elige tu plan</h1>
+
+                <div class="container">
+                    <div class="pricing-card-container-personal">
+                        <div class="pricing-card">
+                            <h2>Gratis</h2>
+                            <p class="price">$0</p>
+                            <p>Accede a las funciones básicas</p>
+                            <button onclick="openModal('basic')">Ver detalles</button>
+                        </div>
+                        <div class="pricing-card">
+                            <h2>Plan Intermedio</h2>
+                            <p class="price">$20/mes</p>
+                            <p>Más funciones y soporte</p>
+                            <button onclick="openModal('intermediate')">Ver detalles</button>
+                        </div>
+
+                    </div>
+                    <div class="pricing-card-container-empresa">
+                        <div class="pricing-card">
+                            <h2>Plan Básico</h2>
+                            <p class="price">$10/mes</p>
+                            <p>Accede a las funciones básicas</p>
+                            <button onclick="openModal('basic')">Ver detalles</button>
+                        </div>
+                        <div class="pricing-card">
+                            <h2>Plan Intermedio</h2>
+                            <p class="price">$20/mes</p>
+                            <p>Más funciones y soporte</p>
+                            <button onclick="openModal('intermediate')">Ver detalles</button>
+                        </div>
+                        <div class="pricing-card">
+                            <h2>Plan Avanzado</h2>
+                            <p class="price">$30/mes</p>
+                            <p>Acceso completo a todas las funciones</p>
+                            <button onclick="openModal('advanced')">Ver detalles</button>
+                        </div>
                     </div>
                 </div>
-                <div class="pricing-container">
-                        <h1>Elige tu plan</h1>
+            </div>
 
-                        <div class="pricing-card-container-personal">
-                            <div class="pricing-card">
-                                <h2>Plan Básico</h2>
-                                <p class="price">$10/mes</p>
-                                <p>Accede a las funciones básicas</p>
-                                <button onclick="openModal('basic')">Ver detalles</button>
-                            </div>
-
-                            <div class="pricing-card">
-                                <h2>Plan Intermedio</h2>
-                                <p class="price">$20/mes</p>
-                                <p>Más funciones y soporte</p>
-                                <button onclick="openModal('intermediate')">Ver detalles</button>
-                            </div>
-
-                            <div class="pricing-card">
-                                <h2>Plan Avanzado</h2>
-                                <p class="price">$30/mes</p>
-                                <p>Acceso completo a todas las funciones</p>
-                                <button onclick="openModal('advanced')">Ver detalles</button>
-                            </div>
-                        </div>
-
-                        <div class="pricing-card-container-empresa">
-                            <div class="pricing-card">
-                                <h2>Plan Básico</h2>
-                                <p class="price">$10/mes</p>
-                                <p>Accede a las funciones básicas</p>
-                                <button onclick="openModal('basic')">Ver detalles</button>
-                            </div>
-
-                            <div class="pricing-card">
-                                <h2>Plan Intermedio</h2>
-                                <p class="price">$20/mes</p>
-                                <p>Más funciones y soporte</p>
-                                <button onclick="openModal('intermediate')">Ver detalles</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div id="pricingModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close-btn" onclick="closeModal()">✖</span>
-                            <h2 id="modal-title"></h2>
-                            <p id="modal-description"></p>
-                        </div>
-                    </div>
-            </section>
-        </div>
+            <div id="pricingModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">✖</span>
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-description"></p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="footer"></div>
