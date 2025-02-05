@@ -60,31 +60,87 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 (function ($) {
     $(document).ready(function () {
-        $(".carousel-container").owlCarousel({
-            nav: true,
-            dots: false,
-            autoHeight: true,
-            loop: true,
-            margin: 30,
-            // stagePadding: 2,
-            autoplay: false,
-            navText: ["<i class=\"fa-solid fa-chevron-left\"></i>", "<i class=\"fa-solid fa-chevron-right\"></i>"],
-            autoWidth: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                578: {
-                    items: 2
-                },
-                768: {
-                    items: 3
-                },
-                992: {
-                    items: 3.6
+        function initOwlCarousel() {
+            $(".carousel-container").owlCarousel("destroy"); // Destruir si ya está inicializado
+            $(".carousel-container").owlCarousel({
+                nav: true,
+                dots: false,
+                loop: true,
+                margin: 30,
+                stagePadding: 2,
+                center: true,
+                autoplay: false,
+                navText: ["<i class=\"fa-solid fa-chevron-left\"></i>", "<i class=\"fa-solid fa-chevron-right\"></i>"],
+                autoWidth: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    
+                    768: {
+                        items: 2.6
+                    },
+                    992: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 3.6,
+                        center: false
+                    }
+
                 }
-            }
+            });
+        }
+
+        initOwlCarousel(); // Inicializar el carrusel al cargar la página
+
+        $(window).resize(function () {
+            initOwlCarousel(); // Reinicializar al cambiar el tamaño de la ventana
         });
     });
+
 })(jQuery);
 
+function togglePricingPlans() {
+    const isChecked = document.getElementById('color_mode').checked;
+    const personalContainer = document.querySelector('.pricing-card-container-personal');
+    const empresaContainer = document.querySelector('.pricing-card-container-empresa');
+
+    if (isChecked) {
+        personalContainer.style.display = 'none';
+        empresaContainer.style.display = 'flex';
+    } else {
+        personalContainer.style.display = 'flex';
+        empresaContainer.style.display = 'none';
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('color_mode').addEventListener('change', togglePricingPlans);
+    togglePricingPlans(); // Initialize the correct state on page load
+});
+// Ver Detalles del Plan
+function openModal(planType) {
+    const modal = document.getElementById("pricingModal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDescription = document.getElementById("modal-description");
+    
+    if (planType === "basic") {
+        modalTitle.innerText = "Plan Básico";
+        modalDescription.innerText = "Este plan incluye acceso a funciones básicas como X, Y, Z.";
+    } else if (planType === "intermediate") {
+        modalTitle.innerText = "Plan Intermedio";
+        modalDescription.innerText = "Este plan incluye funciones básicas y soporte adicional, además de A, B, C.";
+    } else if (planType === "advanced") {
+        modalTitle.innerText = "Plan Avanzado";
+        modalDescription.innerText = "Accede a todas las funciones y soporte premium, incluyendo D, E, F, G.";
+    }
+    
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    const modal = document.getElementById("pricingModal");
+    modal.style.display = "none";
+}

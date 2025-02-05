@@ -1,8 +1,12 @@
+#restaurants-section h1{
+    text-align: center;
+    padding-top: 4em;
+}
+
 /* Carrusel de restaurantes */
 .owl-carousel,
 .owl-carousel.owl-loaded {
     display: flex !important;
-    /* flex-direction: column; */
 }
 
 .owl-carousel .owl-stage-outer {
@@ -13,7 +17,9 @@
     display: flex;
 
 }
-
+.carousel-container{
+    max-height: 30em;
+}
 .carousel-container .owl-nav {
     position: absolute;
     /* btn chiquitos */
@@ -26,7 +32,7 @@
     /* btn grandes */
     top: 0;
     left: -47px;
-    width: 109.5%;
+    width: 107.5%;
     max-width: 120%;
     height: 469px;
     
@@ -60,7 +66,7 @@
 
 .carousel-container {
     display: flex;
-    margin: 20vh 0;
+    margin: 4em 0;
     height: fit-content;
 }
 
@@ -69,8 +75,9 @@
     flex: 0 0 auto;
     /* Evitar que los elementos se encojan */
     min-height: 469px;
-    min-width: 100%;
-    max-width: 380px;
+    max-height: 469px;
+    min-width: 350px;
+    max-width: 375px;
     margin: 0 10px;
     border-radius: 8px;
     overflow: hidden;
@@ -125,8 +132,23 @@
 .carousel-item .restaurant-info {
     display: flex;
     flex-direction: column;
+    width: 90%;
     align-items: center;
     position: relative;
     color: #fff;
-    padding: 10px;
+    padding: 1em 1.25em;
+}
+.carousel-item .restaurant-info p{
+    margin: 0.75em;
+}
+@media (min-width: 300px) and (max-width: 767.99px) { 
+    .carousel-item {
+        min-width: 300px;
+        max-width: 300px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.99px) { 
+    .carousel-container .owl-nav {
+        width:117%;
+    }
 }
