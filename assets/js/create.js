@@ -18,7 +18,7 @@ tipoSelect.addEventListener('change', () => {
 
         // Activar campos de usuario
         usuarioFields.querySelectorAll('input').forEach(input => input.required = true);
-        restauranteFields.querySelectorAll('input').forEach(input => input.required = false);
+        restauranteFields.querySelectorAll('input, textarea, select').forEach(input => input.required = false);
 
     } else if (tipoSelect.value === 'restaurante') {
         usuarioFields.style.display = 'none';
@@ -26,7 +26,13 @@ tipoSelect.addEventListener('change', () => {
 
         // Activar campos de restaurante
         usuarioFields.querySelectorAll('input').forEach(input => input.required = false);
-        restauranteFields.querySelectorAll('input, textarea, select').forEach(input => input.required = true);
+        restauranteFields.querySelectorAll('input, textarea, select').forEach(input => {
+            if (input.id === 'descripcion') {
+                input.required = true;
+            } else {
+                input.required = true;
+            }
+        });
     }
 });
 
@@ -50,18 +56,27 @@ form.addEventListener('submit', async (event) => {
     const body = {};
     formData.forEach((value, key) => (body[key] = value));
 
-    // Convertir el logo a base64 si existe
-    if (formData.get('logo')) {
+    if (formData.get('logo')&&tipoSelect.value === 'restaurante') {
         const logoFile = formData.get('logo');
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(logoFile);
-        reader.onload = async () => {
-            body.logo = arrayBufferToBase64(reader.result); // Convertir ArrayBuffer a base64
-            await sendFormData(body);
-        };
-        reader.onerror = (error) => {
-            errorMessage.textContent = 'Error al leer el archivo de logo';
-        };
+        const logoFormData = new FormData();
+        logoFormData.append('image', logoFile);
+
+        try {
+            const response = await fetch('https://api.imgbb.com/1/upload?&key=b15f59e3b69de9b1198771b85354d22b', {
+                method: 'POST',
+                body: logoFormData
+            });
+            const result = await response.json();
+            if (result.success) {
+                body.UbicacionLogo = result.data.url;
+                await sendFormData(body);
+            } else {
+                alert('Failed to upload logo.');
+            }
+        } catch (error) {
+            console.error('Error uploading logo:', error);
+            alert('Error uploading logo.');
+        }
     } else {
         await sendFormData(body);
     }
@@ -86,7 +101,7 @@ async function sendFormData(body) {
         const data = await response.json();
         alert(data.message);
         form.reset();
-        location.reload(); // Recargar la página
+        window.location.href = 'login.html';
     } catch (error) {
         errorMessage.textContent = error.message;
     }
