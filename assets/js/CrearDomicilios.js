@@ -64,6 +64,7 @@ const renderMenus = (menus) => {
     menus.forEach(menu => {
         const menuCard = document.createElement('div');
         menuCard.classList.add('menu-card');
+        menuCard.dataset.menuId = menu.Rowid; // Asegúrate de que cada menú tenga un ID único
 
         const inputCantidad = document.createElement('input');
         inputCantidad.type = 'number';
@@ -121,3 +122,90 @@ const updateTotal = () => {
 
     document.getElementById('total-pagar').textContent = Math.floor(totalPagar); // Mostrar total sin decimales
 };
+
+const poblarDomicilio = async () => {
+    try {
+        // Obtener el documento del usuario desde el localStorage
+        const usuario = localStorage.getItem('documento');
+        if (!usuario) {
+            alert('No se pudo obtener el documento del usuario. Por favor, inicia sesión nuevamente.');
+            return;
+        }
+
+        // Obtener los datos del formulario
+        const sedeId = new URLSearchParams(window.location.search).get('id'); // Obtener ID de la URL
+        const fechaPantalla = document.getElementById('fecha').textContent; // Obtener la fecha desde la pantalla (formato DD/MM/YYYY)
+        const hora = document.getElementById('hora').textContent; // Obtener la hora desde la pantalla
+        const tipoPago = document.querySelector('#metodo-pago').value;
+
+        // Convertir la fecha al formato YYYY-MM-DD
+        const [dia, mes, anio] = fechaPantalla.split('/');
+        const fecha = `${anio}-${mes}-${dia}`; // Formato YYYY-MM-DD
+
+        // Obtener los menús seleccionados y sus cantidades
+        const menus = [];
+        document.querySelectorAll('.menu-card').forEach(menuCard => {
+            const cantidadInput = menuCard.querySelector('.cantidad-input');
+            const cantidad = parseFloat(cantidadInput.value) || 0;
+            if (cantidad > 0) {
+                const menuId = menuCard.dataset.menuId; // Asegúrate de que cada menu-card tenga un data-menu-id
+                const valor = parseFloat(cantidadInput.dataset.precio) || 0;
+                menus.push({ menuId, cantidad, valor });
+            }
+        });
+
+        if (menus.length === 0) {
+            alert('Por favor, selecciona al menos un menú.');
+            return;
+        }
+
+        // Obtener el número de domicilio más alto para la sede
+        const token = localStorage.getItem('token');
+        const responseConsecutivo = await fetch(`http://localhost:3000/api/domicilio/consecutivo/${sedeId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        if (!responseConsecutivo.ok) {
+            throw new Error('No se pudo obtener el consecutivo del domicilio.');
+        }
+
+        const { consecutivo } = await responseConsecutivo.json();
+        const numeroDomicilio = consecutivo + 1; // Incrementar el consecutivo
+
+        // Enviar los datos al backend
+        const response = await fetch('http://localhost:3000/api/domicilio/domicilios/crear', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                usuario,
+                sede: sedeId,
+                fecha,
+                hora,
+                tipoPago,
+                numeroDomicilio,
+                menus,
+            }),
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert(result.message); // Mensaje de éxito
+            window.location.href = 'domicilios.html'; // Redirigir a la página de domicilios
+        } else {
+            throw new Error('No se pudo crear el domicilio');
+        }
+    } catch (error) {
+        console.error('Error al crear el domicilio:', error);
+        alert('Error al crear el domicilio. Por favor, inténtalo de nuevo.');
+    }
+};
+
+document.querySelector('#solicitar-domicilio').addEventListener('click', (event) => {
+    event.preventDefault(); // Evitar recarga de la página
+    poblarDomicilio();
+});
