@@ -15,9 +15,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById('categoria').value = restaurant.Categoria;
             document.querySelector('.editarRestaurante-container h1').textContent = restaurant.Nombre;
             const restaurantLogo = document.querySelector('.restaurant-logo');
-            if (restaurantLogo && restaurant.Logo && restaurant.Logo.data) {
-                const base64Logo = arrayBufferToBase64(restaurant.Logo.data);
-                restaurantLogo.src = `data:image/png;base64,${base64Logo}`;
+            if (restaurantLogo) {
+                if (restaurant.UbicacionLogo) {
+                    restaurantLogo.src = restaurant.UbicacionLogo;
+                } else if (restaurant.Logo && restaurant.Logo.data) {
+                    const base64Logo = arrayBufferToBase64(restaurant.Logo.data);
+                    restaurantLogo.src = `data:image/png;base64,${base64Logo}`;
+                }
             }
         } catch (error) {
             console.error('Error:', error);
@@ -37,19 +41,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                 Categoria: formData.get('categoria')
             };
 
-            // Convertir el logo a base64 si existe
             if (formData.get('logo')) {
                 const logoFile = formData.get('logo');
-                const reader = new FileReader();
-                reader.readAsDataURL(logoFile);
-                reader.onload = async () => {
-                    data.Logo = reader.result.split(',')[1]; // Obtener solo la parte base64
-                    await sendFormData(data);
-                };
-                reader.onerror = (error) => {
-                    console.error('Error al leer el archivo de logo:', error);
-                    alert('Error al leer el archivo de logo');
-                };
+                const logoFormData = new FormData();
+                logoFormData.append('image', logoFile);
+
+                try {
+                    const response = await fetch('https://api.imgbb.com/1/upload?&key=b15f59e3b69de9b1198771b85354d22b', {
+                        method: 'POST',
+                        body: logoFormData
+                    });
+                    const result = await response.json();
+                    if (result.success) {
+                        data.UbicacionLogo = result.data.url;
+                        await sendFormData(data);
+                    } else {
+                        alert('Failed to upload logo.');
+                    }
+                } catch (error) {
+                    console.error('Error uploading logo:', error);
+                    alert('Error uploading logo.');
+                }
             } else {
                 await sendFormData(data);
             }

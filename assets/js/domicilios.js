@@ -58,7 +58,7 @@ const renderDomicilios = (domicilios) => {
 
         // Agregar la clase de estado al card
         domicilioCard.classList.add(estadoClass);
-
+        if(domicilio.Estado !== 3){
         // Contenido de la tarjeta
         domicilioCard.innerHTML = `
             <h2>Pedido #${domicilio.NumeroDomicilio}</h2>
@@ -68,13 +68,49 @@ const renderDomicilios = (domicilios) => {
             <p><strong>Hora:</strong> ${horaFormateada}</p>
             <p><strong>Fecha:</strong> ${fechaFormateada}</p>
             <p><strong>Estado:</strong> ${domicilio.Estado === 1 ? 'Pendiente' : domicilio.Estado === 2 ? 'Entregando' : 'Entregado'}</p>
-            <button class="action-btn">Ver Detalles</button>
+            
+            <button class="priamry-btn" data-domicilio-id="${domicilio.Rowid}">Ver Detalles</button>
+        
         `;
-
+        }
+        if(domicilio.Estado !== 3){
+            // Contenido de la tarjeta
+            domicilioCard.innerHTML = `
+                <h2>Pedido #${domicilio.NumeroDomicilio}</h2>
+                <p><strong>Cliente:</strong> ${domicilio.Empresa}</p>
+                <p><strong>Cliente:</strong> ${domicilio.NombreCompleto}</p>
+                <p><strong>Dirección:</strong> ${domicilio.DireccionEntrega}</p>
+                <p><strong>Hora:</strong> ${horaFormateada}</p>
+                <p><strong>Fecha:</strong> ${fechaFormateada}</p>
+                <p><strong>Estado:</strong> ${domicilio.Estado === 1 ? 'Pendiente' : domicilio.Estado === 2 ? 'Entregando' : 'Entregado'}</p>
+                
+                <button class="priamry-btn" data-domicilio-id="${domicilio.Rowid}">Ver Detalles</button>
+            
+            `;
+            }
+            else{
+                // Contenido de la tarjeta
+                domicilioCard.innerHTML = `
+                <h2>Pedido #${domicilio.NumeroDomicilio}</h2>
+                <p><strong>Cliente:</strong> ${domicilio.Empresa}</p>
+                <p><strong>Cliente:</strong> ${domicilio.NombreCompleto}</p>
+                <p><strong>Dirección:</strong> ${domicilio.DireccionEntrega}</p>
+                <p><strong>Hora:</strong> ${horaFormateada}</p>
+                <p><strong>Fecha:</strong> ${fechaFormateada}</p>
+                <p><strong>Estado:</strong> ${domicilio.Estado === 1 ? 'Pendiente' : domicilio.Estado === 2 ? 'Entregando' : 'Entregado'}</p>            
+            `;
+            }
         domiciliosList.appendChild(domicilioCard);
     });
-};
 
+    // Agregar evento a los botones "Ver Detalles"
+    document.querySelectorAll('.priamry-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const domicilioId = event.target.getAttribute('data-domicilio-id');
+            window.location.href = `detalleDomicilio.html?id=${domicilioId}`; // Redirigir a la pantalla de detalles
+        });
+    });
+};
 
 // Llamar a la función para obtener los domicilios al cargar la página
 getDomicilios(localStorage.getItem('documento'));
