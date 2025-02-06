@@ -24,7 +24,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Altura completa de la pantalla */
     padding: 20px; /* Espaciado opcional */
     box-sizing: border-box;
 }
