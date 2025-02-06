@@ -68,14 +68,14 @@ const renderDomicilios = (domicilios) => {
             <p><strong>Hora:</strong> ${horaFormateada}</p>
             <p><strong>Fecha:</strong> ${fechaFormateada}</p>
             <p><strong>Estado:</strong> ${domicilio.Estado === 1 ? 'Pendiente' : domicilio.Estado === 2 ? 'Entregando' : 'Entregado'}</p>
-            <button class="action-btn" data-domicilio-id="${domicilio.Rowid}">Ver Detalles</button>
+            <button class="priamry-btn" data-domicilio-id="${domicilio.Rowid}">Ver Detalles</button>
         `;
 
         domiciliosList.appendChild(domicilioCard);
     });
 
     // Agregar evento a los botones "Ver Detalles"
-    document.querySelectorAll('.action-btn').forEach(button => {
+    document.querySelectorAll('.priamry-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             const domicilioId = event.target.getAttribute('data-domicilio-id');
             window.location.href = `detalleDomicilio.html?id=${domicilioId}`; // Redirigir a la pantalla de detalles
