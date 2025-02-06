@@ -9,7 +9,7 @@ const loadComponent = async (id, file) => {
             element.innerHTML = html;
             let userToken = localStorage.getItem("token");
             // Si el archivo es nav.html y tenemos un userName, actualizar el enlace
-            if (id === 'nav' && userName) {
+            if (id === 'nav' && userName!='') {
                 try {
                     const authResponse = await fetch('http://localhost:3000/', {
                         headers: {
@@ -28,7 +28,7 @@ const loadComponent = async (id, file) => {
                     logout();
                     return;
                 }
-
+                document.querySelector(".login").style.display = "none";
                 const enlace = document.getElementById("userName");
                 if (enlace) {
                     enlace.textContent = userName;
@@ -77,9 +77,7 @@ const loadComponent = async (id, file) => {
                     home.style.display = "block";
                     const hola = home.getAttribute("href")
                     console.log(hola);
-                } else {
-                    home.style.display = "none";
-                }
+                } 
             }
 
         } catch (error) {
@@ -114,6 +112,7 @@ let userEmpresa = localStorage.getItem('empresa');
 // Función para marcar el elemento activo en el nav
 const setActiveNavItem = () => {
     const navItems = document.querySelectorAll('nav a');
+    const dropItems = document.querySelectorAll('.dropdown-content a');
     const currentPath = window.location.pathname;
     navItems.forEach(item => {
         if (currentPath.includes(item.getAttribute('href'))) {
@@ -122,7 +121,7 @@ const setActiveNavItem = () => {
             item.classList.remove('active');
         }
     });
-    
+   
 };
 
 // Cargar Nav y Footer
