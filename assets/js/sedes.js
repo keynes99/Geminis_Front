@@ -9,6 +9,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     const showCreateBranchFormBtn = document.getElementById('showCreateBranchFormBtn');
     const showEditBranchFormBtn = document.getElementById('showEditBranchFormBtn');
 
+    async function uploadImage(imageFile) {
+        const imageFormData = new FormData();
+        imageFormData.append('image', imageFile);
+
+        try {
+            const response = await fetch('https://api.imgbb.com/1/upload?&key=b15f59e3b69de9b1198771b85354d22b', {
+                method: 'POST',
+                body: imageFormData
+            });
+            const result = await response.json();
+            if (result.success) {
+                return result.data.url;
+            } else {
+                alert('Failed to upload image.');
+                return null;
+            }
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            alert('Error uploading image.');
+            return null;
+        }
+    }
+
     if (createBranchForm && editMenuForm && editBranchForm && branchList && editBranchBtn && showCreateBranchFormBtn && showEditBranchFormBtn) {
         showCreateBranchFormBtn.addEventListener('click', () => {
             createBranchForm.style.display = 'block';
@@ -36,21 +59,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 Horario: formData.get('horario')
             };
 
-            if (formData.get('imagenes')) {
+            if (formData.get('imagenes') && formData.get('imagenes').size > 0) {
                 const imageFile = formData.get('imagenes');
-                const reader = new FileReader();
-                reader.readAsDataURL(imageFile);
-                reader.onload = async () => {
-                    branchData.Imagenes = reader.result.split(',')[1]; // Obtener solo la parte base64
-                    await sendBranchData(branchData);
-                };
-                reader.onerror = (error) => {
-                    console.error('Error al leer el archivo de imagen:', error);
-                    alert('Error al leer el archivo de imagen');
-                };
-            } else {
-                await sendBranchData(branchData);
+                const imageUrl = await uploadImage(imageFile);
+                if (imageUrl) {
+                    branchData.Imagenes = imageUrl;
+                }
             }
+            await sendBranchData(branchData);
         });
 
         async function sendBranchData(branchData) {
@@ -84,6 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     });
                     if (!response.ok) throw new Error('Error al obtener la información de la sede');
                     const branch = await response.json();
+                    console.log(branch);
                     
                     document.getElementById('direccionSede1').value = branch.Direccion;
                     document.getElementById('telefonoSede1').value = branch.Telefono;
@@ -92,15 +109,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                     document.getElementById('reservasMaximas1').value = branch.ReservasMaximas;
                     document.getElementById('horario1').value = branch.Horario;
 
-                    // Load images into the img tag
-
-                    const imageContainer = document.querySelector('.image-container');
-
-                    if (imageContainer && branch.Imagenes) {
-
-                        const base64Image = arrayBufferToBase64(branch.Imagenes.data);
-                        imageContainer.src = `data:image/png;base64,${base64Image}`;
+                    // Remove previous image container if exists
+                    const existingImageContainer = document.querySelector('.image-container');
+                    if (existingImageContainer) {
+                        existingImageContainer.remove();
                     }
+
+                    // Create and load images into the img tag dynamically
+                    const imageContainer = document.createElement('img');
+                    imageContainer.classList.add('image-container');
+                    imageContainer.width = 500;
+                    imageContainer.height = 300;
+                    if (branch.Imagenes) {
+                        imageContainer.src = branch.Imagenes;
+                    }
+                    const inputGroup = document.querySelector('#imagenes1').parentElement;
+                    inputGroup.appendChild(imageContainer);
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -120,21 +144,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 Horario: formData.get('horario1')
             };
 
-            if (formData.get('imagenes1')) {
+            if (formData.get('imagenes1') && formData.get('imagenes1').size > 0) {
                 const imageFile = formData.get('imagenes1');
-                const reader = new FileReader();
-                reader.readAsDataURL(imageFile);
-                reader.onload = async () => {
-                    branchData.Imagenes = reader.result.split(',')[1]; // Obtener solo la parte base64
-                    await updateBranchData(branchData);
-                };
-                reader.onerror = (error) => {
-                    console.error('Error al leer el archivo de imagen:', error);
-                    alert('Error al leer el archivo de imagen');
-                };
-            } else {
-                await updateBranchData(branchData);
+                const imageUrl = await uploadImage(imageFile);
+                if (imageUrl) {
+                    branchData.Imagenes = imageUrl;
+                }
             }
+            await updateBranchData(branchData);
         });
 
         async function updateBranchData(branchData) {
