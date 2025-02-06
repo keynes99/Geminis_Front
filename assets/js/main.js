@@ -9,7 +9,7 @@ const loadComponent = async (id, file) => {
             element.innerHTML = html;
             let userToken = localStorage.getItem("token");
             // Si el archivo es nav.html y tenemos un userName, actualizar el enlace
-            if (id === 'nav' && userName!='') {
+            if (id === 'nav' && userName) {
                 try {
                     const authResponse = await fetch('http://localhost:3000/', {
                         headers: {
@@ -45,6 +45,11 @@ const loadComponent = async (id, file) => {
                     if (sedesLink) {
                         sedesLink.style.display = 'block';
                     }
+                } else {
+                    const miRestauranteLink = document.getElementById("miRestaurante");
+                    const sedesLink = document.getElementById("misSedes");
+                    miRestauranteLink.style.display = 'none';
+                    sedesLink.style.display = 'none';
                 }
                 // Agregar listener al enlace "Cerrar Sesión"
                 const cerrarSesionLink = document.getElementById("CerrarSes");
@@ -67,16 +72,20 @@ const loadComponent = async (id, file) => {
             }
             if (!userToken) {
                 if (id === 'nav') {
-                    console.log("No hay sesión activa");
-                    console.log(window.location.pathname);
-                    const user = document.querySelector(".dropdown");
-                    const domi = document.querySelector(".domicilios");
-                    const home = document.querySelector(".login");
-                    user.style.display = "none";
-                    domi.style.display = "none";
-                    home.style.display = "block";
-                    const hola = home.getAttribute("href")
-                    console.log(hola);
+
+
+                    // Activar al final
+
+                    // console.log("No hay sesión activa");
+                    // console.log(window.location.pathname);
+                    // const user = document.querySelector(".dropdown");
+                    // const domi = document.querySelector(".domicilios");
+                    // const home = document.querySelector(".login");
+                    // user.style.display = "none";
+                    // domi.style.display = "none";
+                    // home.style.display = "block";
+                    // const hola = home.getAttribute("href")
+                    // console.log(hola);
                 } 
             }
 
@@ -116,12 +125,14 @@ const setActiveNavItem = () => {
     const currentPath = window.location.pathname;
     navItems.forEach(item => {
         if (currentPath.includes(item.getAttribute('href'))) {
+            if (item.querySelector('img')) { 
+                item.classList.add('no-hover')
+            }    return;
             item.classList.add('active');
         } else {
             item.classList.remove('active');
         }
     });
-   
 };
 
 // Cargar Nav y Footer
