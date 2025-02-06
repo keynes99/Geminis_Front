@@ -46,8 +46,14 @@ const renderDetalleDomicilio = (domicilio) => {
                     <li>${menu.Nombre} - Cantidad: ${menu.Cantidad} - Valor: $${menu.Valor}</li>
                 `).join('')}
             </ul>
+            <button id="cambiar-estado-btn" class="primary-btn">Cambiar Estado</button>
         </div>
     `;
+
+    // Agregar evento al botón para cambiar el estado
+    document.getElementById('cambiar-estado-btn').addEventListener('click', () => {
+        cambiarEstadoDomicilio(domicilio.Rowid, domicilio.Estado);
+    });
 };
 
 // Obtener el ID del domicilio desde la URL
@@ -60,3 +66,35 @@ if (domicilioId) {
 } else {
     console.error('No se encontró el ID del domicilio en la URL');
 }
+const cambiarEstadoDomicilio = async (domicilioId, estadoActual) => {
+    try {
+        const nuevoEstado = estadoActual + 1; // Incrementar el estado en 1
+
+        // Validar que el nuevo estado no sea mayor a 3 (Entregado)
+        if (nuevoEstado > 3) {
+            alert('El domicilio ya está en su estado final (Entregado).');
+            return;
+        }
+
+        const token = localStorage.getItem('token'); // Obtener el token del localStorage
+        const response = await fetch(`http://localhost:3000/api/domicilio/cambiar-estado/${domicilioId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Agregar el encabezado de autorización
+            },
+            body: JSON.stringify({ nuevoEstado })
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert(result.message); // Mensaje de éxito
+            window.location.reload(); // Recargar la página para reflejar el cambio
+        } else {
+            throw new Error('No se pudo cambiar el estado del domicilio');
+        }
+    } catch (error) {
+        console.error('Error al cambiar el estado del domicilio:', error);
+        alert('Error al cambiar el estado del domicilio. Por favor, inténtalo de nuevo.');
+    }
+};
