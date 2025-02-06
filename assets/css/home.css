@@ -1,9 +1,5 @@
 /* BANNER */
-#nav{
-    position:sticky;
-    top: 0;
-    z-index: 1000;
-}
+
 .home-intro{
     text-align: center;
     padding: 2em 2em 3em;
@@ -23,10 +19,11 @@
 .owl-carousel,
 .owl-carousel.owl-loaded {
     display: flex !important;
+    justify-content: center;
 }
 
 .owl-carousel .owl-stage-outer {
-    max-width: 100%;
+    max-width: 90%;
 }
 
 .owl-carousel .owl-item.active {
@@ -47,17 +44,16 @@
 
     /* btn grandes */
     top: 0;
-    left: -47px;
-    width: 107.5%;
-    max-width: 120%;
+    left: 0;
+    width: 100%;
+    max-width: 95%;
     height: 469px;
-    
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: -1;
     background: transparent;
-
+    margin: 0 3.3em;
 }
 
 .carousel-container.owl-carousel .owl-nav button.owl-prev,
@@ -169,32 +165,6 @@
     }
 }
 /* planes */
-.pricing-plans-section {
-    position: relative;
-    overflow: hidden;
-    background-color: rgba(103, 19, 29, 0.8);
-    color: white;
-    margin: 4em .5em;
-    border-radius: 1em;
-    padding: 3em 0 4em;
-    background-size: cover;
-    background-position: center;
-    
-}
-
-.pricing-plans-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(../images/planes-bg.jpg);
-    background-size: cover;
-    background-position: center;
-    z-index: -1; /* Ensure the pseudo-element is behind the content */
-}
-
 /* Boton */
 /* From Uiverse.io by JaydipPrajapati1910 */
 .pricing-plan-btn-container{
@@ -285,6 +255,31 @@
 }
 
 /* Cards */
+.pricing-plans-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #67131dcc;
+    color: white;
+    margin: 4em .5em;
+    border-radius: 1em;
+    padding: 3em 0 4em;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.pricing-plans-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/planes-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
+}
 .pricing-container {
     text-align: center;
     padding: 3em 1.25em 4em;

@@ -10,52 +10,55 @@
 <body>
     <div id="nav"></div>
 
-    <main>
-        <div class="editarRestaurante-container">
-            <h1>Mi restaurante</h1>
-            <img src="../assets/images/logoRestaurante1.webp" alt="Logo del Restaurante" class="restaurant-logo">
-            <form id="editarRestaurante-form">
-                <h2>Información General</h2>
-                <div class="input-group">
-                    <label for="nit">NIT</label>
-                    <input type="text" id="nit" name="nit" readonly>
-                </div>
-                <div class="input-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-                <div class="input-group">
-                    <label for="logo">Logo</label>
-                    <input type="file" id="logo" name="logo" accept="image/*">
-                </div>
-                <div class="input-group">
-                    <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" required></textarea>
-                </div>
-                <div class="input-group">
-                    <label for="categoria">Categoría</label>
-                    <select id="categoria" name="categoria" required>
-                        <option value="1">Comida rápida</option>
-                        <option value="2">Cafetería</option>
-                        <option value="3">Restaurante</option>
-                        <option value="4">Bar</option>
-                        <option value="5">Heladería</option>
-                        <option value="6">Panadería</option>
-                        <option value="7">Comida china</option>
-                        <option value="8">Comida mexicana</option>
-                        <option value="9">Comida italiana</option>
-                        <option value="10">Comida japonesa</option>
-                        <option value="11">Comida árabe</option>
-                        <option value="12">Comida colombiana</option>
-                    </select>
-                </div>
-                <button type="submit">Guardar Cambios</button>
-            </form>
-            <!-- Remove branch-related buttons and forms -->
-        </div>
-    </main>
 
-    <div id="footer"></div>
+        <main>
+            <div class="editarRestaurante-container">
+                <h1>Mi restaurante</h1>
+                <div class="img-container">
+                    <img src="../assets/images/logoRestaurante1.webp" alt="Logo del Restaurante" class="restaurant-logo">
+                </div>
+                <form id="editarRestaurante-form" class="form-container">
+                    <h2>Información General</h2>
+                    <div class="input-group">
+                        <label for="nit">NIT</label>
+                        <input type="text" id="nit" name="nit" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="logo">Logo</label>
+                        <input type="file" id="logo" name="logo" accept="image/*">
+                    </div>
+                    <div class="input-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" required></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="categoria">Categoría</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="1">Comida rápida</option>
+                            <option value="2">Cafetería</option>
+                            <option value="3">Restaurante</option>
+                            <option value="4">Bar</option>
+                            <option value="5">Heladería</option>
+                            <option value="6">Panadería</option>
+                            <option value="7">Comida china</option>
+                            <option value="8">Comida mexicana</option>
+                            <option value="9">Comida italiana</option>
+                            <option value="10">Comida japonesa</option>
+                            <option value="11">Comida árabe</option>
+                            <option value="12">Comida colombiana</option>
+                        </select>
+                    </div>
+                    <button type="submit">Guardar Cambios</button>
+                </form>
+                <!-- Remove branch-related buttons and forms -->
+            </div>
+        </main>
+        <div id="footer"></div>
+
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/editarRestaurante.js"></script>
 

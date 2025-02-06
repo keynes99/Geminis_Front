@@ -68,13 +68,17 @@ const loadComponent = async (id, file) => {
             if (!userToken) {
                 if (id === 'nav') {
                     console.log("No hay sesión activa");
+                    console.log(window.location.pathname);
                     const user = document.querySelector(".dropdown");
                     const domi = document.querySelector(".domicilios");
-                    const home = document.querySelector(".inicio");
+                    const home = document.querySelector(".login");
                     user.style.display = "none";
                     domi.style.display = "none";
-                    home.innerText = "Iniciar sesión";
-                    home.href = "./login.html";
+                    home.style.display = "block";
+                    const hola = home.getAttribute("href")
+                    console.log(hola);
+                } else {
+                    home.style.display = "none";
                 }
             }
 
@@ -83,7 +87,6 @@ const loadComponent = async (id, file) => {
         }
     }
 };
-
 // Función para cerrar sesión
 const logout = () => {
     // Borrar variables de localStorage
@@ -108,11 +111,25 @@ let userName = localStorage.getItem('nombre');
 let userDocument = localStorage.getItem('documento');
 let userEmpresa = localStorage.getItem('empresa');
 // console.log(userName, userDocument);
+// Función para marcar el elemento activo en el nav
+const setActiveNavItem = () => {
+    const navItems = document.querySelectorAll('nav a');
+    const currentPath = window.location.pathname;
+    navItems.forEach(item => {
+        if (currentPath.includes(item.getAttribute('href'))) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+    
+};
 
 // Cargar Nav y Footer
 document.addEventListener("DOMContentLoaded", () => {
-    loadComponent('nav', 'nav.html');
+    loadComponent('nav', 'nav.html').then(() => {
+        setActiveNavItem();
+    });
     loadComponent('footer', 'footer.html');
 });
-
 

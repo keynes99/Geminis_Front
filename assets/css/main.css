@@ -8,7 +8,7 @@ html {
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
+
 }
 main{
     flex: 1;
@@ -17,15 +17,49 @@ main{
 body {
     background-color: #fdedef;
     color: black;
+
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat", serif;
 }
+input, select, textarea{
+    font-size: 1em;
+}
+textarea{
+    font-family: "Open Sans", sans-serif;
+    resize: none;
+    height: 10em;
+}
+::-webkit-scrollbar {
+    width: .8em;
+    border-radius: 50%;
+    
+    
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    position: absolute;
+}
+::-webkit-scrollbar-thumb {
+    background: #e22c42;
+    border-radius: 1em;
+    
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #971726;
+}
+
 .container {
     padding: 0 12%;
 }
 
 /* Estilo del nav */
+.nav-sticky{
+    position:sticky;
+    top: 0;
+    z-index: 1000;
+}
+
 nav {
     background-color: #120204;
     padding: 1em 12%;
@@ -40,12 +74,24 @@ nav a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
+    padding: 1em 2em;
     font-size: 16px;
+    overflow: hidden; /* Asegura que el efecto no se desborde */
+    transition: background-size 0.3s ease, color 0.3s ease; /* Animación para el tamaño de fondo y color */
+    background-size: 0% 100%; /* Inicialmente el fondo está vacío */
+    background-image: linear-gradient(90deg, #67131d, #e22c42, #67131d); /* Color de fondo del centro */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1em;
     
 }
-
+nav a.active{
+    background:  linear-gradient(90deg, #120204, #e22c42, #120204);
+    box-shadow: 0 0 0.5em #fdedef;
+    border-radius: 1em;
+}
 nav a:hover {
-    color: #e22c42;
+    background-size: 100% 100%; /* El fondo se expande a todo el tamaño del enlace */
 }
 
 nav .logo {
@@ -58,6 +104,7 @@ nav .logo {
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
 .nav-menu li {
