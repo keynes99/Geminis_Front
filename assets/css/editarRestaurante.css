@@ -1,23 +1,3 @@
-main{
-    background-color:rgba(253, 237, 239, 0.8) ;       
-    background-size: cover;
-    background-position: center;
-
-    flex: 1;
-    position: relative; /* Ensure main is positioned relative to its pseudo-element */
-}
-main::before{
-    content: "";
-    position: fixed; /* Change to fixed to cover the entire screen */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; /* Adjust height to cover the entire viewport */
-    background-image: url(../images/planes-bg.jpg);
-    background-size: cover;
-    background-position: center;
-    z-index: -1; /* Ensure the pseudo-element is behind the content */
-}
 
 .editarRestaurante-container {
     

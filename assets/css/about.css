@@ -8,7 +8,7 @@
 .about-intro {
     text-align: center;
     padding: 2em 2em 3em;
-    background: linear-gradient(180deg, #120204, #333, #e22c42);
+    background: linear-gradient(180deg, #120204 70%,  #e22c42);
     color: white;
     border-radius:0  0 1em 1em;
     margin-bottom: 20px;
