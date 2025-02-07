@@ -127,7 +127,8 @@ const setActiveNavItem = () => {
         if (currentPath.includes(item.getAttribute('href'))) {
             if (item.querySelector('img')) { 
                 item.classList.add('no-hover')
-            }    return;
+                return;
+            }    
             item.classList.add('active');
         } else {
             item.classList.remove('active');
