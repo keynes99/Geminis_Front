@@ -8,37 +8,37 @@
     <link rel="stylesheet" href="../assets/css/create.css">
 </head>
 <body>
-
+    <div id="nav"></div>
     <!-- Main Content -->
-    <main class="create-container">
-        <div class="create-card">
-            <h1>Crea tu reserva </h1>
-            <form id="create-form">
-                <!-- Campos para usuario -->
-                <div id="usuario-fields">
-                    
-                    
-                    <input type="text" name="nombres" placeholder="Nombres" required>
-                    <input type="text" name="apellido" placeholder="Apellidos" required>
-                    <input type="text" name="telefono" placeholder="Teléfono" required>
-                    <input type="text" name="numpersonas" placeholder="Restaurante" required>
-                    <label id="searchForm:_t57">
-                            Fecha de reserva: </label>
-                    <input type="date" name="fecha" placeholder="Fecha" required>
-                    <br>
-                    <label id="searchForm:_t58">
-                            Hora de reserva: </label>    
-                    <input type="time" name="horadereserva" placeholder="Hora de reserva"  required>            
-                    <br>
-  
-                </div>
-
-                <!-- Campos para restaurante -->
-
-                <button type="submit">Crear</button>
-                <p id="error-message"></p>
-            </form>
-            <button id="go-to-login" class="primary-btn">Volver al Login</button>
+    <main>
+        <div class="create-container">
+            <div class="create-card">
+                <h1>Crea tu reserva </h1>
+                <form id="create-form">
+                    <!-- Campos para usuario -->
+                    <div id="usuario-fields">
+            
+            
+                        <input type="text" name="nombres" placeholder="Nombres" required>
+                        <input type="text" name="apellido" placeholder="Apellidos" required>
+                        <input type="text" name="telefono" placeholder="Teléfono" required>
+                        <input type="text" name="numpersonas" placeholder="numero de personas" required>
+                        <input type="text" name="restaurante" placeholder="restaurante" id="restaurante" required>
+                        <label id="searchForm:_t57">
+                                Fecha de reserva: </label>
+                        <input type="date" name="fecha" placeholder="Fecha" required>
+                        <br>
+                        <label id="searchForm:_t58">
+                                Hora de reserva: </label>
+                        <input type="time" name="horadereserva" placeholder="Hora de reserva"  required>
+                        <br>
+                    </div>
+                    <!-- Campos para restaurante -->
+                    <button type="submit">Crear</button>
+                    <p id="error-message"></p>
+                </form>
+                <button id="go-to-login" class="primary-btn">Volver al Login</button>
+            </div>
         </div>
     </main>
 
@@ -46,6 +46,6 @@
     <div id="footer"></div>
 
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/create.js"></script>
+<script src="../assets/js/reservas.js"></script>
 </body>
 </html>

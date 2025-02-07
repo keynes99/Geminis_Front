@@ -107,29 +107,11 @@ const getRestaurantData = async () => {
     }
 
     // Mostrar los datos del restaurante
-    const container = document.getElementById('restaurant-details');
-    container.innerHTML = `
-        <div class="background-highlight"></div>
-        <div class="background-highlight2"></div>
-        <h1>${restaurant.name}</h1>
-        <img class="restaurant-logo" src="${restaurant.logo}" alt="logotipo de ${restaurant.name}">
-        <p class="descripcion">${restaurant.description}</p>  
-        <img class="restaurant-img" src="${restaurant.image}" alt="Imagen de ${restaurant.name}">
-        <p class="distancia">Dirección: ${restaurant.direccion}</p>
-        <p class="telefono">Teléfono: ${restaurant.telefono}</p>
+    const container = document.getElementById('restaurante');
+    container.placeholder = restaurant.name;
+    container.setAttribute('disabled', 'disabled');
 
-        <!-- Contenedor para los botones -->
-        <div class="button-container">
-            <a href="menu.html?id=${restaurant.id}" class="primary-btn">Ver Menú</a>
-            <a href="CrearDomicilio.html?id=${restaurant.id}" class="primary-btn">Domicilio</a>
-            <a href="reservas.html?id=${restaurant.id}" class="primary-btn">Reservar</a>
-        </div>
-    `;
 };
 
 // Llamar a la función para cargar los datos del restaurante
 getRestaurantData();
-
-
-// <p class="horario">Horario: ${restaurant.horario}</p>
-// 

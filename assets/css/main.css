@@ -33,7 +33,7 @@ main::before {
     background-image: url(../images/planes-bg.jpg);
     background-size: cover;
     background-position: center;
-    z-index: -1; /* Ensure the pseudo-element is behind the content */
+    z-index: -3; /* Ensure the pseudo-element is behind the content */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,7 +103,7 @@ nav .nav-menu {
     padding: 0;
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
 }
 
 nav .nav-menu li {
