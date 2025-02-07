@@ -88,7 +88,7 @@
 }
 
 /* Estilo de los botones */
-.secondary-btn {
+.primary-btn {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -99,6 +99,6 @@
     font-weight: bold;
 }
 
-.secondary-btn:hover {
+.primary-btn:hover {
     background-color: #45a049;
 }

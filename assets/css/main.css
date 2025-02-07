@@ -8,22 +8,22 @@ html {
     height: 100%;
     display: flex;
     flex-direction: column;
-
 }
 
 body {
     background-color: #fdedef;
     color: black;
-
 }
-main{
-    background-color:rgba(253, 237, 239, 0.8) ;       
+
+main {
+    background-color: rgba(253, 237, 239, 0.8);
     background-size: cover;
     background-position: center;
     flex: 1;
     position: relative; /* Ensure main is positioned relative to its pseudo-element */
 }
-main::before{
+
+main::before {
     content: "";
     position: fixed; /* Change to fixed to cover the entire screen */
     top: 0;
@@ -35,32 +35,37 @@ main::before{
     background-position: center;
     z-index: -1; /* Ensure the pseudo-element is behind the content */
 }
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat", serif;
 }
-input, select, textarea{
+
+input, select, textarea {
     font-size: 1em;
 }
-textarea{
+
+textarea {
     font-family: "Open Sans", sans-serif;
     resize: none;
     height: 10em;
 }
+
+/* Scrollbar styles */
 ::-webkit-scrollbar {
     width: .8em;
     border-radius: 50%;
-    
-    
 }
+
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
     position: absolute;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #e22c42;
     border-radius: 1em;
-    
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #971726;
 }
@@ -70,8 +75,8 @@ textarea{
 }
 
 /* Estilo del nav */
-.nav-sticky{
-    position:sticky;
+.nav-sticky {
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -84,7 +89,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px #250408;
-    
 }
 
 .no-hover:hover {
@@ -92,37 +96,8 @@ nav {
     text-decoration: none;
     background: none;
 }
-nav a {
-    color: white;
-    text-decoration: none;
-    
-    padding: 1em 2em;
-    font-size: 16px;
-    overflow: hidden; /* Asegura que el efecto no se desborde */
-    transition: background-size 0.3s ease, color 0.3s ease; /* Animación para el tamaño de fondo y color */
-    background-size: 0% 100%; /* Inicialmente el fondo está vacío */
-    background-image: linear-gradient(90deg, #67131d, #e22c42, #67131d); /* Color de fondo del centro */
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 1em;
-    
-}
-.dropdown-content li a.active,
-nav a.active{
-    background:  linear-gradient(90deg, #120204, #e22c42, #120204);
-    box-shadow: 0 0 0.5em #fdedef;
-    border-radius: 1em;
-}
-nav a:hover {
-    background-size: 100% 100%; /* El fondo se expande a todo el tamaño del enlace */
-}
 
-nav .logo {
-    width: 100.5px;
-    height: 82.5px;
-}
-
-.nav-menu {
+nav .nav-menu {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -131,40 +106,69 @@ nav .logo {
     gap: 1em;
 }
 
-.nav-menu li {
+nav .nav-menu li {
     position: relative;
+    min-width: 115px;
 }
 
+nav .nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 1em .5em;
+    min-width: 100%;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    overflow: hidden; /* Asegura que el efecto no se desborde */
+    transition: background-size 0.3s ease, color 0.3s ease; /* Animación para el tamaño de fondo y color */
+    background-size: 0% 100%; /* Inicialmente el fondo está vacío */
+    background-image: linear-gradient(90deg, #67131d, #e22c42, #67131d); /* Color de fondo del centro */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1em;
+    z-index: 11;
+}
+
+.dropdown-content li a.active,
+nav .nav-menu a.active {
+    background: linear-gradient(90deg, #120204, #e22c42, #120204);
+    box-shadow: 0 0 0.5em #fdedef;
+    border-radius: 1em;
+}
+
+nav li a:hover {
+    background-size: 100% 100%; /* El fondo se expande a todo el tamaño del enlace */
+}
+
+nav .logo {
+    width: 100.5px;
+    height: 82.5px;
+}
+
+/* Dropdown styles */
 .dropdown {
-    min-width: 11vw;
-    padding: 0 ;
+    padding: 0;
     cursor: pointer;
     z-index: 10;
-    
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #120204;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style: none;
-    left: 0;
     margin: 0;
-    padding: 0;
-    min-width: 100%;
+    padding: 0 1em 0 0;
     font-size: 1em;
     padding-top: .5em;
-    margin-top: 1em;
     border-radius: 0 0 1em 1em;
     box-shadow: 0 .25em .5em rgba(253, 237, 239, 0.3);
+    width: 100%; /* Ensure the dropdown content matches the width of its parent */
 }
 
-/* Dropdown content */
 .dropdown-content li a {
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
     display: block;
     position: relative;
     margin: 0;
@@ -176,19 +180,18 @@ nav .logo {
     background-position: center;
 }
 
-/* Efecto hover en los enlaces del dropdown */
 .dropdown-content li a:hover {
     background-size: 100% 100%; /* El fondo se expande a todo el tamaño del enlace */
     color: white; /* Cambiar el color del texto si lo deseas */
 }
-/* Mostrar el dropdown */
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 /* Estilo de botones */
 button,
-.secondary-btn {
+.primary-btn {
     background: linear-gradient(90deg, #120204, #e22c42, #120204);
     color: white;
     border: none;
@@ -203,12 +206,13 @@ button,
 }
 
 button:hover,
-.secondary-btn:hover {
+.primary-btn:hover {
     background: linear-gradient(90deg, #e22c42, #120204, #e22c42);
     box-shadow: 0 0 1.25em #fdedef;
-    transform: translateY(-5px);
+    transform: scale(1.06);
 }
-/* Estilos del footer*/
+
+/* Estilos del footer */
 footer {
     background: #333;
     color: #fff;

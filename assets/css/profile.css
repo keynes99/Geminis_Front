@@ -29,8 +29,6 @@ input {
 }
 
 .primary-btn {
-    background: linear-gradient(45deg, purple, red);
-    color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;

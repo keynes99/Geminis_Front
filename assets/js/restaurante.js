@@ -119,8 +119,8 @@ const getRestaurantData = async () => {
 
         <!-- Contenedor para los botones -->
         <div class="button-container">
-            <a href="menu.html?id=${restaurant.id}" class="secondary-btn">Ver Menú</a>
-            <a href="CrearDomicilio.html?id=${restaurant.id}" class="secondary-btn">Domicilio</a>
+            <a href="menu.html?id=${restaurant.id}" class="primary-btn">Ver Menú</a>
+            <a href="CrearDomicilio.html?id=${restaurant.id}" class="primary-btn">Domicilio</a>
         </div>
     `;
 };

@@ -1,16 +1,13 @@
 
 .editarRestaurante-container {
-    
-    max-width: 800px;
+    max-width: 600px;
     margin: 4em auto;
     padding: 20px;
     background-color: #333;
     color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
 }
-
 .editarRestaurante-container h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -20,7 +17,7 @@
     background-color: white;
     border-radius: 50%;
     padding: 1em 0;
-    width: 26%;
+    width: 35%;
     margin: 0 auto;
 }
 

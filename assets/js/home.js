@@ -103,7 +103,7 @@ const loadRestaurants = async () => {
                 <h3>${restaurant.name}</h3>
                 <p>${restaurant.description}</p>
                 <p>Dirección: ${restaurant.direccion}</p>
-                <a href="restaurant.html?id=${restaurant.id}" class="secondary-btn">Ver Restaurante</a>
+                <a href="restaurant.html?id=${restaurant.id}" class="primary-btn">Ver Restaurante</a>
             </div>
         `;
 
