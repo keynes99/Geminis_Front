@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             createBranchForm.style.display = 'block';
             editMenuForm.style.display = 'none';
             editBranchForm.style.display = 'none';
+            resetScheduleField();
+            document.getElementById("horario").value = '';
         });
 
         showEditBranchFormBtn.addEventListener('click', () => {
@@ -44,6 +46,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             editMenuForm.style.display = 'none';
             editBranchForm.style.display = 'block';
             loadBranches();
+            resetScheduleField();
+            document.getElementById("horario1").value = '';
         });
 
         createBranchForm.addEventListener('submit', async (event) => {
@@ -125,11 +129,39 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                     const inputGroup = document.querySelector('#imagenes1').parentElement;
                     inputGroup.appendChild(imageContainer);
+
+                    // Load schedule into modal
+                    loadScheduleIntoModal(branch.Horario);
                 } catch (error) {
                     console.error('Error:', error);
                 }
             }
         });
+
+        function loadScheduleIntoModal(scheduleJson) {
+            const schedule = JSON.parse(scheduleJson);
+            const checkboxes = document.querySelectorAll(".day");
+            checkboxes.forEach(checkbox => {
+                const daySchedule = schedule.find(item => item.day === checkbox.value);
+                if (daySchedule) {
+                    checkbox.checked = true;
+                    const timeInputs = checkbox.parentNode.querySelectorAll("input[type='time']");
+                    timeInputs[0].value = daySchedule.startTime;
+                    timeInputs[1].value = daySchedule.endTime;
+                    timeInputs.forEach(input => {
+                        input.removeAttribute('disabled');
+                        input.setAttribute('required', 'required');
+                    });
+                } else {
+                    checkbox.checked = false;
+                    const timeInputs = checkbox.parentNode.querySelectorAll("input[type='time']");
+                    timeInputs.forEach(input => {
+                        input.setAttribute('disabled', 'disabled');
+                        input.removeAttribute('required');
+                    });
+                }
+            });
+        }
 
         editBranchForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -152,6 +184,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
             }
             await updateBranchData(branchData);
+            resetScheduleField();
+            document.getElementById("horario1").value = '';
+            document.getElementById("horario").value = '';
         });
 
         async function updateBranchData(branchData) {
@@ -189,14 +224,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    function arrayBufferToBase64(buffer) {
-        let binary = '';
-        const bytes = new Uint8Array(buffer);
-        const len = bytes.byteLength;
-        for (let i = 0; i < len; i++) {
-            binary += String.fromCharCode(bytes[i]);
+    function resetScheduleField() {
+        const horarioTextarea = document.getElementById("horario");
+        if (horarioTextarea) {
+            horarioTextarea.value = '';
         }
-        return window.btoa(binary);
+        const checkboxes = document.querySelectorAll(".day");
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+            const timeInputs = checkbox.parentNode.querySelectorAll("input[type='time']");
+            timeInputs.forEach(input => {
+                input.setAttribute('disabled', 'disabled');
+                input.removeAttribute('required');
+                input.value = '';
+            });
+        });
     }
 });
 function openModal(planType) {
@@ -209,12 +251,14 @@ function closeModal() {
     const modal = document.getElementById("horarioModal");
     modal.style.display = "none";
 }
+// Agregar horario dinamico
 document.addEventListener("DOMContentLoaded", function () {
     // Get all day checkboxes and other elements
     const checkboxes = document.querySelectorAll(".day");
     const saveBtn = document.getElementById("save-btn");
     const output = document.getElementById("output");
     const horarioTextarea = document.getElementById("horario");
+    const horarioTextarea1 = document.getElementById("horario1");
     
     // Add change event listener to each checkbox
     checkboxes.forEach(checkbox => {
@@ -250,5 +294,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Display the schedule as a JSON string
         const scheduleJson = JSON.stringify(schedule, null, 2);
         horarioTextarea.value = scheduleJson;
+        horarioTextarea1.value = scheduleJson;
     });
 });
