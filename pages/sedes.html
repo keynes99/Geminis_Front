@@ -38,9 +38,9 @@
                     <label for="reservasMaximas">Reservas Máximas</label>
                     <input type="number" id="reservasMaximas" name="reservasMaximas" required>
                 </div>
-                <div class="input-group">
+                <div class="input-group" onclick="openModal()">
                     <label for="horario">Horario</label>
-                    <input type="text" id="horario" name="horario" required>
+                    <textarea name="horario" id="horario" disabled required></textarea>
                 </div>
                 <div class="input-group">
                     
@@ -101,6 +101,53 @@
                 <button type="submit">Guardar Cambios</button>
             </form>
 
+        </div>
+        <div id="horarioModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">✖</span>
+                <h2>Selecciona tu disponibilidad</h2>
+                <div class="container">
+                    <form id="schedule-form">
+                        <label>
+                            <input type="checkbox" class="day" value="Lunes"> Lunes
+                            <input type="time" class="start-time" disabled>
+                            <input type="time" class="end-time" disabled>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="day" value="Martes"> Martes
+                            <input type="time" class="start-time" disabled>
+                            <input type="time" class="end-time" disabled>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="day" value="Miércoles"> Miércoles
+                            <input type="time" class="start-time" disabled>
+                            <input type="time" class="end-time" disabled>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="day" value="Jueves"> Jueves
+                            <input type="time" class="start-time" disabled>
+                            <input type="time" class="end-time" disabled>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="day" value="Viernes"> Viernes
+                            <input type="time" class="start-time" disabled>
+                            <input type="time" class="end-time" disabled>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="day" value="Sábado"> Sábado
+                            <input type="time" class="start-time" disabled>
+                            <input type="time" class="end-time" disabled>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="day" value="Domingo"> Domingo
+                            <input type="time" class="start-time" disabled>
+                            <input type="time" class="end-time" disabled>
+                        </label>
+                        <button type="button" id="save-btn">Guardar Horario</button>
+                    </form>
+
+                </div>
+            </div>
         </div>
     </main>
 

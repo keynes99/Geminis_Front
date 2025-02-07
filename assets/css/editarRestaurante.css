@@ -97,7 +97,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #218838;
 }
-
+/* Sedes */
 #showCreateBranchFormBtn,
 #showEditBranchFormBtn {
     display: block;
@@ -117,4 +117,7 @@ button[type="submit"]:hover {
 h2 {
     margin-top: 30px;
     margin-bottom: 10px;
+}
+.input-group.horario label{
+    cursor: pointer;
 }

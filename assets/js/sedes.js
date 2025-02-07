@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const formData = new FormData(createBranchForm);
             const branchData = {
                 Direccion: formData.get('direccionSede'),
-                Empresa: nit,                
+                Empresa: nit,
                 MesasTotales: formData.get('mesasTotales'),
                 MesasDisponibles: formData.get('mesasDisponibles'),
                 ReservasMaximas: formData.get('reservasMaximas'),
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     if (!response.ok) throw new Error('Error al obtener la información de la sede');
                     const branch = await response.json();
                     console.log(branch);
-                    
+
                     document.getElementById('direccionSede1').value = branch.Direccion;
                     document.getElementById('telefonoSede1').value = branch.Telefono;
                     document.getElementById('mesasTotales1').value = branch.MesasTotales;
@@ -198,4 +198,57 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         return window.btoa(binary);
     }
+});
+function openModal(planType) {
+    const modal = document.getElementById("horarioModal");
+    
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    const modal = document.getElementById("horarioModal");
+    modal.style.display = "none";
+}
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all day checkboxes and other elements
+    const checkboxes = document.querySelectorAll(".day");
+    const saveBtn = document.getElementById("save-btn");
+    const output = document.getElementById("output");
+    const horarioTextarea = document.getElementById("horario");
+    
+    // Add change event listener to each checkbox
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            // Enable or disable time inputs based on checkbox state
+            let timeInputs = this.parentNode.querySelectorAll("input[type='time']");
+            timeInputs.forEach(input => {
+                if (this.checked) {
+                    input.removeAttribute('disabled');
+                    input.setAttribute('required', 'required');
+                    
+                } else {
+                    input.setAttribute('disabled', 'disabled');
+                    input.removeAttribute('required');
+                    
+                }
+            });
+        });
+    });
+    
+    // Add click event listener to the save button
+    saveBtn.addEventListener("click", function () {
+        let schedule = [];
+        // Collect selected days and their time ranges
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                let day = checkbox.value;
+                let startTime = checkbox.parentNode.querySelector(".start-time").value;
+                let endTime = checkbox.parentNode.querySelector(".end-time").value;
+                schedule.push({ day, startTime, endTime });
+            }
+        });
+        // Display the schedule as a JSON string
+        const scheduleJson = JSON.stringify(schedule, null, 2);
+        horarioTextarea.value = scheduleJson;
+    });
 });
