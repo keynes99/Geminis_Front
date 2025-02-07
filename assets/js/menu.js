@@ -1,4 +1,30 @@
-const getRestaurantData = () => {
+const fetchAndAddRestaurants = async () => {
+    try {
+        const response = await fetch('http://localhost:3000/api/sedes/all');
+        const data = await response.json();
+        const newRestaurants = data.map(item => ({
+            id: item.Rowid.toString(),
+            name: item.EmpresaNombre,
+            logo: item.UbicacionLogo,
+            description: item.EmpresaDescripcion,
+            distance: `${Math.floor(Math.random() * 10) + 1} km`, // Random distance
+            image: item.Imagenes,
+            direccion: item.Direccion,
+            mesasTotales: item.MesasTotales,
+            mesasDisponibles: item.MesasDisponibles,
+            reservasMaximas: item.ReservasMaximas,
+            telefono: item.Telefono,
+            horario: item.Horario,
+            categoria: parseInt(item.EmpresaCategoria)
+        }));
+        return newRestaurants;
+    } catch (error) {
+        console.error('Error fetching restaurants:', error);
+        return [];
+    }
+};
+
+const getRestaurantData = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const restaurantId = urlParams.get('id');
 
@@ -6,18 +32,78 @@ const getRestaurantData = () => {
         document.body.innerHTML = "<h1>Restaurante no encontrado</h1>";
         return;
     } else {
-        const restaurants = [
-            { id: "1", name: "Restaurante El Buen Sabor", logo: "../assets/images/logoRestaurante1.webp", description: "Un lugar perfecto para disfrutar de comida casera.", distance: "2.5 km", image: "../assets/images/restaurante.jpg" },
-            { id: "2", name: "Comida Rápida Express", logo: "../assets/images/logoRestaurante2.webp", description: "Comida rápida para disfrutar en familia.", distance: "5.0 km", image: "../assets/images/restaurante2.jpg" },
-            { id: "3", name: "Comida tradicional", logo: "../assets/images/logoRestaurante3.webp", description: "Comida tradicional de la región.", distance: "5.0 km", image: "../assets/images/restaurante3.jpg" },
-            { id: "4", name: "Comida oriental", logo: "../assets/images/logoRestaurante4.webp", description: "Sabores auténticos del este asiático.", distance: "5.0 km", image: "../assets/images/restaurante4.jpg" }
+        const existingRestaurants = [
+            {
+                id: "100", // Identificador único
+                name: "Restaurante El Buen Sabor",
+                logo: "../assets/images/logoRestaurante1.webp",
+                description: "Un lugar perfecto para disfrutar de comida casera.",
+                distance: "2.5 km",
+                image: "../assets/images/restaurante.jpg",
+                direccion: "Calle 123, Ciudad",
+                mesasTotales: 20,
+                mesasDisponibles: 5,
+                reservasMaximas: 10,
+                telefono: "123-456-7890",
+                horario: "9:00 AM - 10:00 PM",
+                categoria: 3
+            },
+            {
+                id: "200",
+                name: "Comida Rápida Express",
+                logo: "../assets/images/logoRestaurante2.webp",
+                description: "Comida rápida para disfrutar en familia.",
+                distance: "5.0 km",
+                image: "../assets/images/restaurante2.jpg",
+                direccion: "Avenida 456, Ciudad",
+                mesasTotales: 15,
+                mesasDisponibles: 3,
+                reservasMaximas: 5,
+                telefono: "098-765-4321",
+                horario: "10:00 AM - 11:00 PM",
+                categoria: 1
+            },
+            {
+                id: "300",
+                name: "Comida tradicional",
+                logo: "../assets/images/logoRestaurante3.webp",
+                description: "Comida tradicional de la región.",
+                distance: "3.2 km",
+                image: "../assets/images/restaurante3.jpg",
+                direccion: "Calle 789, Ciudad",
+                mesasTotales: 25,
+                mesasDisponibles: 10,
+                reservasMaximas: 15,
+                telefono: "456-789-0123",
+                horario: "8:00 AM - 9:00 PM",
+                categoria: 12
+            },
+            {
+                id: "400",
+                name: "Comida oriental",
+                logo: "../assets/images/logoRestaurante4.webp",
+                description: "Sabores auténticos del este asiático.",
+                distance: "1.1 km",
+                image: "../assets/images/restaurante4.jpg",
+                direccion: "Avenida 101, Ciudad",
+                mesasTotales: 30,
+                mesasDisponibles: 20,
+                reservasMaximas: 25,
+                telefono: "321-654-0987",
+                horario: "11:00 AM - 12:00 AM",
+                categoria: 10
+            }
         ];
 
+        const fetchedRestaurants = await fetchAndAddRestaurants();
+        const restaurants = existingRestaurants.concat(fetchedRestaurants);
+        const restaurant = restaurants.find(r => r.id === restaurantId);
+
         const menus = [
-            { id: "1", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 39000, tipo: "Vegetariano" }, { img:"../assets/images/img-pizza1.webp", nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 39000, tipo: "Carnes" }] },
-            { id: "2", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 25000, tipo: "Carnes" }, { img:"../assets/images/img-pizza1.webp", nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 28000, tipo: "Vegetariano" }] },
+            { id: "100", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 39000, tipo: "Vegetariano" }, { img:"../assets/images/img-pizza1.webp", nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 39000, tipo: "Carnes" }] },
+            { id: "200", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 25000, tipo: "Carnes" }, { img:"../assets/images/img-pizza1.webp", nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 28000, tipo: "Vegetariano" }] },
             {
-                id: "3",
+                id: "300",
 
                 menu: [
                     {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Carnitas", descripcion: "Taco con cerdo desmenuzado y salsa verde", precio: 18900, tipo: "Carnes" },
@@ -28,7 +114,7 @@ const getRestaurantData = () => {
             },
             // Restaurante 4
             {
-                id: "4",
+                id: "400",
 
                 menu: [
                     {img:"../assets/images/img-pizza1.webp", nombre: "California Roll", descripcion: "Rollo de sushi con aguacate, cangrejo y pepino", precio: 32990, tipo: "Mariscos" },
@@ -37,9 +123,9 @@ const getRestaurantData = () => {
                     {img:"../assets/images/img-pizza1.webp", nombre: "Dragon Roll", descripcion: "Rollo de sushi con camarón tempura y aguacate", precio: 28900, tipo: "Mariscos" }
                 ]
             },          
-            // Restaurante 5
+            // Restaurante 2
             {
-                id: "5",
+                id: "2",
 
                 menu: [
                     {img:"../assets/images/img-pizza1.webp", nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 49900, tipo: "Carnes" },
@@ -48,9 +134,9 @@ const getRestaurantData = () => {
                     {img:"../assets/images/img-pizza1.webp", nombre: "Lasagna", descripcion: "Capas de pasta, carne molida y queso gratinado", precio: 52900, tipo: "Carnes" }
                 ]
             },
-            // Restaurante 6
+            // Restaurante 1
             {
-                id: "6",
+                id: "1",
 
                 menu: [
                     {img:"../assets/images/img-pizza1.webp", nombre: "Acai Bowl", descripcion: "Tazón con acai, frutas frescas y granola", precio: 35900, tipo: "Vegetariano" },
@@ -61,8 +147,6 @@ const getRestaurantData = () => {
             }
         ];
 
-        const restaurant = restaurants.find((r) => r.id === restaurantId);
-        const menu = menus.find((m) => m.id === restaurantId);
         if (!restaurant) {
             document.body.innerHTML = "<h1>Restaurante no encontrado</h1>";
             return;
@@ -73,10 +157,9 @@ const getRestaurantData = () => {
             <div class="restaurante-info">
                 <h1>${restaurant.name}</h1>
                 <img class="restaurant-logo" src="${restaurant.logo}" alt="logotipo de ${restaurant.name}">
-
             </div>
             <div class="menu">
-                ${menu.menu.map(item => `
+                ${menus.find(m => m.id === restaurantId).menu.map(item => `
                     <div class="card">
                         <div class="menu-item">
                             <img class="item-img" src="${item.img}" alt="imagen de ${item.nombre}">
@@ -88,7 +171,6 @@ const getRestaurantData = () => {
                 `).join('')}
             </div>
         `;
-
     }
 };
 

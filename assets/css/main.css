@@ -120,6 +120,7 @@ nav .logo {
     min-width: 11vw;
     padding: 0 2em;
     cursor: pointer;
+    z-index: 10;
 }
 
 .dropdown-content {

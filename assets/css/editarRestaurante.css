@@ -4,14 +4,15 @@ main{
     background-position: center;
 
     flex: 1;
+    position: relative; /* Ensure main is positioned relative to its pseudo-element */
 }
 main::before{
     content: "";
-    position: absolute;
+    position: fixed; /* Change to fixed to cover the entire screen */
     top: 0;
     left: 0;
     width: 100%;
-    height:150%;
+    height: 100%; /* Adjust height to cover the entire viewport */
     background-image: url(../images/planes-bg.jpg);
     background-size: cover;
     background-position: center;
