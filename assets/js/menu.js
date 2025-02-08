@@ -24,6 +24,25 @@ const fetchAndAddRestaurants = async () => {
     }
 };
 
+const fetchAndAddMenus = async () => {
+    try {
+        const response = await fetch('http://localhost:3000/api/menu/');
+        const data = await response.json();
+        const newMenus = data.map(item => ({
+            sede: item.Sede.toString(),
+            nombre: item.Nombre,
+            descripcion: item.Descripcion,
+            precio: parseFloat(item.Precio),
+            tipo: item.Tipo,
+            img: item.ImagenMenu
+        }));
+        return newMenus;
+    } catch (error) {
+        console.error('Error fetching menus:', error);
+        return [];
+    }
+};
+
 const getRestaurantData = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const restaurantId = urlParams.get('id');
@@ -100,52 +119,73 @@ const getRestaurantData = async () => {
         const restaurant = restaurants.find(r => r.id === restaurantId);
 
         const menus = [
-            { id: "100", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 39000, tipo: "Vegetariano" }, { img:"../assets/images/img-pizza1.webp", nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 39000, tipo: "Carnes" }] },
-            { id: "200", menu: [{ img:"../assets/images/img-pizza1.webp", nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 25000, tipo: "Carnes" }, { img:"../assets/images/img-pizza1.webp", nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 28000, tipo: "Vegetariano" }] },
+            {
+                id: "100",
+                menu: [
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Margarita", descripcion: "Pizza clásica con queso mozzarella y albahaca", precio: 39000, tipo: 2 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Pepperoni", descripcion: "Pizza con rodajas de pepperoni y queso extra", precio: 39000, tipo: 1 }
+                ]
+            },
+            {
+                id: "200",
+                menu: [
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Classic Burger", descripcion: "Hamburguesa con carne de res, lechuga, tomate y queso cheddar", precio: 25000, tipo: 1 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Veggie Delight", descripcion: "Hamburguesa vegetariana con guacamole y queso suizo", precio: 28000, tipo: 2 }
+                ]
+            },
             {
                 id: "300",
-
                 menu: [
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Carnitas", descripcion: "Taco con cerdo desmenuzado y salsa verde", precio: 18900, tipo: "Carnes" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Pollo", descripcion: "Taco con pollo a la parrilla y salsa roja", precio: 20000, tipo: "Aves" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco Vegetariano", descripcion: "Taco con frijoles negros, aguacate y pico de gallo", precio: 18000, tipo: "Vegetariano" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Taco de Pescado", descripcion: "Taco con pescado empanizado y crema de chipotle", precio: 20900, tipo: "Mariscos" }
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Taco de Carnitas", descripcion: "Taco con cerdo desmenuzado y salsa verde", precio: 18900, tipo: 1 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Taco de Pollo", descripcion: "Taco con pollo a la parrilla y salsa roja", precio: 20000, tipo: 6 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Taco Vegetariano", descripcion: "Taco con frijoles negros, aguacate y pico de gallo", precio: 18000, tipo: 2 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Taco de Pescado", descripcion: "Taco con pescado empanizado y crema de chipotle", precio: 20900, tipo: 3 }
                 ]
             },
-            // Restaurante 4
             {
                 id: "400",
-
                 menu: [
-                    {img:"../assets/images/img-pizza1.webp", nombre: "California Roll", descripcion: "Rollo de sushi con aguacate, cangrejo y pepino", precio: 32990, tipo: "Mariscos" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Salmon Nigiri", descripcion: "Arroz de sushi cubierto con salmón fresco", precio: 29900, tipo: "Mariscos" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Veggie Roll", descripcion: "Rollo de sushi con zanahoria, pepino y aguacate", precio: 20000, tipo: "Vegetariano" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Dragon Roll", descripcion: "Rollo de sushi con camarón tempura y aguacate", precio: 28900, tipo: "Mariscos" }
-                ]
-            },          
-            // Restaurante 2
-            {
-                id: "2",
-
-                menu: [
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 49900, tipo: "Carnes" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Fettuccine Alfredo", descripcion: "Pasta con salsa cremosa de queso y mantequilla", precio: 44900, tipo: "Vegetariano" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Penne Arrabbiata", descripcion: "Pasta con salsa de tomate picante", precio: 41900, tipo: "Vegetariano" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Lasagna", descripcion: "Capas de pasta, carne molida y queso gratinado", precio: 52900, tipo: "Carnes" }
+                    { img: "../assets/images/img-pizza1.webp", nombre: "California Roll", descripcion: "Rollo de sushi con aguacate, cangrejo y pepino", precio: 32990, tipo: 3 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Salmon Nigiri", descripcion: "Arroz de sushi cubierto con salmón fresco", precio: 29900, tipo: 3 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Veggie Roll", descripcion: "Rollo de sushi con zanahoria, pepino y aguacate", precio: 20000, tipo: 2 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Dragon Roll", descripcion: "Rollo de sushi con camarón tempura y aguacate", precio: 28900, tipo: 3 }
                 ]
             },
-            // Restaurante 1
+            {
+                id: "2",
+                menu: [
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 49900, tipo: 1 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Fettuccine Alfredo", descripcion: "Pasta con salsa cremosa de queso y mantequilla", precio: 44900, tipo: 2 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Penne Arrabbiata", descripcion: "Pasta con salsa de tomate picante", precio: 41900, tipo: 2 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Lasagna", descripcion: "Capas de pasta, carne molida y queso gratinado", precio: 52900, tipo: 1 }
+                ]
+            },
             {
                 id: "1",
-
                 menu: [
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Acai Bowl", descripcion: "Tazón con acai, frutas frescas y granola", precio: 35900, tipo: "Vegetariano" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Quinoa Salad", descripcion: "Ensalada de quinoa con aguacate, pepino y limón", precio: 30900, tipo: "Vegetariano" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Chicken Bowl", descripcion: "Tazón con pollo a la parrilla, arroz integral y vegetales", precio: 39900, tipo: "Aves" },
-                    {img:"../assets/images/img-pizza1.webp", nombre: "Shrimp Bowl", descripcion: "Tazón con camarones, espinaca y aderezo asiático", precio: 44900, tipo: "Mariscos" }
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Acai Bowl", descripcion: "Tazón con acai, frutas frescas y granola", precio: 35900, tipo: 2 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Quinoa Salad", descripcion: "Ensalada de quinoa con aguacate, pepino y limón", precio: 30900, tipo: 2 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Chicken Bowl", descripcion: "Tazón con pollo a la parrilla, arroz integral y vegetales", precio: 39900, tipo: 6 },
+                    { img: "../assets/images/img-pizza1.webp", nombre: "Shrimp Bowl", descripcion: "Tazón con camarones, espinaca y aderezo asiático", precio: 44900, tipo: 3 }
                 ]
             }
         ];
+
+        const fetchedMenus = await fetchAndAddMenus();
+        fetchedMenus.forEach(menuItem => {
+            let menu = menus.find(m => m.id === menuItem.sede);
+            if (!menu) {
+                menu = { id: menuItem.sede, menu: [] };
+                menus.push(menu);
+            }
+            menu.menu.push({
+                img: menuItem.img,
+                nombre: menuItem.nombre,
+                descripcion: menuItem.descripcion,
+                precio: menuItem.precio,
+                tipo: menuItem.tipo
+            });
+        });
 
         if (!restaurant) {
             document.body.innerHTML = "<h1>Restaurante no encontrado</h1>";
