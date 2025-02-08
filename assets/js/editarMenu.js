@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const showCreateDishFormBtn = document.getElementById('showCreateDishFormBtn');
     const showEditDishFormBtn = document.getElementById('showEditDishFormBtn');
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedBranch = urlParams.get('id');
+
     if (createDishForm && editDishForm && dishList && editDishBtn && showCreateDishFormBtn && showEditDishFormBtn) {
         showCreateDishFormBtn.addEventListener('click', () => {
             createDishForm.style.display = 'block';
@@ -24,7 +27,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             const dishData = {
                 Nombre: formData.get('nombrePlato'),
                 Descripcion: formData.get('descripcionPlato'),
-                Precio: formData.get('precioPlato')
+                Precio: formData.get('precioPlato'),
+                Tipo: formData.get('categoria'),
+                Sede: selectedBranch
             };
 
             if (formData.get('imagenPlato') && formData.get('imagenPlato').size > 0) {
@@ -40,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         async function sendDishData(dishData) {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:3000/api/platos/', {
+                const response = await fetch('http://localhost:3000/api/menu/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -62,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (selectedDish) {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await fetch(`http://localhost:3000/api/platos/${selectedDish}`, {
+                    const response = await fetch(`http://localhost:3000/api/menu/plato/${selectedDish}`, {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
                     if (!response.ok) throw new Error('Error al obtener la información del plato');
@@ -84,8 +89,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     imageContainer.classList.add('image-container');
                     imageContainer.width = 500;
                     imageContainer.height = 300;
-                    if (dish.Imagen) {
-                        imageContainer.src = dish.Imagen;
+                    if (dish.ImagenMenu) {
+                        imageContainer.src = dish.ImagenMenu;
                     }
                     const inputGroup = document.querySelector('#imagenPlato1').parentElement;
                     inputGroup.appendChild(imageContainer);
@@ -101,7 +106,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             const dishData = {
                 Nombre: formData.get('nombrePlato1'),
                 Descripcion: formData.get('descripcionPlato1'),
-                Precio: formData.get('precioPlato1')
+                Precio: formData.get('precioPlato1'),
+                Tipo: formData.get('categoria'),
+                Sede: selectedBranch
             };
 
             if (formData.get('imagenPlato1') && formData.get('imagenPlato1').size > 0) {
@@ -118,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const selectedDish = dishList.value;
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`http://localhost:3000/api/platos/${selectedDish}`, {
+                const response = await fetch(`http://localhost:3000/api/menu/${selectedDish}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -138,12 +145,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function loadDishes() {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3000/api/platos`, {
+            const response = await fetch(`http://localhost:3000/api/menu/${selectedBranch}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (!response.ok) throw new Error('Error al obtener la lista de platos');
             const dishes = await response.json();
-            dishList.innerHTML = dishes.map(dish => `<option value="${dish.Rowid}">${dish.Nombre}</option>`).join('');
+            console.log(dishes);
+
+            // Verificar si dishes es un objeto y tiene la propiedad Rowid
+            if (dishes && dishes.Rowid) {
+                dishList.innerHTML = `<option value="${dishes.Rowid}">${dishes.Nombre}</option>`;
+            } else {
+                console.error('La respuesta de la API no es el objeto esperado:', dishes);
+            }
         } catch (error) {
             console.error('Error:', error);
         }
