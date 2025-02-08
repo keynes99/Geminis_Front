@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Menú - Restaurante</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/editarMenu.css">
+</head>
+<body>
+    <div id="nav"></div>
+
+    <main>
+        <div class="editarMenu-container">
+            <h1>Gestión de Menú</h1>
+            <button id="showCreateDishFormBtn">Agregar Plato</button>
+            <button id="showEditDishFormBtn">Editar Plato</button>
+
+            <form id="crearPlato-form" style="display: none;">
+                <h2>Agregar Plato</h2>
+                <div class="input-group">
+                    <label for="nombrePlato">Nombre del Plato</label>
+                    <input type="text" id="nombrePlato" name="nombrePlato" required>
+                </div>
+                <div class="input-group">
+                    <label for="descripcionPlato">Descripción</label>
+                    <textarea id="descripcionPlato" name="descripcionPlato" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="precioPlato">Precio</label>
+                    <input type="number" id="precioPlato" name="precioPlato" required>
+                </div>
+                <div class="input-group">
+                    <label for="imagenPlato">Imagen</label>
+                    <input type="file" id="imagenPlato" name="imagenPlato" accept="image/*" required>
+                </div>
+                <button type="submit">Agregar Plato</button>
+            </form>
+
+            <form id="editarPlato-form" style="display: none;">
+                <h2>Editar Plato</h2>
+                <div class="input-group">
+                    <label for="dishList">Seleccionar Plato para Editar</label>
+                    <select id="dishList" name="dishList" required>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+                <button type="button" id="editarPlatoBtn">Cargar Plato</button>
+                <div class="input-group">
+                    <label for="nombrePlato1">Nombre del Plato</label>
+                    <input type="text" id="nombrePlato1" name="nombrePlato1" required>
+                </div>
+                <div class="input-group">
+                    <label for="descripcionPlato1">Descripción</label>
+                    <textarea id="descripcionPlato1" name="descripcionPlato1" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="precioPlato1">Precio</label>
+                    <input type="number" id="precioPlato1" name="precioPlato1" required>
+                </div>
+                <div class="input-group">
+                    <label for="imagenPlato1">Imagen</label>
+                    <input type="file" id="imagenPlato1" name="imagenPlato1" accept="image/*">
+                </div>
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/editarMenu.js"></script>
+</body>
+</html>

@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const nit = localStorage.getItem('empresa');
 
     const createBranchForm = document.getElementById('crearSede-form');
-    const editMenuForm = document.getElementById('editarMenu-form');
     const editBranchForm = document.getElementById('editarSede-form');
     const branchList = document.getElementById('branchList');
     const editBranchBtn = document.getElementById('editarSedeBtn');
     const showCreateBranchFormBtn = document.getElementById('showCreateBranchFormBtn');
     const showEditBranchFormBtn = document.getElementById('showEditBranchFormBtn');
+    const editMenuBtn = document.getElementById('editarMenuBtn');
 
     async function uploadImage(imageFile) {
         const imageFormData = new FormData();
@@ -32,10 +32,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    if (createBranchForm && editMenuForm && editBranchForm && branchList && editBranchBtn && showCreateBranchFormBtn && showEditBranchFormBtn) {
+    if (createBranchForm && editBranchForm && branchList && editBranchBtn && showCreateBranchFormBtn && showEditBranchFormBtn) {
         showCreateBranchFormBtn.addEventListener('click', () => {
             createBranchForm.style.display = 'block';
-            editMenuForm.style.display = 'none';
             editBranchForm.style.display = 'none';
             resetScheduleField();
             document.getElementById("horario").value = '';
@@ -43,7 +42,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         showEditBranchFormBtn.addEventListener('click', () => {
             createBranchForm.style.display = 'none';
-            editMenuForm.style.display = 'none';
             editBranchForm.style.display = 'block';
             loadBranches();
             resetScheduleField();
@@ -132,6 +130,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     // Load schedule into modal
                     loadScheduleIntoModal(branch.Horario);
+
+                    // Show the "Editar Menú" button
+                    editMenuBtn.style.display = 'block';
+                    editMenuBtn.onclick = () => {
+                        window.location.href = `editarMenu.html?id=${selectedBranch}`;
+                    };
+
                 } catch (error) {
                     console.error('Error:', error);
                 }
