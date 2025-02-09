@@ -10,9 +10,8 @@ const fetchAndAddRestaurants = async () => {
             distance: `${Math.floor(Math.random() * 10) + 1} km`, // Random distance
             image: item.Imagenes,
             direccion: item.Direccion,
-            mesasTotales: item.MesasTotales,
             mesasDisponibles: item.MesasDisponibles,
-            reservasMaximas: item.ReservasMaximas,
+            cantidadDePersonasPorMesa: item.CantidadDePersonasPorMesa,
             telefono: item.Telefono,
             horario: item.Horario,
             categoria: parseInt(item.EmpresaCategoria)
@@ -53,16 +52,15 @@ const getRestaurantData = async () => {
     } else {
         const existingRestaurants = [
             {
-                id: "100", // Identificador único
+                id: "100",
                 name: "Restaurante El Buen Sabor",
                 logo: "../assets/images/logoRestaurante1.webp",
                 description: "Un lugar perfecto para disfrutar de comida casera.",
                 distance: "2.5 km",
                 image: "../assets/images/restaurante.jpg",
                 direccion: "Calle 123, Ciudad",
-                mesasTotales: 20,
                 mesasDisponibles: 5,
-                reservasMaximas: 10,
+                cantidadDePersonasPorMesa: 10,
                 telefono: "123-456-7890",
                 horario: "9:00 AM - 10:00 PM",
                 categoria: 3
@@ -75,9 +73,8 @@ const getRestaurantData = async () => {
                 distance: "5.0 km",
                 image: "../assets/images/restaurante2.jpg",
                 direccion: "Avenida 456, Ciudad",
-                mesasTotales: 15,
                 mesasDisponibles: 3,
-                reservasMaximas: 5,
+                cantidadDePersonasPorMesa: 5,
                 telefono: "098-765-4321",
                 horario: "10:00 AM - 11:00 PM",
                 categoria: 1
@@ -90,9 +87,8 @@ const getRestaurantData = async () => {
                 distance: "3.2 km",
                 image: "../assets/images/restaurante3.jpg",
                 direccion: "Calle 789, Ciudad",
-                mesasTotales: 25,
                 mesasDisponibles: 10,
-                reservasMaximas: 15,
+                cantidadDePersonasPorMesa: 15,
                 telefono: "456-789-0123",
                 horario: "8:00 AM - 9:00 PM",
                 categoria: 12
@@ -105,9 +101,8 @@ const getRestaurantData = async () => {
                 distance: "1.1 km",
                 image: "../assets/images/restaurante4.jpg",
                 direccion: "Avenida 101, Ciudad",
-                mesasTotales: 30,
                 mesasDisponibles: 20,
-                reservasMaximas: 25,
+                cantidadDePersonasPorMesa: 25,
                 telefono: "321-654-0987",
                 horario: "11:00 AM - 12:00 AM",
                 categoria: 10

@@ -10,9 +10,8 @@ const fetchAndAddRestaurants = async () => {
             distance: `${Math.floor(Math.random() * 10) + 1} km`, // Random distance
             image: item.Imagenes,
             direccion: item.Direccion,
-            mesasTotales: item.MesasTotales,
             mesasDisponibles: item.MesasDisponibles,
-            reservasMaximas: item.ReservasMaximas,
+            cantidadDePersonasPorMesa: item.CantidadDePersonasPorMesa,
             telefono: item.Telefono,
             horario: item.Horario,
             categoria: parseInt(item.EmpresaCategoria)
@@ -43,9 +42,8 @@ const getRestaurantData = async () => {
             distance: "2.5 km",
             image: "../assets/images/restaurante.jpg",
             direccion: "Calle 123, Ciudad",
-            mesasTotales: 20,
             mesasDisponibles: 5,
-            reservasMaximas: 10,
+            cantidadDePersonasPorMesa: 10,
             telefono: "123-456-7890",
             horario: "9:00 AM - 10:00 PM",
             categoria: 3
@@ -58,9 +56,8 @@ const getRestaurantData = async () => {
             distance: "5.0 km",
             image: "../assets/images/restaurante2.jpg",
             direccion: "Avenida 456, Ciudad",
-            mesasTotales: 15,
             mesasDisponibles: 3,
-            reservasMaximas: 5,
+            cantidadDePersonasPorMesa: 5,
             telefono: "098-765-4321",
             horario: "10:00 AM - 11:00 PM",
             categoria: 1
@@ -73,9 +70,8 @@ const getRestaurantData = async () => {
             distance: "3.2 km",
             image: "../assets/images/restaurante3.jpg",
             direccion: "Calle 789, Ciudad",
-            mesasTotales: 25,
             mesasDisponibles: 10,
-            reservasMaximas: 15,
+            cantidadDePersonasPorMesa: 15,
             telefono: "456-789-0123",
             horario: "8:00 AM - 9:00 PM",
             categoria: 12
@@ -88,9 +84,8 @@ const getRestaurantData = async () => {
             distance: "1.1 km",
             image: "../assets/images/restaurante4.jpg",
             direccion: "Avenida 101, Ciudad",
-            mesasTotales: 30,
             mesasDisponibles: 20,
-            reservasMaximas: 25,
+            cantidadDePersonasPorMesa: 25,
             telefono: "321-654-0987",
             horario: "11:00 AM - 12:00 AM",
             categoria: 10
@@ -107,11 +102,58 @@ const getRestaurantData = async () => {
     }
 
     // Mostrar los datos del restaurante
-    const container = document.getElementById('restaurante');
-    container.placeholder = restaurant.name;
-    container.setAttribute('disabled', 'disabled');
+    document.getElementById('restaurante').textContent = restaurant.name;
+    document.getElementById('direccion').textContent = restaurant.direccion;
 
+    // Set the max attribute for numpersonas input
+    const numPersonasInput = document.getElementById('numpersonas');
+    numPersonasInput.max = restaurant.cantidadDePersonasPorMesa;
+
+    // Set default and constraints for fecha input
+    const fechaInput = document.getElementById('fecha');
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setDate(today.getDate() + 7);
+    fechaInput.value = today.toISOString().split('T')[0];
+    fechaInput.min = today.toISOString().split('T')[0];
+    fechaInput.max = maxDate.toISOString().split('T')[0];
+
+    // Set default and constraints for horadereserva input
+    const horadereservaInput = document.getElementById('horadereserva');
+    const currentHour = new Date();
+    currentHour.setHours(currentHour.getHours() + 1, 0, 0, 0);
+    horadereservaInput.value = currentHour.toTimeString().split(' ')[0].substring(0, 5);
+    horadereservaInput.min = currentHour.toTimeString().split(' ')[0].substring(0, 5);
+
+    const dayOfWeek = today.toLocaleDateString('es-ES', { weekday: 'long' });
+    const restaurantSchedule = JSON.parse(restaurant.horario).find(day => day.day.toLowerCase() === dayOfWeek.toLowerCase());
+    if (restaurantSchedule) {
+        const closingTime = new Date(`1970-01-01T${restaurantSchedule.endTime}:00`);
+        closingTime.setMinutes(closingTime.getMinutes() - 30);
+        horadereservaInput.max = closingTime.toTimeString().split(' ')[0].substring(0, 5);
+    }
 };
 
-// Llamar a la función para cargar los datos del restaurante
+const populateUserData = async () => {
+    const userDocument = localStorage.getItem('documento');
+    if (!userDocument) {
+        console.error('No user document found in localStorage');
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/users/${userDocument}`);
+        const userData = await response.json();
+
+        document.getElementById('cedula').textContent = userData.Documento;
+        document.getElementById('nombres').textContent = userData.Nombres;
+        document.getElementById('apellido').textContent = userData.Apellido;
+        document.getElementById('telefono').value = userData.Telefono;
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+    }
+};
+
+// Llamar a las funciones para cargar los datos del restaurante y del usuario
 getRestaurantData();
+populateUserData();

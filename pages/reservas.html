@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crea tu Reserva | Géminis</title>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/create.css">
+    <link rel="stylesheet" href="../assets/css/reservas.css">
 </head>
 <body>
     <div id="nav"></div>
@@ -17,21 +17,31 @@
                 <form id="create-form">
                     <!-- Campos para usuario -->
                     <div id="usuario-fields">
-            
-            
-                        <input type="text" name="nombres" placeholder="Nombres" required>
-                        <input type="text" name="apellido" placeholder="Apellidos" required>
-                        <input type="text" name="telefono" placeholder="Teléfono" required>
-                        <input type="text" name="numpersonas" placeholder="numero de personas" required>
-                        <input type="text" name="restaurante" placeholder="restaurante" id="restaurante" required>
-                        <label id="searchForm:_t57">
-                                Fecha de reserva: </label>
-                        <input type="date" name="fecha" placeholder="Fecha" required>
-                        <br>
-                        <label id="searchForm:_t58">
-                                Hora de reserva: </label>
-                        <input type="time" name="horadereserva" placeholder="Hora de reserva"  required>
-                        <br>
+                        <label>Restaurante:</label>
+                        <p id="restaurante" class="info-field"></p>
+                        <label>Dirección:</label>
+                        <p id="direccion" class="info-field"></p>
+                        <label>Cédula:</label>
+                        <p id="cedula" class="info-field"></p>
+                        <label>Nombres:</label>
+                        <p id="nombres" class="info-field"></p>
+                        <label>Apellidos:</label>
+                        <p id="apellido" class="info-field"></p>
+                        <label for="telefono">Teléfono:</label>
+                        <input type="text" name="telefono" id="telefono" placeholder="Teléfono" required>
+                        <label for="numpersonas">Número de personas:</label>
+                        <input type="number" name="numpersonas" id="numpersonas" placeholder="Número de personas" required min="0">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" name="fecha" id="fecha" placeholder="Fecha" required>
+                        <label for="horadereserva">Hora de reserva:</label>
+                        <input type="time" name="horadereserva" id="horadereserva" placeholder="Hora de reserva" required step="1800">
+                        <label for="ocasion">Ocasión:</label>
+                        <select name="ocasion" id="ocasion" required>
+                            <option value="1">Casual</option>
+                            <option value="2">Cumpleaños</option>
+                            <option value="3">Grado</option>
+                            <option value="4">Aniversario</option>
+                        </select>
                     </div>
                     <!-- Campos para restaurante -->
                     <button type="submit">Crear</button>
