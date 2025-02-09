@@ -86,7 +86,7 @@ const loadComponent = async (id, file) => {
                     // home.style.display = "block";
                     // const hola = home.getAttribute("href")
                     // console.log(hola);
-                } 
+                }
             }
 
         } catch (error) {
@@ -125,22 +125,50 @@ const setActiveNavItem = () => {
     const currentPath = window.location.pathname;
     navItems.forEach(item => {
         if (currentPath.includes(item.getAttribute('href'))) {
-            if (item.querySelector('img')) { 
+            if (item.querySelector('img')) {
                 item.classList.add('no-hover')
                 return;
-            }    
+            }
             item.classList.add('active');
         } else {
             item.classList.remove('active');
         }
     });
 };
-
+// Desactivar el boxShadow para el nav sticky
+const handleNavShadow = () => {
+    const navElement = document.getElementById('nav');
+    if (navElement && navElement.classList.contains('nav-sticky')) {
+        const nav = document.querySelector('nav');
+        nav.style.boxShadow = 'none';
+    }
+};
 // Cargar Nav y Footer
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('nav', 'nav.html').then(() => {
         setActiveNavItem();
+        handleNavShadow();
+
     });
     loadComponent('footer', 'footer.html');
+    // animacion mision y vision
+    const about = window.location.pathname;
+    if (about.includes('about.html')) {
+        toggleSection('mision');
+    }
 });
+
+// Function to toggle mission and vision sections
+function toggleSection(section) {
+    const mision = document.querySelector('.mision');
+    const vision = document.querySelector('.vision');
+
+    if (section === 'mision') {
+        vision.classList.add('hidden'); // Oculta visión
+        mision.classList.remove('hidden'); // Muestra misión
+    } else if (section === 'vision') {
+        mision.classList.add('hidden'); // Oculta misión
+        vision.classList.remove('hidden'); // Muestra visión
+    }
+}
 

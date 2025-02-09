@@ -1,4 +1,3 @@
-
 .about main {
     line-height: 1.6;
     padding: 20px;
@@ -8,62 +7,96 @@
 .about-intro {
     text-align: center;
     padding: 2em 2em 3em;
-    background: linear-gradient(180deg, #120204 70%,  #e22c42);
+    background: linear-gradient(180deg, #120204 70%, #e22c42);
     color: white;
-    border-radius:0  0 1em 1em;
+    border-radius: 0 0 1em 1em;
     margin-bottom: 20px;
-    
+
 }
+
 .about .about-intro h1 {
     color: white;
 }
+
 .about-mission-vision {
     display: flex;
-    gap: 20px;
-    margin-top: 3em;
-    margin-bottom: 1.25em;
-    justify-content: space-between;
+
+    padding: 3em 0 5em;
 }
 
-.about-values,
-.about-value-propositions {
-    margin-bottom: 20px;
+.about-values {
+    display: flex;
+    align-items: center;
+    margin: 4em 0;
+    min-height: 600px;
+    background-image: url(../images/about-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
-.about-values ul {
-    list-style: none;
-    padding: 0;
+.about-values .propositions-bg {
+    width: 43%;
+    background: #fdedef;
+    padding: 2em 3em 3em;
+    border-radius: 1em;
+    box-shadow: 6px -6px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.about-values .propositions-bg p {
+    text-align: justify;
+}
+.about-mission-vision{
+    overflow: hidden;
+    max-height: 215px;
+}
+.about-mission-vision .vision-toggler,
+.about-mission-vision .mision-toggler {
+    background-color: #333;
+    color: white;
+    padding:  4em 0;
+    border-radius: 0 1em 1em 0;
+    cursor: pointer;
     text-align: center;
+    z-index: 24;
 }
 
-.about-values ul li {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: #f5576c;
-    font-weight: bold;
+.about-mission-vision .vision-toggler {
+    border-radius: 1em 0 0 1em;
 }
 
-.card {
-    flex: 1;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+.about-mission-vision .vision-toggler h2,
+.about-mission-vision .mision-toggler h2 {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
-
-.about h1, .about h2 {
+.about-mission-vision .vision,
+.about-mission-vision .mision{
+    padding: 2em 4em;
     text-align: center;
-    color: #333;
+    background-color: #120204;
+    color: white;
+    position: relative;
+    z-index: 1;
 }
-
-.about h3 {
-    margin-top: 0;
-    color: #f093fb;
-    text-align: center;
+.about-mission-vision .mision{
+    border-radius: 0 1em 1em 0;
+    left: -1em;
+}
+.about-mission-vision .vision{
+    border-radius: 1em 0 0 1em;
+    left: 1em;
+}
+.mision,.vision {
+    transition: opacity 1.2s ease, width 1s ease;
+    width: 110%;
+    opacity: 1;
+}
+.hidden {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    
 }

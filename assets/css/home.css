@@ -1,16 +1,16 @@
 /* BANNER */
 
-.home-intro{
+.home-intro {
     text-align: center;
     padding: 2em 2em 3em;
-    background: linear-gradient(180deg, #120204 70%,  #e22c42);
+    background: linear-gradient(180deg, #120204 70%, #e22c42);
     color: white;
-    border-radius:0  0 1em 1em;
+    border-radius: 0 0 1em 1em;
     margin-bottom: 20px;
 }
 
 /* CARRUSEL */
-#restaurants-section h1{
+#restaurants-section h1 {
     text-align: center;
     padding-top: 4em;
 }
@@ -30,9 +30,11 @@
     display: flex;
 
 }
-.carousel-container{
+
+.carousel-container {
     max-height: 30em;
 }
+
 .carousel-container .owl-nav {
     position: absolute;
     /* btn chiquitos */
@@ -58,7 +60,7 @@
 
 .carousel-container.owl-carousel .owl-nav button.owl-prev,
 .carousel-container.owl-carousel .owl-nav button.owl-next {
-    background: linear-gradient(90deg, #120204, #333, #120204) 0 0 ;
+    background: linear-gradient(90deg, #120204, #333, #120204) 0 0;
     min-width: 45px;
     width: 45px;
     height: 100%;
@@ -68,8 +70,8 @@
 }
 
 .carousel-container.owl-carousel .owl-nav button.owl-prev:hover,
-.carousel-container.owl-carousel .owl-nav button.owl-next:hover  {
-    
+.carousel-container.owl-carousel .owl-nav button.owl-next:hover {
+
     background: rgb(18, 2, 4);
     background: linear-gradient(270deg, rgba(18, 2, 4, 0.8) 0%, rgba(226, 44, 66, 1) 60%);
     color: rgb(4, 4, 38);
@@ -78,7 +80,7 @@
 
 .carousel-container {
     display: flex;
-    margin: 4em 0 ;
+    margin: 4em 0;
     height: fit-content;
 }
 
@@ -150,34 +152,39 @@
     color: #fff;
     padding: 1em 1.25em;
 }
-.carousel-item .restaurant-info p{
+
+.carousel-item .restaurant-info p {
     margin: 0.75em;
 }
-@media (min-width: 300px) and (max-width: 767.99px) { 
+
+@media (min-width: 300px) and (max-width: 767.99px) {
     .carousel-item {
         min-width: 300px;
         max-width: 300px;
     }
 }
-@media (min-width: 768px) and (max-width: 991.99px) { 
+
+@media (min-width: 768px) and (max-width: 991.99px) {
     .carousel-container .owl-nav {
-        width:117%;
+        width: 117%;
     }
 }
+
 /* planes */
 /* Boton */
 /* From Uiverse.io by JaydipPrajapati1910 */
-.pricing-plan-btn-container{
+.pricing-plan-btn-container {
     display: table;
     width: 100%;
     text-align: center;
 
 }
+
 .btn-container {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    
+
 }
 
 .btn-color-mode-switch {
@@ -188,7 +195,7 @@
 
 .btn-color-mode-switch>label.btn-color-mode-switch-inner {
     margin: 0;
-    width: 14vw;
+    width: 20vw;
     height: 40px;
     background-color: #120204;
     border-radius: 26px;
@@ -204,21 +211,21 @@
     font-size: 20px;
     font-weight: 600;
     top: 7px;
-    right: 20px;
+    right: 55px;
     color: #fff;
 }
 
 .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
     content: attr(data-off);
-    width: 7vw;
-    height: 25px;
+    width: 10vw;
+    height: 24px;
     background: linear-gradient(#901422, #e22c42, #901422);
     border-radius: 26px;
     position: absolute;
     font-size: 20px;
     display: flex;
     justify-content: center;
-    left: 0.2vw;
+    left: 4px;
     top: 2px;
     text-align: center;
     transition: all 0.3s ease;
@@ -245,13 +252,13 @@
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
     content: attr(data-on);
-    left: 6.8vw;
+    left: 9.8vw;
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
     content: attr(data-off);
     right: auto;
-    left: 20px;
+    left: 55px;
 }
 
 /* Cards */
@@ -265,7 +272,6 @@
     padding: 3em 0 4em;
     background-size: cover;
     background-position: center;
-    
 }
 
 .pricing-plans-section::before {
@@ -278,12 +284,14 @@
     background-image: url(../images/planes-bg.jpg);
     background-size: cover;
     background-position: center;
-    z-index: -1; /* Ensure the pseudo-element is behind the content */
+    z-index: -1;
+    /* Ensure the pseudo-element is behind the content */
 }
+
 .pricing-container {
     text-align: center;
     padding: 3em 1.25em 4em;
-    
+
 }
 
 .pricing-card-container-personal,
@@ -314,14 +322,14 @@
     font-weight: 700;
     font-style: normal;
 }
- .pricing-container button{
+
+.pricing-container button {
     box-shadow: 0 0 0.5em#120204;
- }
+}
+
 .price {
     font-size: 28px;
     font-weight: bold;
     color: #e22c42;
     margin: 10px 0;
 }
-
-
