@@ -45,7 +45,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             editBranchForm.style.display = 'block';
             loadBranches();
             resetScheduleField();
-            document.getElementById("horario1").value = '';
+            const horario1 = document.getElementById("horario1");
+            if (horario1) {
+                horario1.value = '';
+            }
         });
 
         createBranchForm.addEventListener('submit', async (event) => {
@@ -54,9 +57,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             const branchData = {
                 Direccion: formData.get('direccionSede'),
                 Empresa: nit,
-                MesasTotales: formData.get('mesasTotales'),
                 MesasDisponibles: formData.get('mesasDisponibles'),
-                ReservasMaximas: formData.get('reservasMaximas'),
+                CantidadDePersonasPorMesa: formData.get('cantidadDePersonasPorMesa'),
                 Telefono: formData.get('telefonoSede'),
                 Horario: formData.get('horario')
             };
@@ -106,9 +108,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     document.getElementById('direccionSede1').value = branch.Direccion;
                     document.getElementById('telefonoSede1').value = branch.Telefono;
-                    document.getElementById('mesasTotales1').value = branch.MesasTotales;
                     document.getElementById('mesasDisponibles1').value = branch.MesasDisponibles;
-                    document.getElementById('reservasMaximas1').value = branch.ReservasMaximas;
+                    document.getElementById('cantidadDePersonasPorMesa1').value = branch.CantidadDePersonasPorMesa;
                     document.getElementById('horario1').value = branch.Horario;
 
                     // Remove previous image container if exists
@@ -144,28 +145,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         function loadScheduleIntoModal(scheduleJson) {
-            const schedule = JSON.parse(scheduleJson);
-            const checkboxes = document.querySelectorAll(".day");
-            checkboxes.forEach(checkbox => {
-                const daySchedule = schedule.find(item => item.day === checkbox.value);
-                if (daySchedule) {
-                    checkbox.checked = true;
-                    const timeInputs = checkbox.parentNode.querySelectorAll("input[type='time']");
-                    timeInputs[0].value = daySchedule.startTime;
-                    timeInputs[1].value = daySchedule.endTime;
-                    timeInputs.forEach(input => {
-                        input.removeAttribute('disabled');
-                        input.setAttribute('required', 'required');
-                    });
-                } else {
-                    checkbox.checked = false;
-                    const timeInputs = checkbox.parentNode.querySelectorAll("input[type='time']");
-                    timeInputs.forEach(input => {
-                        input.setAttribute('disabled', 'disabled');
-                        input.removeAttribute('required');
-                    });
-                }
-            });
+            try {
+                const schedule = JSON.parse(scheduleJson);
+                const checkboxes = document.querySelectorAll(".day");
+                checkboxes.forEach(checkbox => {
+                    const daySchedule = schedule.find(item => item.day === checkbox.value);
+                    if (daySchedule) {
+                        checkbox.checked = true;
+                        const timeInputs = checkbox.parentNode.querySelectorAll("input[type='time']");
+                        timeInputs[0].value = daySchedule.startTime;
+                        timeInputs[1].value = daySchedule.endTime;
+                        timeInputs.forEach(input => {
+                            input.removeAttribute('disabled');
+                            input.setAttribute('required', 'required');
+                        });
+                    } else {
+                        checkbox.checked = false;
+                        const timeInputs = checkbox.parentNode.querySelectorAll("input[type='time']");
+                        timeInputs.forEach(input => {
+                            input.setAttribute('disabled', 'disabled');
+                            input.removeAttribute('required');
+                            input.value = '';
+                        });
+                    }
+                });
+            } catch (error) {
+                console.error('Error parsing schedule JSON:', error);
+            }
         }
 
         editBranchForm.addEventListener('submit', async (event) => {
@@ -174,9 +180,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             const branchData = {
                 Direccion: formData.get('direccionSede1'),
                 Empresa: nit,
-                MesasTotales: formData.get('mesasTotales1'),
                 MesasDisponibles: formData.get('mesasDisponibles1'),
-                ReservasMaximas: formData.get('reservasMaximas1'),
+                CantidadDePersonasPorMesa: formData.get('cantidadDePersonasPorMesa1'),
                 Telefono: formData.get('telefonoSede1'),
                 Horario: formData.get('horario1')
             };
@@ -190,8 +195,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             await updateBranchData(branchData);
             resetScheduleField();
-            document.getElementById("horario1").value = '';
-            document.getElementById("horario").value = '';
+            const horario1 = document.getElementById("horario1");
+            if (horario1) {
+                horario1.value = '';
+            }
+            const horario = document.getElementById("horario");
+            if (horario) {
+                horario.value = '';
+            }
         });
 
         async function updateBranchData(branchData) {
@@ -298,7 +309,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         // Display the schedule as a JSON string
         const scheduleJson = JSON.stringify(schedule, null, 2);
-        horarioTextarea.value = scheduleJson;
-        horarioTextarea1.value = scheduleJson;
+        if (horarioTextarea) {
+            horarioTextarea.value = scheduleJson;
+        }
+        if (horarioTextarea1) {
+            horarioTextarea1.value = scheduleJson;
+        }
     });
 });

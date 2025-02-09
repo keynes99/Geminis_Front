@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     document.getElementById('nombrePlato1').value = dish.Nombre;
                     document.getElementById('descripcionPlato1').value = dish.Descripcion;
                     document.getElementById('precioPlato1').value = dish.Precio;
+                    document.getElementById('categoriaPlato1').value = dish.Tipo; // Set the category
 
                     // Remove previous image container if exists
                     const existingImageContainer = document.querySelector('.image-container');
@@ -152,12 +153,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             const dishes = await response.json();
             console.log(dishes);
 
-            // Verificar si dishes es un objeto y tiene la propiedad Rowid
-            if (dishes && dishes.Rowid) {
-                dishList.innerHTML = `<option value="${dishes.Rowid}">${dishes.Nombre}</option>`;
-            } else {
-                console.error('La respuesta de la API no es el objeto esperado:', dishes);
-            }
+            // Clear the dishList dropdown
+            dishList.innerHTML = '';
+
+            // Populate the dishList dropdown with the dishes
+            dishes.forEach(dish => {
+                const option = document.createElement('option');
+                option.value = dish.Rowid;
+                option.textContent = dish.Nombre;
+                dishList.appendChild(option);
+            });
         } catch (error) {
             console.error('Error:', error);
         }
