@@ -94,6 +94,69 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
+    const confirmReservation = async (reservationId, restaurantId) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/reservas/confirmar/${reservationId}`, {
+                method: 'PUT'
+            });
+            if (response.ok) {
+                alert('La reserva ha sido confirmada satisfactoriamente');
+                // Decrease the number of available tables
+                await fetch(`http://localhost:3000/api/sedes/${restaurantId}/decreaseMesas`, {
+                    method: 'PUT'
+                });
+                location.reload(); // Reload the page to reflect changes
+            } else {
+                alert('Error al confirmar la reserva');
+            }
+        } catch (error) {
+            console.error('Error confirming reservation:', error);
+            alert('Error al confirmar la reserva');
+        }
+    };
+
+    const completeReservation = async (reservationId, restaurantId) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/reservas/completar/${reservationId}`, {
+                method: 'PUT'
+            });
+            if (response.ok) {
+                alert('La reserva ha sido completada satisfactoriamente');
+                // Decrease the number of available tables
+                await fetch(`http://localhost:3000/api/sedes/${restaurantId}/decreaseMesas`, {
+                    method: 'PUT'
+                });
+                location.reload(); // Reload the page to reflect changes
+            } else {
+                alert('Error al completar la reserva');
+            }
+        } catch (error) {
+            console.error('Error completing reservation:', error);
+            alert('Error al completar la reserva');
+        }
+    };
+
+    const noShowReservation = async (reservationId, restaurantId) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/reservas/noshow/${reservationId}`, {
+                method: 'PUT'
+            });
+            if (response.ok) {
+                alert('La reserva ha sido marcada como no-show');
+                // Decrease the number of available tables
+                await fetch(`http://localhost:3000/api/sedes/${restaurantId}/decreaseMesas`, {
+                    method: 'PUT'
+                });
+                location.reload(); // Reload the page to reflect changes
+            } else {
+                alert('Error al marcar la reserva como no-show');
+            }
+        } catch (error) {
+            console.error('Error marking reservation as no-show:', error);
+            alert('Error al marcar la reserva como no-show');
+        }
+    };
+
     const createReservationCard = async (reservation) => {
         const restaurant = await fetchRestaurantById(reservation.Sede);
         const occasionMap = {
@@ -124,6 +187,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <p><strong>Personas:</strong> ${reservation.Personas}</p>
                 <p><strong>Ocasion:</strong> ${occasionMap[reservation.Ocasion]}</p>
                 <p><strong>Estado:</strong> ${statusMap[reservation.Estado]}</p>
+                <p><strong>Cédula del cliente:</strong> ${reservation.Usuario}</p>
                 <p><strong>Teléfono del cliente:</strong> ${reservation.Telefono}</p>
                 <p><strong>Dirección del restaurante:</strong> ${restaurant.direccion}</p>
                 <p><strong>Telefono del restaurante:</strong> ${restaurant.telefono}</p>
@@ -146,13 +210,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     if (confirmCancel) {
                         cancelReservation(reservation.Rowid);
                         // Decrease the number of available tables
-                        try {
-                            await fetch(`http://localhost:3000/api/sedes/${restaurant.id}/increaseMesas`, {
-                                method: 'PUT'
-                            });
-                        } catch (error) {
-                            console.error('Error increasing available tables:', error);
-                            alert('Error al actualizar las mesas disponibles');
+                        if (reservation.Estado === 2) {
+                            try {
+                                await fetch(`http://localhost:3000/api/sedes/${restaurant.id}/increaseMesas`, {
+                                    method: 'PUT'
+                                });
+                            } catch (error) {
+                                console.error('Error increasing available tables:', error);
+                                alert('Error al actualizar las mesas disponibles');
+                            }
                         }
                     }
                 }
@@ -160,6 +226,44 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             card.appendChild(cancelButton);
         }
+
+        if (reservation.Estado === 1) {
+            const confirmButton = document.createElement('button');
+            confirmButton.className = 'confirm-button';
+            confirmButton.textContent = 'Confirmar Reserva';
+            confirmButton.addEventListener('click', async () => {
+                const confirmConfirm = confirm('¿Está seguro que desea confirmar esta reserva?');
+                if (confirmConfirm) {
+                    confirmReservation(reservation.Rowid, restaurant.id);
+                }
+            });
+            card.appendChild(confirmButton);
+        }
+
+        if (reservation.Estado === 2) {
+            const completeButton = document.createElement('button');
+            completeButton.className = 'complete-button';
+            completeButton.textContent = 'Completar Reserva';
+            completeButton.addEventListener('click', async () => {
+                const confirmComplete = confirm('¿Está seguro que desea completar esta reserva?');
+                if (confirmComplete) {
+                    completeReservation(reservation.Rowid, restaurant.id);
+                }
+            });
+            card.appendChild(completeButton);
+
+            const noShowButton = document.createElement('button');
+            noShowButton.className = 'noshow-button';
+            noShowButton.textContent = 'Cliente no apareció';
+            noShowButton.addEventListener('click', async () => {
+                const confirmNoShow = confirm('¿Está seguro que desea marcar esta reserva como no-show?');
+                if (confirmNoShow) {
+                    noShowReservation(reservation.Rowid, restaurant.id);
+                }
+            });
+            card.appendChild(noShowButton);
+        }
+
         reservasList.appendChild(card);
     };
 
@@ -168,14 +272,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         const statusFilter = document.getElementById('filter-status').value;
         const occasionFilter = document.getElementById('filter-occasion').value;
         const dateFilter = document.getElementById('filter-date').value;
+        const clientIdFilter = document.getElementById('filter-client-id').value.toLowerCase();
 
         const filteredReservations = reservations.filter(reservation => {
             const matchesConfirmation = confirmationFilter === '' || reservation.NumeroDeConfirmacion.toLowerCase().includes(confirmationFilter);
             const matchesStatus = statusFilter === '' || reservation.Estado.toString() === statusFilter;
             const matchesOccasion = occasionFilter === '' || reservation.Ocasion.toString() === occasionFilter;
             const matchesDate = dateFilter === '' || new Date(reservation.Fecha).toISOString().split('T')[0] === dateFilter;
+            const matchesClientId = clientIdFilter === '' || reservation.Usuario.toLowerCase().includes(clientIdFilter);
 
-            return matchesConfirmation && matchesStatus && matchesOccasion && matchesDate;
+            return matchesConfirmation && matchesStatus && matchesOccasion && matchesDate && matchesClientId;
         });
 
         renderFilteredReservations(filteredReservations);
@@ -194,6 +300,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('filter-status').value = '';
         document.getElementById('filter-occasion').value = '';
         document.getElementById('filter-date').value = '';
+        document.getElementById('filter-client-id').value = '';
         renderPage(currentPage);
     };
 

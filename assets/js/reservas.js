@@ -196,10 +196,6 @@ document.getElementById('create-form').addEventListener('submit', async (event) 
             const result = await response.json();
             alert(`Reserva creada exitosamente. Número de confirmación: ${result.NumeroDeConfirmacion}. Si desea otra mesa, puede crear otra reservación.`);
 
-            // Decrease the number of available tables
-            await fetch(`http://localhost:3000/api/sedes/${restaurantId}/decreaseMesas`, {
-                method: 'PUT'
-            });
 
             // Redirect to reservasCliente.html
             window.location.href = 'reservasCliente.html';
