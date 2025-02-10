@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/editarRestaurante.css">
 </head>
+
 <body>
     <div id="nav"></div>
 
@@ -35,11 +37,11 @@
                     <input type="number" id="cantidadDePersonasPorMesa" name="cantidadDePersonasPorMesa" required>
                 </div>
                 <div class="input-group" onclick="openModal()">
-                    <label for="horario">Horario</label>
+                    <label class="horario" for="horario">Horario <img src="../assets/images/edit.png" alt="Editar Horario"></label>
                     <input type="text" id="horario" name="horario" required>
                 </div>
                 <div class="input-group">
-                    
+
                     <label for="imagenes">Imágenes</label>
                     <input type="file" id="imagenes" name="imagenes" accept="image/*" multiple>
                 </div>
@@ -86,47 +88,54 @@
         </div>
         <div id="horarioModal" class="modal">
             <div class="modal-content">
-                
+
                 <h2>Selecciona tu disponibilidad</h2>
                 <div class="container">
-                    <span class="close-btn" onclick="closeModal()">✖</span>
-                    <form id="schedule-form">
+
+                    <form id="schedule-form" class="form-horario">
                         <label>
-                            <input type="checkbox" class="day" value="Lunes"> Lunes
+                            <input type="checkbox" class="day" value="Lunes" id="Lunes" checked="false">
+                            <label class="day-label" for="Lunes">Lunes</label>
                             <input type="time" class="start-time" disabled>
                             <input type="time" class="end-time" disabled>
                         </label>
                         <label>
-                            <input type="checkbox" class="day" value="Martes"> Martes
+                            <input type="checkbox" class="day" value="Martes" id="Martes" checked="false">
+                            <label class="day-label" for="Martes">Martes</label>
                             <input type="time" class="start-time" disabled>
                             <input type="time" class="end-time" disabled>
                         </label>
                         <label>
-                            <input type="checkbox" class="day" value="Miércoles"> Miércoles
+                            <input type="checkbox" class="day" value="Miércoles" id="Miércoles" checked="false">
+                            <label class="day-label" for="Miércoles">Miércoles</label>
                             <input type="time" class="start-time" disabled>
                             <input type="time" class="end-time" disabled>
                         </label>
                         <label>
-                            <input type="checkbox" class="day" value="Jueves"> Jueves
+                            <input type="checkbox" class="day" value="Jueves" id="Jueves" checked="false">
+                            <label class="day-label" for="Jueves">Jueves</label>
                             <input type="time" class="start-time" disabled>
                             <input type="time" class="end-time" disabled>
                         </label>
                         <label>
-                            <input type="checkbox" class="day" value="Viernes"> Viernes
+                            <input type="checkbox" class="day" value="Viernes" id="Viernes" checked="false">
+                            <label class="day-label" for="Viernes">Viernes</label>
                             <input type="time" class="start-time" disabled>
                             <input type="time" class="end-time" disabled>
                         </label>
                         <label>
-                            <input type="checkbox" class="day" value="Sábado"> Sábado
+                            <input type="checkbox" class="day" value="Sábado" id="Sábado" checked="false">
+                            <label class="day-label" for="Sábado">Sábado</label>
                             <input type="time" class="start-time" disabled>
                             <input type="time" class="end-time" disabled>
                         </label>
                         <label>
-                            <input type="checkbox" class="day" value="Domingo"> Domingo
+                            <input type="checkbox" class="day" value="Domingo" id="Domingo" checked="false">
+                            <label class="day-label" for="Domingo">Domingo</label>
                             <input type="time" class="start-time" disabled>
                             <input type="time" class="end-time" disabled>
                         </label>
-                        <button type="button" id="save-btn">Guardar Horario</button>
+                        <button type="button" id="save-btn" onclick="closeModal()">Guardar Horario</button>
                     </form>
 
                 </div>
@@ -139,4 +148,5 @@
     <script src="../assets/js/sedes.js"></script>
 
 </body>
+
 </html>
