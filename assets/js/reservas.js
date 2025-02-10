@@ -1,8 +1,8 @@
-const fetchAndAddRestaurants = async () => {
+const fetchRestaurantById = async (id) => {
     try {
-        const response = await fetch('http://localhost:3000/api/sedes/all');
-        const data = await response.json();
-        const newRestaurants = data.map(item => ({
+        const response = await fetch(`http://localhost:3000/api/sedes/all/sedeid/${id}`);
+        const item = await response.json();
+        return {
             id: item.Rowid.toString(),
             name: item.EmpresaNombre,
             logo: item.UbicacionLogo,
@@ -15,11 +15,10 @@ const fetchAndAddRestaurants = async () => {
             telefono: item.Telefono,
             horario: item.Horario,
             categoria: parseInt(item.EmpresaCategoria)
-        }));
-        return newRestaurants;
+        };
     } catch (error) {
-        console.error('Error fetching restaurants:', error);
-        return [];
+        console.error('Error fetching restaurant:', error);
+        return null;
     }
 };
 
@@ -92,9 +91,11 @@ const getRestaurantData = async () => {
         }
     ];
 
-    const fetchedRestaurants = await fetchAndAddRestaurants();
-    const restaurants = existingRestaurants.concat(fetchedRestaurants);
-    const restaurant = restaurants.find(r => r.id === restaurantId);
+    let restaurant = existingRestaurants.find(r => r.id === restaurantId);
+
+    if (!restaurant) {
+        restaurant = await fetchRestaurantById(restaurantId);
+    }
 
     if (!restaurant) {
         document.body.innerHTML = "<h1>Restaurante no encontrado</h1>";
@@ -153,6 +154,63 @@ const populateUserData = async () => {
         console.error('Error fetching user data:', error);
     }
 };
+
+document.getElementById('create-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const restaurantId = new URLSearchParams(window.location.search).get('id');
+    const restaurant = await fetchRestaurantById(restaurantId);
+
+    if (restaurant.mesasDisponibles <= 0) {
+        alert('En este momento no hay mesas disponibles, por favor intente más tarde.');
+        return;
+    }
+
+    const userDocument = localStorage.getItem('documento');
+    const ocasion = document.getElementById('ocasion').value;
+    const fecha = document.getElementById('fecha').value;
+    const hora = document.getElementById('horadereserva').value;
+    const personas = document.getElementById('numpersonas').value;
+    const telefono = document.getElementById('telefono').value;
+
+    const reservationData = {
+        Usuario: userDocument,
+        Sede: restaurantId,
+        Ocasion: ocasion,
+        Fecha: fecha,
+        Hora: hora,
+        Personas: personas,
+        Telefono: telefono
+    };
+
+    try {
+        const response = await fetch('http://localhost:3000/api/reservas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reservationData)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert(`Reserva creada exitosamente. Número de confirmación: ${result.NumeroDeConfirmacion}. Si desea otra mesa, puede crear otra reservación.`);
+
+            // Decrease the number of available tables
+            await fetch(`http://localhost:3000/api/sedes/${restaurantId}/decreaseMesas`, {
+                method: 'PUT'
+            });
+
+            // Redirect to reservasCliente.html
+            window.location.href = 'reservasCliente.html';
+        } else {
+            alert('Error al crear la reserva. Por favor, intente nuevamente.');
+        }
+    } catch (error) {
+        console.error('Error creating reservation:', error);
+        alert('Error al crear la reserva. Por favor, intente nuevamente.');
+    }
+});
 
 // Llamar a las funciones para cargar los datos del restaurante y del usuario
 getRestaurantData();

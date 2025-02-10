@@ -1,0 +1,203 @@
+h1 {
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 2.6em;
+}
+
+.reservas-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.reservation-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 2vh;
+    border: 5px solid transparent;
+    width: 80%; /* Make the card longer */
+    max-width: 800px; /* Set a maximum width */
+    margin: 2vh auto; /* Center the card */
+}
+
+.reservation-card h2 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 2em;
+    color: #e22c42;
+}
+
+.reservation-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto;
+}
+
+.reservation-card p {
+    margin: 5px 20px;
+    font-size: 1.15em;
+}
+
+.reservation-card .card-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.reservation-card .card-content p {
+    flex: 1 1 45%; /* Two columns */
+    margin: 5px 0;
+}
+
+.cancel-button {
+    align-self: center;
+}
+
+.reservation-card[data-status="1"] {
+    border-color: #ffcc00; /* Esperando confirmación del restaurante */
+}
+
+.reservation-card[data-status="2"] {
+    border-color: #00cc66; /* Confirmada por el restaurante */
+}
+
+.reservation-card[data-status="3"] {
+    border-color: #ff4d4d; /* Cancelada */
+}
+
+.reservation-card[data-status="4"] {
+    border-color: #3399ff; /* Completada */
+}
+
+.reservation-card[data-status="5"] {
+    border-color: #cc3300; /* El cliente nunca llegó */
+}
+
+.branch-bar {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color:  #333; /* Black background */
+    color: #fff; /* White text */
+    border-radius: 10px;
+}
+
+.branch-bar label {
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.branch-bar select {
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color:  #333; /* Black background */
+    color: #fff; /* White text */
+    border-radius: 10px;
+}
+
+.filter-bar label {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+.filter-bar input,
+.filter-bar select {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text */
+}
+
+.filter-bar button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #e22c42;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-bar button:hover {
+    background-color: #c21e36;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.pagination-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #e22c42;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.pagination-btn:hover {
+    background-color: #c21e36;
+}
+
+#page-info {
+    font-size: 1.2em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reservation-card {
+        width: 95%;
+    }
+
+    .reservation-card .card-content p {
+        flex: 1 1 100%; /* Single column on small screens */
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .filter-bar label,
+    .filter-bar input,
+    .filter-bar select,
+    .filter-bar button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .pagination-controls {
+        flex-direction: column;
+    }
+
+    .pagination-btn {
+        margin: 10px 0;
+    }
+}

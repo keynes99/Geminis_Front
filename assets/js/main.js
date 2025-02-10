@@ -80,9 +80,11 @@ const loadComponent = async (id, file) => {
                     // console.log(window.location.pathname);
                     // const user = document.querySelector(".dropdown");
                     // const domi = document.querySelector(".domicilios");
+                    // const reserva = document.querySelector(".reservas");
                     // const home = document.querySelector(".login");
                     // user.style.display = "none";
                     // domi.style.display = "none";
+                    // reserva.style.display = "none";
                     // home.style.display = "block";
                     // const hola = home.getAttribute("href")
                     // console.log(hola);
