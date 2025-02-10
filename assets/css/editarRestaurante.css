@@ -67,7 +67,9 @@
 }
 
 .input-group input[type="file" i]::-webkit-file-upload-button:hover {
-    background-color: #0056b3;
+    background-color: #e22c42;
+    background-image: linear-gradient(90deg, rgb(103, 19, 29), #e22c42, #67131d);
+    color: white;
 }
 
 button {
@@ -76,23 +78,11 @@ button {
     margin-top: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #e44c42;
     color: #fff;
     cursor: pointer;
     font-size: 16px;
     align-self: flex-end;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-button[type="submit"] {
-    background-color: #28a745;
-}
-
-button[type="submit"]:hover {
-    background-color: #218838;
 }
 
 /* Sedes */
@@ -101,7 +91,7 @@ button[type="submit"]:hover {
     display: block;
     margin: 10px 0;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #333;
     color: white;
     border: none;
     cursor: pointer;
@@ -109,14 +99,80 @@ button[type="submit"]:hover {
 
 #showCreateBranchFormBtn:hover,
 #showEditBranchFormBtn:hover {
-    background-color: #0056b3;
+    background-color: #333;
 }
 
 h2 {
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin: 2em 0 2.5em;
 }
 
-.input-group.horario label {
+.input-group label.horario ,
+.input-group label.horario1 {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin: 2em 0;
+}
+.input-group input#horario,
+.input-group input#horario1{
+    display: none;
+}
+.form-horario {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-content: center;
+}
+
+.form-horario label {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    width: 60%;
+    align-items: center;
+    font-size: 1rem;
+    padding: .5em 0;
+}
+
+.form-horario label input[type="time" i] {
+    padding: .25em .5em;
+    border-radius: .5em;
+    border-color: #e22c42;
+    
+}
+
+.form-horario label input[type="time" i]:disabled {
+    border-color: lightgrey;
+}
+
+.day {
+    display: none;
+    /* Hide the original checkbox */
+}
+
+.day-label {
+    background-color: transparent;
+    font-size: 11px;
+    font-weight: 600;
+    color: #120204;
+    cursor: pointer;
+    border: 2px solid #67131d;
+    border-radius: 1em;
+    min-width: 90px;
+    width: 100%;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+/* Apply styles for the selected state */
+.day:checked +.day-label {
+    background-color: #e22c42;
+    background-image: linear-gradient(147deg, #e22c42 0%, #67131d 74%);
+    border: none;
+    color:white;
 }

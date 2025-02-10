@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 });
-function openModal(planType) {
+function openModal() {
     const modal = document.getElementById("horarioModal");
     
     modal.style.display = "flex";
@@ -266,6 +266,7 @@ function openModal(planType) {
 function closeModal() {
     const modal = document.getElementById("horarioModal");
     modal.style.display = "none";
+    alert('Horario guardado exitosamente');
 }
 // Agregar horario dinamico
 document.addEventListener("DOMContentLoaded", function () {
