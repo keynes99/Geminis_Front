@@ -33,7 +33,7 @@ const getDomicilios = async (userId) => {
 // Función para renderizar los domicilios en el HTML
 const renderDomicilios = (domicilios) => {
     const domiciliosList = document.querySelector('.domicilios-list');
-    
+    const Empresa = localStorage.getItem('empresa'); // Obtener empresa del localStorage
     // Limpiar la lista de domicilios antes de agregar los nuevos
     domiciliosList.innerHTML = '';
 
@@ -69,7 +69,7 @@ const renderDomicilios = (domicilios) => {
 
         // Agregar la clase de estado al card
         domicilioCard.classList.add(estadoClass);
-        if(domicilio.Estado !== 3){
+        if(domicilio.Estado !== 3 && Empresa != "null"){
         // Contenido de la tarjeta
         domicilioCard.innerHTML = `
             <h2>Pedido #${domicilio.NumeroDomicilio}</h2>
@@ -84,7 +84,7 @@ const renderDomicilios = (domicilios) => {
         
         `;
         }
-        if(domicilio.Estado !== 3){
+        if(domicilio.Estado !== 3 && Empresa != "null"){
             // Contenido de la tarjeta
             domicilioCard.innerHTML = `
                 <h2>Pedido #${domicilio.NumeroDomicilio}</h2>
@@ -113,7 +113,7 @@ const renderDomicilios = (domicilios) => {
             }
         domiciliosList.appendChild(domicilioCard);
     });
-
+    
     // Agregar evento a los botones "Ver Detalles"
     document.querySelectorAll('.priamry-btn').forEach(button => {
         button.addEventListener('click', (event) => {
