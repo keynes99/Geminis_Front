@@ -89,7 +89,9 @@ const cambiarEstadoDomicilio = async (domicilioId, estadoActual) => {
         if (response.ok) {
             const result = await response.json();
             alert(result.message); // Mensaje de éxito
-            window.location.reload(); // Recargar la página para reflejar el cambio
+
+            // Redirigir a la pantalla de domicilios
+            window.location.href = '/pages/domicilios.html';
         } else {
             throw new Error('No se pudo cambiar el estado del domicilio');
         }

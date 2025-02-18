@@ -30,8 +30,36 @@
     box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3); /* Sombra verde */
 }
 
+.domicilios-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Máximo 6 tarjetas por fila */
+    gap: 16px; /* Espacio entre las tarjetas */
+    padding: 16px; /* Espaciado interno */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor horizontalmente */
+}
+
+.domicilio-card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 20px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+}
+
+.domicilio-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+}
 
 /* Agrega un relleno inferior al contenedor principal */
 .domicilios-container {
+    position: relative;
     padding-bottom: 50px;
 }
