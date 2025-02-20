@@ -22,12 +22,16 @@ form.addEventListener('submit', async (event) => {
 
         const data = await response.json();
         console.log(data);
-        let userName = data.user.Nombres + ' ' + data.user.Apellido;
-        localStorage.setItem('nombre', userName); // Guardar el nombre del usuario
-        localStorage.setItem('documento', data.user.Documento); // Guardar el documento del usuario
-        localStorage.setItem('empresa', data.user.Empresa); // Guardar la empresa del usuario
-        localStorage.setItem('token', data.token); // Guardar el token
-        window.location.href = './home.html'; // Redirigir al home
+        if (data.user.AutenticacionDosFactores) {
+            window.location.href = './confirm.html'; // Redirigir a la página de confirmación
+        } else {
+            let userName = data.user.Nombres + ' ' + data.user.Apellido;
+            localStorage.setItem('nombre', userName); // Guardar el nombre del usuario
+            localStorage.setItem('documento', data.user.Documento); // Guardar el documento del usuario
+            localStorage.setItem('empresa', data.user.Empresa); // Guardar la empresa del usuario
+            localStorage.setItem('token', data.token); // Guardar el token
+            window.location.href = './home.html'; // Redirigir al home
+        }
     } catch (error) {
         errorMessage.textContent = error.message;
     }

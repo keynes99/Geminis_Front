@@ -1,0 +1,42 @@
+
+body#confirm-page {
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.confirm-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.confirm-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.confirm-card .logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.confirm-card h1 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.confirm-card p {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.5;
+}

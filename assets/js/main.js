@@ -103,6 +103,7 @@ const logout = () => {
     localStorage.removeItem('documento');
     localStorage.removeItem("token");
     localStorage.removeItem("empresa");
+    
 
     // Borrar variables con info de la persona
     userName = '';
