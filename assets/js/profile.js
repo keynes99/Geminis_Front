@@ -17,6 +17,8 @@ const loadProfile = async () => {
         document.getElementById('telefono').value = data.Telefono;
         document.getElementById('direccion').value = data.Direccion;
         document.getElementById('contrasena').value = ''; // No cargues contraseñas directamente
+        document.getElementById('correo').value = data.Correo;
+        document.getElementById('autenticacionDosFactores').checked = data.AutenticacionDosFactores;
 
         // Mostrar empresa si existe
         if (data.Empresa) {
@@ -37,6 +39,8 @@ form.addEventListener('submit', async (event) => {
         Apellido: document.getElementById('apellido').value,
         Telefono: document.getElementById('telefono').value,
         Direccion: document.getElementById('direccion').value,
+        Correo: document.getElementById('correo').value,
+        AutenticacionDosFactores: document.getElementById('autenticacionDosFactores').checked,
     };
 
     const contrasena = document.getElementById('contrasena').value;

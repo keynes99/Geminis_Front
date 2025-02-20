@@ -9,7 +9,6 @@ const esAdminSelect = document.getElementById('es-admin');
 const adminNitContainer = document.getElementById('admin-nit');
 const nitRestauranteSelect = document.getElementById('nit-restaurante');
 
-
 // Mostrar/Ocultar campos según el tipo seleccionado
 tipoSelect.addEventListener('change', () => {
     if (tipoSelect.value === 'usuario') {
@@ -56,7 +55,7 @@ form.addEventListener('submit', async (event) => {
     const body = {};
     formData.forEach((value, key) => (body[key] = value));
 
-    if (formData.get('logo')&&tipoSelect.value === 'restaurante') {
+    if (formData.get('logo') && tipoSelect.value === 'restaurante') {
         const logoFile = formData.get('logo');
         const logoFormData = new FormData();
         logoFormData.append('image', logoFile);
