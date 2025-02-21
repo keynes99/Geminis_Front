@@ -3,7 +3,7 @@
 .home-intro {
     text-align: center;
     padding: 2em 2em 3em;
-    background: linear-gradient(180deg, #120204 70%, #e22c42);
+    background: linear-gradient(180deg, var(--secondary-color) 70%, var(--primary-color));
     color: white;
     border-radius: 0 0 1em 1em;
     margin-bottom: 20px;
@@ -22,10 +22,6 @@
     justify-content: center;
 }
 
-.owl-carousel .owl-stage-outer {
-    max-width: 90%;
-}
-
 .owl-carousel .owl-item.active {
     display: flex;
 
@@ -37,6 +33,7 @@
 
 .carousel-container .owl-nav {
     position: absolute;
+
     /* btn chiquitos */
     /* top: 175.875px;
     left: -52px;
@@ -47,20 +44,17 @@
     /* btn grandes */
     top: 0;
     left: 0;
-    width: 100%;
-    max-width: 95%;
     height: 469px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: -1;
     background: transparent;
-    margin: 0 3.3em;
 }
 
 .carousel-container.owl-carousel .owl-nav button.owl-prev,
 .carousel-container.owl-carousel .owl-nav button.owl-next {
-    background: linear-gradient(90deg, #120204, #333, #120204) 0 0;
+    background: linear-gradient(90deg, var(--secondary-color), #333, var(--secondary-color)) 0 0;
     min-width: 45px;
     width: 45px;
     height: 100%;
@@ -73,7 +67,7 @@
 .carousel-container.owl-carousel .owl-nav button.owl-next:hover {
 
     background: rgb(18, 2, 4);
-    background: linear-gradient(270deg, rgba(18, 2, 4, 0.8) 0%, rgba(226, 44, 66, 1) 60%);
+    background: linear-gradient(270deg, rgba(18, 2, 4, 0.8) 0%, var(--primary-color) 60%);
     color: rgb(4, 4, 38);
     transform: none;
 }
@@ -88,14 +82,10 @@
     flex-direction: column;
     flex: 0 0 auto;
     /* Evitar que los elementos se encojan */
-    min-height: 469px;
-    max-height: 469px;
-    min-width: 350px;
-    max-width: 350px;
     margin: 0 10px;
     border-radius: 8px;
     overflow: hidden;
-    background: #333;
+    background: var(--primary-dark);
     text-align: center;
     scroll-snap-align: start;
     /* Alineación de ajuste */
@@ -105,6 +95,9 @@
     /* Centra la imagen dentro del contenedor */
     align-items: center;
     justify-content: space-between;
+    min-height: 469px;
+    max-height: 469px;
+
 }
 
 .carousel-item .restaurant-img {
@@ -112,7 +105,6 @@
     width: 100%;
     height: 200px;
     max-height: 200px;
-
     object-fit: cover;
 }
 
@@ -123,7 +115,7 @@
     /* Ajusta según la posición deseada */
     left: 10px;
     /* Ajusta según la posición deseada */
-    background: #fdedef;
+    background: var(--background-color);
     padding: 0.75em;
     overflow: hidden;
     width: 3.5em;
@@ -149,7 +141,7 @@
     width: 90%;
     align-items: center;
     position: relative;
-    color: #fff;
+    color: var(--text-color);
     padding: 1em 1.25em;
 }
 
@@ -157,17 +149,44 @@
     margin: 0.75em;
 }
 
-@media (min-width: 300px) and (max-width: 767.99px) {
+@media (min-width: 300px) {
     .carousel-item {
-        min-width: 300px;
-        max-width: 300px;
+        min-width: 260px;
+        max-width: 260px;
+    }
+    .carousel-container .owl-dots {
+        display: flex;
+        overflow: hidden;
+        max-width: 131px;
+        position: absolute;
+        top: -2em;
+        height: 1em;
+    } 
+    
+    .carousel-container .owl-dots .owl-dot {
+        min-width: 5px;
+        max-width: 5px;
+        height: 5px;
+        background-color: #333;
+        border-radius: 50%;
+        margin: 0 0.5em;
     }
 }
 
-@media (min-width: 768px) and (max-width: 991.99px) {
-    .carousel-container .owl-nav {
-        width: 117%;
+@media (min-width: 768px) {
+    .carousel-item {
+        min-width: 350px;
+        max-width: 350px;
     }
+
+    .pricing-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 33%;
+        align-items: center;
+    }
+
 }
 
 /* planes */
@@ -197,7 +216,7 @@
     margin: 0;
     width: 20vw;
     height: 40px;
-    background-color: #120204;
+    background-color: var(--secondary-color);
     border-radius: 26px;
     overflow: hidden;
     position: relative;
@@ -211,22 +230,22 @@
     font-size: 20px;
     font-weight: 600;
     top: 7px;
-    right: 55px;
-    color: #fff;
+    right:2vw;
+    color: var(--text-color);
 }
 
 .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
     content: attr(data-off);
     width: 10vw;
     height: 24px;
-    background: linear-gradient(#901422, #e22c42, #901422);
+    background: linear-gradient(var(--primary-dark), var(--primary-color), var(--primary-dark));
     border-radius: 26px;
     position: absolute;
     font-size: 20px;
     display: flex;
     justify-content: center;
     left: 4px;
-    top: 2px;
+    top: 2.5px;
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0px 0px 6px -2px #111;
@@ -237,8 +256,6 @@
 
 .btn-color-mode-switch input[type="checkbox"] {
     cursor: pointer;
-    width: 50px;
-    height: 25px;
     opacity: 0;
     position: absolute;
     top: 0;
@@ -247,7 +264,7 @@
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner {
-    background-color: #120204;
+    background-color: var(--secondary-color);
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
@@ -258,18 +275,16 @@
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
     content: attr(data-off);
     right: auto;
-    left: 55px;
+    left: 2vw;
 }
 
 /* Cards */
 .pricing-plans-section {
     position: relative;
     overflow: hidden;
-    background-color: #67131dcc;
+    background-color: var(--primary-darker);
     color: white;
-    margin: 4em .5em;
     border-radius: 1em;
-    padding: 3em 0 4em;
     background-size: cover;
     background-position: center;
 }
@@ -290,7 +305,7 @@
 
 .pricing-container {
     text-align: center;
-    padding: 3em 1.25em 4em;
+    padding: 3em 0 4em;
 
 }
 
@@ -303,12 +318,12 @@
 }
 
 .pricing-card {
-    background: #fdedef;
-    color: #120204;
+    background: var(--background-color);
+    color: var(--secondary-color);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 .25em .5em rgba(255, 255, 255, 0.1);
-    width: 25%;
+
     transition: transform 0.3s ease;
 }
 
@@ -324,12 +339,197 @@
 }
 
 .pricing-container button {
-    box-shadow: 0 0 0.5em#120204;
+    box-shadow: 0 0 0.5em var(--secondary-color);
 }
 
 .price {
     font-size: 28px;
     font-weight: bold;
-    color: #e22c42;
+    color: var(--primary-color);
     margin: 10px 0;
+}
+
+/* Dispositivos muy pequeños (móviles en vertical) */
+@media (max-width: 576px) {
+   
+}
+
+/* Dispositivos pequeños (móviles en horizontal y tablets pequeñas) */
+@media (min-width: 577px) and (max-width: 767.98px) {
+    .owl-carousel .owl-stage-outer {
+        max-width: 89vw;
+    }
+    
+    .carousel-container .owl-dots .owl-dot.active {
+        background-color: var(--primary-color);
+    }
+    /* planes */
+    /* Cards */
+    .pricing-plans-section {
+        margin: 0 .5em;
+        padding: 3em 0 4em;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+        width: 38vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+        right: 2.5vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+        left: 2.5vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+        width: 18vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:afteR {
+        left: 14.5vw;
+    }
+}
+
+/* Dispositivos medianos (tablets en horizontal y pantallas pequeñas) */
+@media (min-width: 768px) and (max-width: 991.99px) {
+    .owl-carousel .owl-stage-outer {
+        max-width: 83vw;
+    }
+    .carousel-container .owl-nav {
+        width: 95vw;
+        left: 2.3vw;
+    }           
+    /* planes */
+    /* Cards */
+    .pricing-plans-section {
+        margin: 0 .5em;
+        padding: 3em 0 4em;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+        width: 30vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+        right: 2.5vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+        left: 2.5vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+        width: 15vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:afteR {
+        left: 14.5vw;
+    }
+
+
+}
+
+/* Dispositivos grandes (pantallas grandes y escritorios) */
+@media (min-width: 992px) and (max-width: 1200.98px) {
+    .owl-carousel .owl-stage-outer {
+        max-width: 86vw;
+
+    }
+
+    .carousel-container .owl-nav {
+        width: 95vw;
+        left: 2.3vw;
+    }
+
+    /* planes */
+    /* Cards */
+    .pricing-plans-section {
+        margin: 0 .5em 2em;
+        padding: 3em 0 4em;
+
+    }
+
+    .pricing-container {
+        padding: 1em 0 4em;
+    }
+
+    .pricing-plan-btn-container {
+        margin-top: 2em;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+        width: 25vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+        right: 2.5vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+        left: 2.5vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+        width: 13vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:afteR {
+        left: 11.6vw;
+    }
+}
+
+/* Dispositivos muy grandes (pantallas muy grandes) */
+@media (min-width: 1201px) and (max-width: 1399.99px) {
+    .owl-carousel .owl-stage-outer {
+        max-width: 88vw;
+
+    }
+
+    .carousel-container .owl-nav {
+        width: 95vw;
+        left: 2.5vw;
+    }
+
+    /* planes */
+    /* Cards */
+    .pricing-plans-section {
+        margin: 4em .5em;
+        padding: 3em 0 4em;
+    }
+
+    .pricing-card {
+        width: 30%;
+    }
+}
+
+/* Dispositivos superiores a 1400px */
+@media (min-width: 1400px) {
+
+    /* Carrusel de restaurantes */
+    .owl-carousel .owl-stage-outer {
+        max-width: 89.25vw;
+
+    }
+
+    .carousel-container .owl-nav {
+        width: 96vw;
+        left: 2vw;
+    }
+
+    .carousel-item {
+        min-height: 469px;
+        max-height: 469px;
+        min-width: 350px;
+        max-width: 350px;
+        margin: 0 10px;
+    }
+
+    /* planes */
+    /* Cards */
+    .pricing-plans-section {
+        margin: 4em .5em;
+        padding: 3em 0 4em;
+    }
+
 }

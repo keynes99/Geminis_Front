@@ -86,7 +86,23 @@ const loadRestaurants = async () => {
             telefono: "321-654-0987",
             horario: "11:00 AM - 12:00 AM",
             categoria: 10
+        },
+        {
+            id: "401",
+            name: "Comida oriental",
+            logo: "../assets/images/logoRestaurante4.webp",
+            description: "Sabores auténticos del este asiático.",
+            distance: "1.1 km",
+            image: "../assets/images/restaurante4.jpg",
+            direccion: "Avenida 101, Ciudad",
+            mesasTotales: 30,
+            mesasDisponibles: 20,
+            reservasMaximas: 25,
+            telefono: "321-654-0987",
+            horario: "11:00 AM - 12:00 AM",
+            categoria: 10
         }
+
     ];
     const fetchedRestaurants = await fetchAndAddRestaurants();
     const restaurants = existingRestaurants.concat(fetchedRestaurants);
@@ -117,8 +133,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadRestaurants();
 });
 
-(function ($) {
-    $(document).ready(function () {
+document.addEventListener("DOMContentLoaded", () => {
         function initOwlCarousel() {
             $(".carousel-container").owlCarousel("destroy"); // Destruir si ya está inicializado
             $(".carousel-container").owlCarousel({
@@ -127,41 +142,57 @@ document.addEventListener("DOMContentLoaded", async () => {
                 loop: true,
                 margin: 30,
                 stagePadding: 2,
-                center: true,
+                center: false,
                 autoplay: false,
                 navText: ["<i class=\"fa-solid fa-chevron-left\"></i>", "<i class=\"fa-solid fa-chevron-right\"></i>"],
                 autoWidth: true,
                 responsive: {
                     0: {
                         items: 1,
-                        nav: false
+                        nav: false,
+                        dots: true
                     },
-                    
                     768: {
-                        items: 2.6
+                        items: 2.6,
+                        nav: true
                     },
                     992: {
                         items: 3
                     },
                     1200: {
-                        items: 3.6,
-                        center: false
+                        items: 3.6
+                    }, 
+                    1400:{
+                        items: 4
                     }
+                },
+                onInitialized: function () {
+                    limitOwlDots(6); // Límite de dots visibles
+                },
+                onResized: function () {
+                    limitOwlDots(6);
+                     // Asegurar que el límite se mantenga al redimensionar
 
                 }
             });
+        }
+
+        function limitOwlDots(maxDots) {
+            let dots = $(".carousel-container .owl-dots .owl-dot");
+            if (dots.length > maxDots) {
+                dots.hide().slice(0, maxDots).show(); // Oculta todos y solo muestra los primeros `maxDots`
+            }
         }
 
         window.initOwlCarousel = initOwlCarousel; // Make initOwlCarousel globally accessible
 
         initOwlCarousel(); // Inicializar el carrusel al cargar la página
 
-        $(window).resize(function () {
+        window.addEventListener('resize', function (){
             initOwlCarousel(); // Reinicializar al cambiar el tamaño de la ventana
         });
     });
 
-})(jQuery);
 
 function togglePricingPlans() {
     const isChecked = document.getElementById('color_mode').checked;

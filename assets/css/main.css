@@ -1,4 +1,17 @@
+/* Colors */
+:root {
+    --primary-color: #e22c42;
+    --secondary-color: #120204;
+    --primary-dark: #901422;
+    --primary-darker:#67131d;
+    --background-color: #fdedef;
+    --background-color-dark: #333;
+    --text-color: #fff;
+    --text-color-secondary: #000;
+}
+
 /* Reset y configuración global */
+
 body,
 html {
     margin: 0;
@@ -11,8 +24,8 @@ html {
 }
 
 body {
-    background-color: #fdedef;
-    color: black;
+    background-color: var(--background-color);
+    color:var(--text-color-secondary);
 }
 
 main {
@@ -20,27 +33,39 @@ main {
     background-size: cover;
     background-position: center;
     flex: 1;
-    position: relative; /* Ensure main is positioned relative to its pseudo-element */
+    position: relative;
+    /* Ensure main is positioned relative to its pseudo-element */
 }
 
 main::before {
     content: "";
-    position: fixed; /* Change to fixed to cover the entire screen */
+    position: fixed;
+    /* Change to fixed to cover the entire screen */
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Adjust height to cover the entire viewport */
+    height: 100%;
+    /* Adjust height to cover the entire viewport */
     background-image: url(../images/planes-bg.jpg);
     background-size: cover;
     background-position: center;
-    z-index: -3; /* Ensure the pseudo-element is behind the content */
+    z-index: -3;
+    /* Ensure the pseudo-element is behind the content */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Montserrat", serif;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
     font-size: 1em;
     font-family: "Open Sans", sans-serif;
 }
@@ -62,7 +87,7 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #e22c42;
+    background: var(--primary-color);
     border-radius: 1em;
 }
 
@@ -82,7 +107,7 @@ textarea {
 }
 
 nav {
-    background-color: #120204;
+    background-color: var(--secondary-color);
     padding: 1em 12%;
     text-align: center;
     display: flex;
@@ -112,17 +137,21 @@ nav .nav-menu li {
 }
 
 nav .nav-menu li a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     padding: 1em .5em;
     min-width: 100%;
     width: 100%;
     display: block;
     font-size: 16px;
-    overflow: hidden; /* Asegura que el efecto no se desborde */
-    transition: background-size 0.3s ease, color 0.3s ease; /* Animación para el tamaño de fondo y color */
-    background-size: 0% 100%; /* Inicialmente el fondo está vacío */
-    background-image: linear-gradient(90deg, rgb(103, 19, 29), #e22c42, #67131d); /* Color de fondo del centro */
+    overflow: hidden;
+    /* Asegura que el efecto no se desborde */
+    transition: background-size 0.3s ease, color 0.3s ease;
+    /* Animación para el tamaño de fondo y color */
+    background-size: 0% 100%;
+    /* Inicialmente el fondo está vacío */
+    background-image: linear-gradient(90deg, rgb(103, 19, 29), var(--primary-color), #67131d);
+    /* Color de fondo del centro */
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 1em;
@@ -131,13 +160,14 @@ nav .nav-menu li a {
 
 .dropdown-content li a.active,
 nav .nav-menu a.active {
-    background: linear-gradient(90deg, #120204, #e22c42, #120204);
-    box-shadow: 0 0 0.5em #fdedef;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--secondary-color));
+    box-shadow: 0 0 0.5em var(--background-color);
     border-radius: 1em;
 }
 
 nav li a:hover {
-    background-size: 100% 100%; /* El fondo se expande a todo el tamaño del enlace */
+    background-size: 100% 100%;
+    /* El fondo se expande a todo el tamaño del enlace */
 }
 
 nav .logo {
@@ -155,7 +185,7 @@ nav .logo {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #120204;
+    background-color: var(--secondary-color);
     list-style: none;
     margin: 0;
     padding: 0 1em 0 0;
@@ -163,26 +193,33 @@ nav .logo {
     padding-top: .5em;
     border-radius: 0 0 1em 1em;
     box-shadow: 0 .25em .5em rgba(253, 237, 239, 0.3);
-    width: 100%; /* Ensure the dropdown content matches the width of its parent */
+    width: 100%;
+    /* Ensure the dropdown content matches the width of its parent */
 }
 
 .dropdown-content li a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     display: block;
     position: relative;
     margin: 0;
-    overflow: hidden; /* Asegura que el efecto no se desborde */
-    transition: background-size 0.3s ease, color 0.3s ease; /* Animación para el tamaño de fondo y color */
-    background-size: 0% 100%; /* Inicialmente el fondo está vacío */
-    background-image: linear-gradient(90deg, #67131d, #e22c42, #67131d); /* Color de fondo del centro */
+    overflow: hidden;
+    /* Asegura que el efecto no se desborde */
+    transition: background-size 0.3s ease, color 0.3s ease;
+    /* Animación para el tamaño de fondo y color */
+    background-size: 0% 100%;
+    /* Inicialmente el fondo está vacío */
+    background-image: linear-gradient(90deg, #67131d, var(--primary-color), #67131d);
+    /* Color de fondo del centro */
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .dropdown-content li a:hover {
-    background-size: 100% 100%; /* El fondo se expande a todo el tamaño del enlace */
-    color: white; /* Cambiar el color del texto si lo deseas */
+    background-size: 100% 100%;
+    /* El fondo se expande a todo el tamaño del enlace */
+    color: var(--text-color);
+    /* Cambiar el color del texto si lo deseas */
 }
 
 .dropdown:hover .dropdown-content {
@@ -192,8 +229,8 @@ nav .logo {
 /* Estilo de botones */
 button,
 .primary-btn {
-    background: linear-gradient(90deg, #120204, #e22c42, #120204);
-    color: white;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -207,15 +244,15 @@ button,
 
 button:hover,
 .primary-btn:hover {
-    background: linear-gradient(90deg, rgb(226, 44, 66), #120204, #e22c42);
-    box-shadow: 0 0 1.25em #fdedef;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    box-shadow: 0 0 1.25em var(--background-color);
     transform: scale(1.06);
 }
 
 /* Estilos del footer */
 footer {
-    background: #333;
-    color: #fff;
+    background: var(--secondary-color);
+    color: var(--text-color);
     padding: 20px 0;
     font-size: 0.9em;
 }
@@ -238,7 +275,7 @@ footer {
 .footer-container h3 {
     margin-bottom: 10px;
     font-size: 1.2em;
-    color: #cc1010;
+    color: var(--primary-color);
 }
 
 .footer-container p,
@@ -250,7 +287,7 @@ footer {
 }
 
 .footer-container a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -287,17 +324,17 @@ footer {
 }
 
 .modal-content {
-    background: #fdedef;
+    background: var(--background-color);
     padding: 30px;
     border-radius: 8px;
     width: 60%;
     text-align: center;
-    color: #120204;
+    color: var(--secondary-color);
 }
 
 .close-btn {
     font-size: 25px;
-    color: #e22c42;
+    color: var(--primary-color);
     background: none;
     border: none;
     cursor: pointer;
@@ -307,33 +344,78 @@ footer {
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 1200px) {
-    h1 { font-size: 2.5em; }  
-    h2 { font-size: 1.75em; }
-    h3 { font-size: 1.5em; }
-    h4 { font-size: 1.25em; }
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.75em;
+    }
+
+    h3 {
+        font-size: 1.37em;
+        margin: 1rem 0;
+    }
+
+    h4 {
+        font-size: 1.25em;
+    }
 }
 
 /* Pantallas medianas (MD) */
 @media (max-width: 992px) {
-    h1 { font-size: 2.25em; }
-    h2 { font-size: 1.5em; }
-    h3 { font-size: 1.35em; }
-    h4 { font-size: 1.1em; }
+    h1 {
+        font-size: 2.25em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.35Rem;
+    }
+
+    h4 {
+        font-size: 1.1em;
+    }
 }
 
 /* Pantallas pequeñas (SM) */
-@media (max-width: 768px) {
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.25em; }
-    h3 { font-size: 1.1em; }
-    h4 { font-size: 1em; }
+@media (max-width: 769px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.25em;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+
+    h4 {
+        font-size: 1em;
+    }
 }
 
 /* Pantallas extra pequeñas (XS) */
-@media (max-width: 576px) {
-    h1 { font-size: 1.75em; }
-    h2 { font-size: 1.1em; }
-    h3 { font-size: 1em; }
-    h4 { font-size: 0.9em; }
+@media (max-width: 579px) {
+    h1 {
+        font-size: 1.75em;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    h4 {
+        font-size: 0.9em;
+    }
 }
