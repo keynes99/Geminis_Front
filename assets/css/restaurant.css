@@ -162,3 +162,11 @@
 .primary-btn:hover {
     background-color: #45a049;
 }
+
+.login-message {
+    color: red;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Restaurantes</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/verRestaurantes.css">
+</head>
+<body>
+    <div id="nav"></div>
+    <main>
+        <div class="container">
+            <h1>Restaurantes</h1>
+            <div class="filter-bar">
+                <label for="filter-name">Nombre del restaurante:</label>
+                <input type="text" id="filter-name" placeholder="Nombre del restaurante">
+
+                <label for="filter-category">Categoría:</label>
+                <select id="filter-category">
+                    <option value="">Todas</option>
+                    <option value="1">Comida rápida</option>
+                    <option value="2">Cafetería</option>
+                    <option value="3">Restaurante</option>
+                    <option value="4">Bar</option>
+                    <option value="5">Heladería</option>
+                    <option value="6">Panadería</option>
+                    <option value="7">Comida china</option>
+                    <option value="8">Comida mexicana</option>
+                    <option value="9">Comida italiana</option>
+                    <option value="10">Comida japonesa</option>
+                    <option value="11">Comida árabe</option>
+                    <option value="12">Comida colombiana</option>
+                </select>
+
+                <label for="filter-address">Dirección:</label>
+                <input type="text" id="filter-address" placeholder="Dirección">
+
+                <button id="apply-filters">Aplicar filtros</button>
+                <button id="reset-filters">Resetear filtros</button>
+            </div>
+
+            <div class="restaurants-list">
+                <!-- La lista de restaurantes se llenará dinámicamente aquí -->
+            </div>
+            <div class="pagination-controls">
+                <button id="prev-page" class="pagination-btn">Anterior</button>
+                <span id="page-info"></span>
+                <button id="next-page" class="pagination-btn">Siguiente</button>
+            </div>
+        </div>
+
+        <button id="go-to-home" class="primary-btn" onclick="window.location.href='index.html'">Volver al inicio</button>
+    </main>
+
+    <div id="footer"></div>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/verRestaurantes.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+h1 {
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 2.6em;
+}
+
+.restaurants-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.restaurant-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 2vh;
+    width: 80%;
+    max-width: 800px;
+    margin: 2vh auto;
+    text-align: center;
+    position: relative;
+}
+
+.restaurant-card .restaurant-logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--background-color);
+    padding: 0.75em;
+    overflow: hidden;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.restaurant-card .restaurant-logo img {
+    aspect-ratio: 1/1;
+    max-width: 100%;
+    height: auto;
+}
+
+.restaurant-card .restaurant-img {
+    width: 100%;
+    height: 200px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.restaurant-card .restaurant-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 1.25em;
+}
+
+.restaurant-card .restaurant-info p {
+    margin: 0.75em;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #333;
+    color: var(--text-color);
+    border-radius: 10px;
+}
+
+.filter-bar label {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+.filter-bar input,
+.filter-bar select {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333;
+    color: var(--text-color);
+}
+
+.filter-bar button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-bar button:hover {
+    background-color: var(--secondary-dark);
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.pagination-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.pagination-btn:hover {
+    background-color: var(--secondary-dark);
+}
+
+#page-info {
+    font-size: 1.2em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .restaurant-card {
+        width: 95%;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .filter-bar label,
+    .filter-bar input,
+    .filter-bar select,
+    .filter-bar button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .pagination-controls {
+        flex-direction: column;
+    }
+
+    .pagination-btn {
+        margin: 10px 0;
+    }
+}

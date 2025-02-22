@@ -103,6 +103,9 @@ const getRestaurantData = async () => {
 
     // Mostrar los datos del restaurante
     const container = document.getElementById('restaurant-details');
+    const userDocument = localStorage.getItem('documento');
+    const showButtons = userDocument && userDocument !== '0';
+
     container.innerHTML = `
         <div class="background-highlight"></div>
         <div class="background-highlight2"></div>
@@ -116,8 +119,8 @@ const getRestaurantData = async () => {
         <!-- Contenedor para los botones -->
         <div class="button-container">
             <a href="menu.html?id=${restaurant.id}" class="primary-btn">Ver Menú</a>
-            <a href="CrearDomicilio.html?id=${restaurant.id}" class="primary-btn">Domicilio</a>
-            <a href="reservas.html?id=${restaurant.id}" class="primary-btn">Reservar</a>
+            ${showButtons ? `<a href="CrearDomicilio.html?id=${restaurant.id}" class="primary-btn">Domicilio</a>` : '<p class="login-message">Debe iniciar sesión para realizar un domicilio</p>'}
+            ${showButtons ? `<a href="reservas.html?id=${restaurant.id}" class="primary-btn">Reservar</a>` : '<p class="login-message">Debe iniciar sesión para reservar</p>'}
         </div>
     `;
 };
