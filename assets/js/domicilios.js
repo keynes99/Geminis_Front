@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 // Función para obtener los domicilios de un usuario
 const getDomicilios = async (userId) => {
     try {
@@ -12,13 +6,13 @@ const getDomicilios = async (userId) => {
         let response; // Declarar la variable response fuera del bloque if-else
 
         if (Empresa == "null") {
-            response = await fetch(`${config.baseUrl}/api/domicilio/${userId}`, {
+            response = await fetch(`${configURL1.baseUrl}/api/domicilio/${userId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}` // Agregar el encabezado de autorización
                 }
             });
         } else {
-            response = await fetch(`${config.baseUrl}/api/domicilio/sede/${Empresa}`, {
+            response = await fetch(`${configURL1.baseUrl}/api/domicilio/sede/${Empresa}`, {
                 headers: {
                     'Authorization': `Bearer ${token}` // Agregar el encabezado de autorización
                 }

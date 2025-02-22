@@ -9,69 +9,73 @@
     <link rel="icon" href="../assets/images/logoGeminis.ico">
 </head>
 <body>
+    <div id="nav"></div>
+
 
     <!-- Main Content -->
-    <main class="create-container">
-        <div class="create-card">
-            <h1>Crear Usuario o Restaurante</h1>
-            <form id="create-form">
-                <label for="tipo">Tipo:</label>
-                <select name="tipo" id="tipo" required>
-                    <option value="usuario">Usuario</option>
-                    <option value="restaurante">Restaurante</option>
-                </select>
-
-                <!-- Campos para usuario -->
-                <div id="usuario-fields">
-                    <input type="number" name="documento" placeholder="Documento" required>
-                    <input type="text" name="nombres" placeholder="Nombres" required>
-                    <input type="text" name="apellido" placeholder="Apellido" required>
-                    <input type="email" name="correo" placeholder="Correo" required>
-                    <input type="text" name="telefono" placeholder="Teléfono" required>
-                    <input type="text" name="direccion" placeholder="Dirección" required>
-                    <input type="password" name="contrasena" placeholder="Contraseña" required>
-                    <br>
-                    <br>
-                    <br>
-
-                    <label for="es-admin">¿Es administrador de algún restaurante?</label>
-                    <select name="esAdmin" id="es-admin">
-                        <option value="no">No</option>
-                        <option value="si">Sí</option>
+    <main>
+        <div class="create-container">
+            <div class="create-card">
+                <h1>Crear Usuario o Restaurante</h1>
+                <form id="create-form">
+                    <label for="tipo">Tipo:</label>
+                    <select name="tipo" id="tipo" required>
+                        <option value="usuario">Usuario</option>
+                        <option value="restaurante">Restaurante</option>
                     </select>
 
-                    <div id="admin-nit" style="display: none;">
-                        <label for="nit-restaurante">Seleccione el NIT del restaurante:</label>
-                        <select name="nitRestaurante" id="nit-restaurante"></select>
+                    <!-- Campos para usuario -->
+                    <div id="usuario-fields">
+                        <input type="number" name="documento" placeholder="Documento" required>
+                        <input type="text" name="nombres" placeholder="Nombres" required>
+                        <input type="text" name="apellido" placeholder="Apellido" required>
+                        <input type="email" name="correo" placeholder="Correo" required>
+                        <input type="text" name="telefono" placeholder="Teléfono" required>
+                        <input type="text" name="direccion" placeholder="Dirección" required>
+                        <input type="password" name="contrasena" placeholder="Contraseña" required>
+                        <br>
+                        <br>
+                        <br>
+
+                        <label for="es-admin">¿Es administrador de algún restaurante?</label>
+                        <select name="esAdmin" id="es-admin">
+                            <option value="no">No</option>
+                            <option value="si">Sí</option>
+                        </select>
+
+                        <div id="admin-nit" style="display: none;">
+                            <label for="nit-restaurante">Seleccione el NIT del restaurante:</label>
+                            <select name="nitRestaurante" id="nit-restaurante"></select>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Campos para restaurante -->
-                <div id="restaurante-fields" style="display: none;">
-                    <input type="number" name="nit" placeholder="NIT">
-                    <input type="text" name="nombre" placeholder="Nombre del Restaurante">
-                    <input type="file" id="logo" name="logo" accept="image/*">
-                    <textarea name="descripcion" placeholder="Descripción"></textarea>
-                    <select name="categoria" required>
-                        <option value="1">Comida rápida</option>
-                        <option value="2">Cafetería</option>
-                        <option value="3">Restaurante</option>
-                        <option value="4">Bar</option>
-                        <option value="5">Heladería</option>
-                        <option value="6">Panadería</option>
-                        <option value="7">Comida china</option>
-                        <option value="8">Comida mexicana</option>
-                        <option value="9">Comida italiana</option>
-                        <option value="10">Comida japonesa</option>
-                        <option value="11">Comida árabe</option>
-                        <option value="12">Comida colombiana</option>
-                    </select>
-                </div>
+                    <!-- Campos para restaurante -->
+                    <div id="restaurante-fields" style="display: none;">
+                        <input type="number" name="nit" placeholder="NIT">
+                        <input type="text" name="nombre" placeholder="Nombre del Restaurante">
+                        <input type="file" id="logo" name="logo" accept="image/*">
+                        <textarea name="descripcion" placeholder="Descripción"></textarea>
+                        <select name="categoria" required>
+                            <option value="1">Comida rápida</option>
+                            <option value="2">Cafetería</option>
+                            <option value="3">Restaurante</option>
+                            <option value="4">Bar</option>
+                            <option value="5">Heladería</option>
+                            <option value="6">Panadería</option>
+                            <option value="7">Comida china</option>
+                            <option value="8">Comida mexicana</option>
+                            <option value="9">Comida italiana</option>
+                            <option value="10">Comida japonesa</option>
+                            <option value="11">Comida árabe</option>
+                            <option value="12">Comida colombiana</option>
+                        </select>
+                    </div>
 
-                <button type="submit">Crear</button>
-                <p id="error-message"></p>
-            </form>
-            <button id="go-to-login" class="primary-btn">Volver al Login</button>
+                    <button type="submit">Crear</button>
+                    <p id="error-message"></p>
+                </form>
+                <button id="go-to-login" class="primary-btn">Volver al Login</button>
+            </div>
         </div>
     </main>
 

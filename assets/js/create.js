@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 const form = document.getElementById('create-form');
 const errorMessage = document.getElementById('error-message');
 const tipoSelect = document.getElementById('tipo');
@@ -90,7 +84,7 @@ form.addEventListener('submit', async (event) => {
 async function sendFormData(body) {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${config.baseUrl}/api/auth/register`, {
+        const response = await fetch(`${configURL1.baseUrl}/api/auth/register`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -131,7 +125,7 @@ esAdminSelect.addEventListener('change', () => {
 const cargarNITsRestaurantes = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${config.baseUrl}/api/restaurantes/nits`, {
+        const response = await fetch(`${configURL1.baseUrl}/api/restaurantes/nits`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!response.ok) {

@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 document.addEventListener('DOMContentLoaded', async () => {
     const userDocument = localStorage.getItem('documento');
     const reservasList = document.querySelector('.reservas-list');
@@ -26,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const fetchReservations = async () => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/reservas/usuario/${userDocument}`);
+            const response = await fetch(`${configURL1.baseUrl}/api/reservas/usuario/${userDocument}`);
             return await response.json();
         } catch (error) {
             console.error('Error fetching reservations:', error);
@@ -36,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const fetchRestaurantById = async (id) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/sedes/all/sedeid/${id}`);
+            const response = await fetch(`${configURL1.baseUrl}/api/sedes/all/sedeid/${id}`);
             const item = await response.json();
             return {
                 id: item.Rowid.toString(),
@@ -60,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const cancelReservation = async (reservationId) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/reservas/cancelar/${reservationId}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/reservas/cancelar/${reservationId}`, {
                 method: 'PUT'
             });
             if (response.ok) {

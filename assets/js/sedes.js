@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 document.addEventListener("DOMContentLoaded", async () => {
     const nit = localStorage.getItem('empresa');
 
@@ -83,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.log(branchData);
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`${config.baseUrl}/api/sedes/`, {
+                const response = await fetch(`${configURL1.baseUrl}/api/sedes/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -105,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (selectedBranch) {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await fetch(`${config.baseUrl}/api/sedes/${selectedBranch}`, {
+                    const response = await fetch(`${configURL1.baseUrl}/api/sedes/${selectedBranch}`, {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
                     if (!response.ok) throw new Error('Error al obtener la información de la sede');
@@ -215,7 +209,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const selectedBranch = branchList.value;
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`${config.baseUrl}/api/sedes/${selectedBranch}`, {
+                const response = await fetch(`${configURL1.baseUrl}/api/sedes/${selectedBranch}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -235,7 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function loadBranches() {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${config.baseUrl}/api/sedes?empresa=${nit}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/sedes?empresa=${nit}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (!response.ok) throw new Error('Error al obtener la lista de sedes');

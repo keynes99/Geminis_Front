@@ -1,12 +1,6 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 const fetchRestaurantById = async (id) => {
     try {
-        const response = await fetch(`${config.baseUrl}/api/sedes/all/sedeid/${id}`);
+        const response = await fetch(`${configURL1.baseUrl}/api/sedes/all/sedeid/${id}`);
         const item = await response.json();
         return {
             id: item.Rowid.toString(),
@@ -149,7 +143,7 @@ const populateUserData = async () => {
     }
 
     try {
-        const response = await fetch(`${config.baseUrl}/api/users/${userDocument}`);
+        const response = await fetch(`${configURL1.baseUrl}/api/users/${userDocument}`);
         const userData = await response.json();
 
         document.getElementById('cedula').textContent = userData.Documento;
@@ -190,7 +184,7 @@ document.getElementById('create-form').addEventListener('submit', async (event) 
     };
 
     try {
-        const response = await fetch(`${config.baseUrl}/api/reservas`, {
+        const response = await fetch(`${configURL1.baseUrl}/api/reservas`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

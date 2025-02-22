@@ -1,7 +1,7 @@
 // URL de configuración
-const config = {
+const configURL1 = {
     //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
+    baseUrl: 'http://geminisback-production.up.railway.app'
 };
 
 // Cargar componentes comunes
@@ -17,7 +17,7 @@ const loadComponent = async (id, file) => {
             // Si el archivo es nav.html y tenemos un userName, actualizar el enlace
             if (id === 'nav' && userName) {
                 try {
-                    const authResponse = await fetch(`${config.baseUrl}/`, {
+                    const authResponse = await fetch(`${configURL1.baseUrl}/`, {
                         headers: {
                             'Authorization': `Bearer ${userToken}`
                         }

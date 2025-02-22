@@ -1,14 +1,8 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 // Función para obtener los detalles de un domicilio
 const getDetalleDomicilio = async (domicilioId) => {
     try {
         const token = localStorage.getItem('token'); // Obtener el token del localStorage
-        const response = await fetch(`${config.baseUrl}/api/domicilio/detalle/${domicilioId}`, {
+        const response = await fetch(`${configURL1.baseUrl}/api/domicilio/detalle/${domicilioId}`, {
             headers: {
                 'Authorization': `Bearer ${token}` // Agregar el encabezado de autorización
             }
@@ -83,7 +77,7 @@ const cambiarEstadoDomicilio = async (domicilioId, estadoActual) => {
         }
 
         const token = localStorage.getItem('token'); // Obtener el token del localStorage
-        const response = await fetch(`${config.baseUrl}/api/domicilio/cambiar-estado/${domicilioId}`, {
+        const response = await fetch(`${configURL1.baseUrl}/api/domicilio/cambiar-estado/${domicilioId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

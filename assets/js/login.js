@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 const form = document.getElementById('login-form');
 const errorMessage = document.getElementById('error-message');
 const createButton = document.getElementById('go-to-create');
@@ -16,7 +10,7 @@ form.addEventListener('submit', async (event) => {
     const contrasena = form.contrasena.value;
 
     try {
-        const response = await fetch(`${config.baseUrl}/api/auth/login`, {
+        const response = await fetch(`${configURL1.baseUrl}/api/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ correo, contrasena }),

@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 document.addEventListener('DOMContentLoaded', async () => {
     const filterBar = document.querySelector('.filter-bar');
     const restaurantsList = document.querySelector('.restaurants-list');
@@ -13,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const fetchRestaurants = async () => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/sedes/all`);
+            const response = await fetch(`${configURL1.baseUrl}/api/sedes/all`);
             return await response.json();
         } catch (error) {
             console.error('Error fetching restaurants:', error);

@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 document.addEventListener('DOMContentLoaded', async () => {
     const userDocument = localStorage.getItem('documento');
     const nit = localStorage.getItem('empresa');
@@ -17,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loadBranches = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${config.baseUrl}/api/sedes?empresa=${nit}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/sedes?empresa=${nit}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (!response.ok) throw new Error('Error al obtener la lista de sedes');
@@ -51,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const fetchReservations = async (branchId) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/reservas/sede/${branchId}`);
+            const response = await fetch(`${configURL1.baseUrl}/api/reservas/sede/${branchId}`);
             return await response.json();
         } catch (error) {
             console.error('Error fetching reservations:', error);
@@ -61,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const fetchRestaurantById = async (id) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/sedes/all/sedeid/${id}`);
+            const response = await fetch(`${configURL1.baseUrl}/api/sedes/all/sedeid/${id}`);
             const item = await response.json();
             return {
                 id: item.Rowid.toString(),
@@ -85,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const cancelReservation = async (reservationId) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/reservas/cancelar/${reservationId}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/reservas/cancelar/${reservationId}`, {
                 method: 'PUT'
             });
             if (response.ok) {
@@ -102,13 +96,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const confirmReservation = async (reservationId, restaurantId) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/reservas/confirmar/${reservationId}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/reservas/confirmar/${reservationId}`, {
                 method: 'PUT'
             });
             if (response.ok) {
                 alert('La reserva ha sido confirmada satisfactoriamente');
                 // Decrease the number of available tables
-                await fetch(`${config.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
+                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
                     method: 'PUT'
                 });
                 location.reload(); // Reload the page to reflect changes
@@ -123,13 +117,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const completeReservation = async (reservationId, restaurantId) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/reservas/completar/${reservationId}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/reservas/completar/${reservationId}`, {
                 method: 'PUT'
             });
             if (response.ok) {
                 alert('La reserva ha sido completada satisfactoriamente');
                 // Decrease the number of available tables
-                await fetch(`${config.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
+                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
                     method: 'PUT'
                 });
                 location.reload(); // Reload the page to reflect changes
@@ -144,13 +138,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const noShowReservation = async (reservationId, restaurantId) => {
         try {
-            const response = await fetch(`${config.baseUrl}/api/reservas/noshow/${reservationId}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/reservas/noshow/${reservationId}`, {
                 method: 'PUT'
             });
             if (response.ok) {
                 alert('La reserva ha sido marcada como no-show');
                 // Decrease the number of available tables
-                await fetch(`${config.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
+                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
                     method: 'PUT'
                 });
                 location.reload(); // Reload the page to reflect changes
@@ -218,7 +212,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         // Decrease the number of available tables
                         if (reservation.Estado === 2) {
                             try {
-                                await fetch(`${config.baseUrl}/api/sedes/${restaurant.id}/increaseMesas`, {
+                                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurant.id}/increaseMesas`, {
                                     method: 'PUT'
                                 });
                             } catch (error) {

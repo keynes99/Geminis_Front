@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
@@ -12,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('token', token);
 
         // Obtener la información del usuario usando el token
-        fetch(`${config.baseUrl}/api/auth/me`, {
+        fetch(`${configURL1.baseUrl}/api/auth/me`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

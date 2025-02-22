@@ -1,12 +1,6 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 const fetchAndAddRestaurants = async () => {
     try {
-        const response = await fetch(`${config.baseUrl}/api/sedes/all`);
+        const response = await fetch(`${configURL1.baseUrl}/api/sedes/all`);
         const data = await response.json();
         const newRestaurants = data.map(item => ({
             id: item.Rowid.toString(),

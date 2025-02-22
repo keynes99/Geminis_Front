@@ -1,9 +1,3 @@
-// URL de configuración
-const config = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'geminisback-production.up.railway.app'
-};
-
 document.addEventListener("DOMContentLoaded", async () => {
     const createDishForm = document.getElementById('crearPlato-form');
     const editDishForm = document.getElementById('editarPlato-form');
@@ -51,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         async function sendDishData(dishData) {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`${config.baseUrl}/api/menu/`, {
+                const response = await fetch(`${configURL1.baseUrl}/api/menu/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -73,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (selectedDish) {
                 try {
                     const token = localStorage.getItem('token');
-                    const response = await fetch(`${config.baseUrl}/api/menu/plato/${selectedDish}`, {
+                    const response = await fetch(`${configURL1.baseUrl}/api/menu/plato/${selectedDish}`, {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
                     if (!response.ok) throw new Error('Error al obtener la información del plato');
@@ -132,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const selectedDish = dishList.value;
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`${config.baseUrl}/api/menu/${selectedDish}`, {
+                const response = await fetch(`${configURL1.baseUrl}/api/menu/${selectedDish}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -152,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function loadDishes() {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${config.baseUrl}/api/menu/${selectedBranch}`, {
+            const response = await fetch(`${configURL1.baseUrl}/api/menu/${selectedBranch}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (!response.ok) throw new Error('Error al obtener la lista de platos');
