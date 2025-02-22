@@ -1,6 +1,7 @@
 const form = document.getElementById('login-form');
 const errorMessage = document.getElementById('error-message');
 const createButton = document.getElementById('go-to-create');
+const forgotPasswordLink = document.getElementById('forgot-password-link');
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -39,4 +40,8 @@ form.addEventListener('submit', async (event) => {
 
 createButton.addEventListener('click', () => {
     window.location.href = 'create.html';
+});
+
+forgotPasswordLink.addEventListener('click', () => {
+    window.location.href = 'forgot-password.html';
 });

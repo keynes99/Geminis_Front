@@ -71,6 +71,10 @@
                         </select>
                     </div>
 
+                    <div class="terms-container">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Acepto los <a href="#" id="terms-link">términos y condiciones</a></label>
+                    </div>
                     <button type="submit">Crear</button>
                     <p id="error-message"></p>
                 </form>
@@ -81,6 +85,20 @@
 
     <!-- Footer -->
     <div id="footer"></div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <h2>Términos y Condiciones</h2>
+            <div class="terms-text">
+                <!-- Insert terms and conditions text here -->
+                <p>De acuerdo con la Ley 1581 de 2012 y el Decreto 1377 de 2013, autorizo de manera libre, previa, expresa y voluntaria a [Nombre de la Empresa] para que recolecte, almacene, use, circule y suprima mis datos personales, conforme a la Política de Tratamiento de Datos Personales de la empresa, la cual he leído y acepto.</p>
+                <p>Los datos personales que se recolectan serán utilizados para las siguientes finalidades: (i) gestionar la relación contractual y comercial con [Nombre de la Empresa]; (ii) enviar información sobre productos, servicios, ofertas, promociones, eventos y/o encuestas; (iii) realizar estudios de mercado y análisis estadísticos; (iv) cumplir con obligaciones legales y contractuales.</p>
+                <p>Como titular de los datos personales, tengo derecho a conocer, actualizar, rectificar y suprimir mis datos personales, así como a revocar la autorización otorgada para su tratamiento, a través de los canales dispuestos por [Nombre de la Empresa] para tales efectos.</p>
+                <p>Para más información sobre el tratamiento de mis datos personales, puedo consultar la Política de Tratamiento de Datos Personales de [Nombre de la Empresa] disponible en [enlace a la política].</p>
+            </div>
+            <button type="button" id="closeTermsBtn">Cerrar</button>
+        </div>
+    </div>
 
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/create.js"></script>

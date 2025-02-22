@@ -147,3 +147,12 @@ const cargarNITsRestaurantes = async () => {
 
 // Llamar a cargarNITsRestaurantes al cargar la página
 window.addEventListener('DOMContentLoaded', cargarNITsRestaurantes);
+
+document.getElementById('terms-link').addEventListener('click', (event) => {
+    event.preventDefault();
+    document.getElementById('termsModal').style.display = 'flex';
+});
+
+document.getElementById('closeTermsBtn').addEventListener('click', () => {
+    document.getElementById('termsModal').style.display = 'none';
+});
