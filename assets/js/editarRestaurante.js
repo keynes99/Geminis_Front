@@ -1,9 +1,15 @@
+// URL de configuración
+const config = {
+    //baseUrl: 'http://localhost:3000'
+    baseUrl: 'geminisback-production.up.railway.app'
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
     const nit = localStorage.getItem('empresa');
     if (nit) {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3000/api/restaurantes/${nit}`, {
+            const response = await fetch(`${config.baseUrl}/api/restaurantes/${nit}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (!response.ok) throw new Error('Error al obtener la información del restaurante');
@@ -71,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function sendFormData(data) {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3000/api/restaurantes/${data.NIT}`, {
+            const response = await fetch(`${config.baseUrl}/api/restaurantes/${data.NIT}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

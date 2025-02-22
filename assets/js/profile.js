@@ -1,3 +1,9 @@
+// URL de configuración
+const config = {
+    //baseUrl: 'http://localhost:3000'
+    baseUrl: 'geminisback-production.up.railway.app'
+};
+
 const form = document.getElementById('profile-form');
 const empresaContainer = document.getElementById('empresa-container');
 
@@ -5,7 +11,7 @@ const empresaContainer = document.getElementById('empresa-container');
 const loadProfile = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/api/users/${userDocument}`, {
+        const response = await fetch(`${config.baseUrl}/api/users/${userDocument}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!response.ok) throw new Error('Error al cargar los datos del perfil');
@@ -50,7 +56,7 @@ form.addEventListener('submit', async (event) => {
 
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/api/users/${userDocument}`, {
+        const response = await fetch(`${config.baseUrl}/api/users/${userDocument}`, {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',

@@ -1,8 +1,14 @@
+// URL de configuración
+const config = {
+    //baseUrl: 'http://localhost:3000'
+    baseUrl: 'geminisback-production.up.railway.app'
+};
+
 // Función para crear un domicilio
 const createDomicilio = async (sedeId, documentoUsuario, direccionEntrega, tipoPago, numeroDomicilio) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/api/domicilio/${sedeId}`, {
+        const response = await fetch(`${config.baseUrl}/api/domicilio/${sedeId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +46,7 @@ document.querySelector('#create-domicilio-form').addEventListener('submit', asyn
 const getMenusDomicilios = async (sedeId) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/api/domicilio/Menus/${sedeId}`, {
+        const response = await fetch(`${config.baseUrl}/api/domicilio/Menus/${sedeId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -161,7 +167,7 @@ const poblarDomicilio = async () => {
 
         // Obtener el número de domicilio más alto para la sede
         const token = localStorage.getItem('token');
-        const responseConsecutivo = await fetch(`http://localhost:3000/api/domicilio/consecutivo/${sedeId}`, {
+        const responseConsecutivo = await fetch(`${config.baseUrl}/api/domicilio/consecutivo/${sedeId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
@@ -175,7 +181,7 @@ const poblarDomicilio = async () => {
         const numeroDomicilio = consecutivo + 1; // Incrementar el consecutivo
 
         // Enviar los datos al backend
-        const response = await fetch('http://localhost:3000/api/domicilio/domicilios/crear', {
+        const response = await fetch(`${config.baseUrl}/api/domicilio/domicilios/crear`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

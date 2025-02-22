@@ -1,3 +1,9 @@
+// URL de configuración
+const config = {
+    //baseUrl: 'http://localhost:3000'
+    baseUrl: 'geminisback-production.up.railway.app'
+};
+
 // Cargar componentes comunes
 const loadComponent = async (id, file) => {
     const element = document.getElementById(id);
@@ -11,7 +17,7 @@ const loadComponent = async (id, file) => {
             // Si el archivo es nav.html y tenemos un userName, actualizar el enlace
             if (id === 'nav' && userName) {
                 try {
-                    const authResponse = await fetch('http://localhost:3000/', {
+                    const authResponse = await fetch(`${config.baseUrl}/`, {
                         headers: {
                             'Authorization': `Bearer ${userToken}`
                         }
@@ -76,18 +82,15 @@ const loadComponent = async (id, file) => {
 
                     // Activar al final
 
-                    // console.log("No hay sesión activa");
-                    // console.log(window.location.pathname);
-                    // const user = document.querySelector(".dropdown");
-                    // const domi = document.querySelector(".domicilios");
-                    // const reserva = document.querySelector(".reservas");
-                    // const home = document.querySelector(".login");
-                    // user.style.display = "none";
-                    // domi.style.display = "none";
-                    // reserva.style.display = "none";
-                    // home.style.display = "block";
-                    // const hola = home.getAttribute("href")
-                    // console.log(hola);
+                    console.log("No hay sesión activa");
+                    const user = document.querySelector(".dropdown");
+                    const domi = document.querySelector(".domicilios");
+                    const reserva = document.querySelector(".reservas");
+                    const home = document.querySelector(".login");
+                    user.style.display = "none";
+                    domi.style.display = "none";
+                    reserva.style.display = "none";
+                    home.style.display = "block";
                 }
             }
 
