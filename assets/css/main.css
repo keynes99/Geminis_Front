@@ -99,6 +99,9 @@ textarea {
     padding: 0 12%;
 }
 
+.hidde-on-sm{
+    display: none;
+}
 /* Estilo del nav */
 .nav-sticky {
     position: sticky;
@@ -128,7 +131,7 @@ nav .nav-menu {
     padding: 0;
     display: flex;
     align-items: center;
-    gap: 2em;
+    gap: 1.5em;
 }
 
 nav .nav-menu li {
@@ -174,7 +177,20 @@ nav .logo {
     width: 100.5px;
     height: 82.5px;
 }
-
+.collapse-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Oculto por defecto */
+}
+#collapseMenu.dropdown-content{
+    top: 100px;
+    max-width: 134px;
+}
+.dropdown-content.show {
+    display: block; /* Se muestra cuando se activa */
+}
 /* Dropdown styles */
 .dropdown {
     padding: 0;
@@ -225,7 +241,9 @@ nav .logo {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+#userIcon{
+    display: none;
+}
 /* Estilo de botones */
 button,
 .primary-btn {
@@ -361,6 +379,9 @@ footer {
     h4 {
         font-size: 1.25em;
     }
+    .hidde-on-sm{
+        display: inherit;
+    }
 }
 
 /* Pantallas medianas (MD) */
@@ -417,5 +438,30 @@ footer {
 
     h4 {
         font-size: 0.9em;
+    }
+    nav{
+        justify-content: center;
+    }
+}
+@media (max-width: 579px) {
+    nav{
+
+    }
+}
+@media (max-width: 1200px) {
+    .collapse-button {
+        display: block; /* Mostrar el botón en pantallas pequeñas */
+    }
+    #userIcon{
+        display: inherit;
+    }
+    nav .nav-menu li a.user-name{
+        display: none;
+    }
+    nav{
+        flex-wrap: wrap;
+    }
+    nav .nav-menu{
+        gap: .5em;
     }
 }

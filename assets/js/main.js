@@ -78,19 +78,34 @@ const loadComponent = async (id, file) => {
             }
             if (!userToken) {
                 if (id === 'nav') {
-
-
                     // Activar al final
-
                     console.log("No hay sesión activa");
                     const user = document.querySelector(".dropdown");
                     const domi = document.querySelector(".domicilios");
                     const reserva = document.querySelector(".reservas");
-                    const home = document.querySelector(".login");
+                    const logIn = document.querySelector(".login");
                     user.style.display = "none";
                     domi.style.display = "none";
                     reserva.style.display = "none";
-                    home.style.display = "block";
+                    logIn.style.display = "block";
+
+                    // Seleccionar el li padre de domicilios y reservas y establecer display none
+                    const domiParent = domi.closest('li');
+                    const reservaParent = reserva.closest('li');
+
+                    if (domiParent) {
+                        domiParent.style.display = "none";
+                    }
+
+                    if (reservaParent) {
+                        reservaParent.style.display = "none";
+                    }
+                }
+            } else {
+
+                const logInparent = document.querySelector(".login").closest('li');
+                if (logInparent) {
+                    logInparent.style.display = "none";
                 }
             }
 
@@ -106,7 +121,7 @@ const logout = () => {
     localStorage.removeItem('documento');
     localStorage.removeItem("token");
     localStorage.removeItem("empresa");
-    
+
 
     // Borrar variables con info de la persona
     userName = '';
@@ -127,7 +142,6 @@ let userEmpresa = localStorage.getItem('empresa');
 // Función para marcar el elemento activo en el nav
 const setActiveNavItem = () => {
     const navItems = document.querySelectorAll('nav a');
-    const dropItems = document.querySelectorAll('.dropdown-content a');
     const currentPath = window.location.pathname;
     navItems.forEach(item => {
         if (currentPath.includes(item.getAttribute('href'))) {
@@ -149,9 +163,20 @@ const handleNavShadow = () => {
         nav.style.boxShadow = 'none';
     }
 };
+function toggleCollapseMenu() {
+
+    const menu = document.querySelector('#collapseMenu');
+
+    if (window.innerWidth < 1200) {
+        menu.classList.toggle('show'); // Cambiar a toggle para alternar la visibilidad
+
+    }
+}
+
 // Cargar Nav y Footer
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('nav', 'nav.html').then(() => {
+
         setActiveNavItem();
         handleNavShadow();
 
