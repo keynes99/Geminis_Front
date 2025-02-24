@@ -122,12 +122,21 @@ const getRestaurantData = async () => {
     // Set default and constraints for horadereserva input
     const horadereservaInput = document.getElementById('horadereserva');
     const currentHour = new Date();
-    currentHour.setHours(currentHour.getHours() + 1, 0, 0, 0);
-    horadereservaInput.value = currentHour.toTimeString().split(' ')[0].substring(0, 5);
-    horadereservaInput.min = currentHour.toTimeString().split(' ')[0].substring(0, 5);
+    currentHour.setMinutes(currentHour.getMinutes() + 30); // Set to 30 minutes ahead
 
-    const dayOfWeek = today.toLocaleDateString('es-ES', { weekday: 'long' });
+    const selectedDate = new Date(fechaInput.value);
+    const dayOfWeek = selectedDate.toLocaleDateString('es-ES', { weekday: 'long' });
     const restaurantSchedule = JSON.parse(restaurant.horario).find(day => day.day.toLowerCase() === dayOfWeek.toLowerCase());
+
+    if (selectedDate.toDateString() === new Date().toDateString()) {
+        // If reservation is for today, set min to 30 minutes ahead
+        horadereservaInput.value = currentHour.toTimeString().split(' ')[0].substring(0, 5);
+        horadereservaInput.min = currentHour.toTimeString().split(' ')[0].substring(0, 5);
+    } else if (restaurantSchedule) {
+        // If reservation is for a future date, set min to the restaurant's opening time
+        horadereservaInput.min = restaurantSchedule.startTime;
+    }
+
     if (restaurantSchedule) {
         const closingTime = new Date(`1970-01-01T${restaurantSchedule.endTime}:00`);
         closingTime.setMinutes(closingTime.getMinutes() - 30);
@@ -172,6 +181,14 @@ document.getElementById('create-form').addEventListener('submit', async (event) 
     const hora = document.getElementById('horadereserva').value;
     const personas = document.getElementById('numpersonas').value;
     const telefono = document.getElementById('telefono').value;
+
+    const selectedDateTime = new Date(`${fecha}T${hora}`);
+    const currentDateTime = new Date();
+
+    if (selectedDateTime < currentDateTime) {
+        alert('No es posible crear reservas en el pasado. Por favor, seleccione una fecha y hora válidas.');
+        return;
+    }
 
     const reservationData = {
         Usuario: userDocument,

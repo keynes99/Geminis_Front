@@ -120,14 +120,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const confirmCancel = confirm('¿Está seguro que desea cancelar esta reserva?');
                     if (confirmCancel) {
                         cancelReservation(reservation.Rowid);
-                        // Decrease the number of available tables
-                        try {
-                            await fetch(`http://localhost:3000/api/sedes/${restaurant.id}/increaseMesas`, {
-                                method: 'PUT'
-                            });
-                        } catch (error) {
-                            console.error('Error increasing available tables:', error);
-                            alert('Error al actualizar las mesas disponibles');
+
+                        if (reservation.Estado === 2) {
+                            try {
+                                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurant.id}/increaseMesas`, {
+                                    method: 'PUT'
+                                });
+                            } catch (error) {
+                                console.error('Error increasing available tables:', error);
+                                alert('Error al actualizar las mesas disponibles');
+                            }
                         }
                     }
                 }

@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
             if (response.ok) {
                 alert('La reserva ha sido confirmada satisfactoriamente');
-                // Decrease the number of available tables
+
                 await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
                     method: 'PUT'
                 });
-                location.reload(); // Reload the page to reflect changes
+                location.reload(); 
             } else {
                 alert('Error al confirmar la reserva');
             }
@@ -122,11 +122,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
             if (response.ok) {
                 alert('La reserva ha sido completada satisfactoriamente');
-                // Decrease the number of available tables
-                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
+                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/increaseMesas`, {
                     method: 'PUT'
                 });
-                location.reload(); // Reload the page to reflect changes
+                location.reload();
             } else {
                 alert('Error al completar la reserva');
             }
@@ -144,7 +143,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (response.ok) {
                 alert('La reserva ha sido marcada como no-show');
                 // Decrease the number of available tables
-                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/decreaseMesas`, {
+                await fetch(`${configURL1.baseUrl}/api/sedes/${restaurantId}/increaseMesas`, {
                     method: 'PUT'
                 });
                 location.reload(); // Reload the page to reflect changes

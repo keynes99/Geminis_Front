@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 Categoria: formData.get('categoria')
             };
 
-            if (formData.get('logo')) {
+            if (formData.get('logo') && formData.get('logo').size > 0) {
                 const logoFile = formData.get('logo');
                 const logoFormData = new FormData();
                 logoFormData.append('image', logoFile);
