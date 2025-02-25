@@ -7,12 +7,13 @@
     color: white;
     border-radius: 0 0 1em 1em;
     margin-bottom: 20px;
+    animation: slideIn 1s ease-out;
 }
 
 /* CARRUSEL */
 #restaurants-section h1 {
     text-align: center;
-    padding-top: 4em;
+    padding-top: 1em;
 }
 
 /* Carrusel de restaurantes */
@@ -20,6 +21,7 @@
 .owl-carousel.owl-loaded {
     display: flex !important;
     justify-content: center;
+    animation: fadeIn 1.0s ease-in-out;
 }
 
 .owl-carousel .owl-item.active {

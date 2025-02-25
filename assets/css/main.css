@@ -26,13 +26,13 @@ html {
 body {
     background-color: var(--background-color);
     color:var(--text-color-secondary);
+    opacity: 1;
 }
 
 main {
     background-color: rgba(253, 237, 239, 0.8);
     background-size: cover;
     background-position: center;
-    flex: 1;
     position: relative;
     /* Ensure main is positioned relative to its pseudo-element */
 }
@@ -463,5 +463,21 @@ footer {
     }
     nav .nav-menu{
         gap: .5em;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateX(0);
     }
 }
