@@ -217,19 +217,75 @@ function openModal(planType) {
     const modal = document.getElementById("pricingModal");
     const modalTitle = document.getElementById("modal-title");
     const modalDescription = document.getElementById("modal-description");
+    const purchaseButton = document.getElementById("purchase-button");
+    
+    if (planType === "basic" || planType === "personal-basic") {
+        purchaseButton.style.display = "none";
+    } else {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+            purchaseButton.style.display = "block";
+        } else {
+            purchaseButton.style.display = "none";
+        }
+    }
     
     if (planType === "basic") {
         modalTitle.innerText = "Plan Básico";
-        modalDescription.innerText = "Este plan incluye acceso a funciones básicas como X, Y, Z.";
+        modalDescription.innerHTML = `
+            <table>
+                <tr><td>Acceso a reservas y domicilios <span style="color: green;">✔</span></td></tr>
+                <tr><td>Posibilidad de agregar una sede <span style="color: green;">✔</span></td></tr>
+                <tr><td>Agregar una imagen por sede <span style="color: green;">✔</span></td></tr>
+                <tr><td>Agregar hasta 12 platos al menú <span style="color: green;">✔</span></td></tr>
+            </table>
+        `;
     } else if (planType === "intermediate") {
         modalTitle.innerText = "Plan Intermedio";
-        modalDescription.innerText = "Este plan incluye funciones básicas y soporte adicional, además de A, B, C.";
+        modalDescription.innerHTML = `
+            <table>
+                <tr><td>Incluye todo lo del Plan Básico <span style="color: green;">✔</span></td></tr>
+                <tr><td>Posibilidad de agregar hasta dos sedes <span style="color: green;">✔</span></td></tr>
+                <tr><td>Agregar hasta 15 platos al menú <span style="color: green;">✔</span></td></tr>
+                <tr><td>Soporte adicional <span style="color: green;">✔</span></td></tr>
+            </table>
+        `;
     } else if (planType === "advanced") {
         modalTitle.innerText = "Plan Avanzado";
-        modalDescription.innerText = "Accede a todas las funciones y soporte premium, incluyendo D, E, F, G.";
+        modalDescription.innerHTML = `
+            <table>
+                <tr><td>Incluye todo lo del Plan Intermedio <span style="color: green;">✔</span></td></tr>
+                <tr><td>Posibilidad de agregar más de dos sedes <span style="color: green;">✔</span></td></tr>
+                <tr><td>Agregar más de una imagen por sede <span style="color: green;">✔</span></td></tr>
+                <tr><td>Sección de destacados <span style="color: green;">✔</span></td></tr>
+                <tr><td>Agregar platos ilimitados al menú <span style="color: green;">✔</span></td></tr>
+                <tr><td>Soporte premium <span style="color: green;">✔</span></td></tr>
+            </table>
+        `;
+    } else if (planType === "personal-basic") {
+        modalTitle.innerText = "Plan Básico Personal";
+        modalDescription.innerHTML = `
+            <table>
+                <tr><td>Acceso a reservas <span style="color: green;">✔</span></td></tr>
+                <tr><td>Acceso a domicilios <span style="color: green;">✔</span></td></tr>
+            </table>
+        `;
+    } else if (planType === "personal-premium") {
+        modalTitle.innerText = "Plan Premium Personal";
+        modalDescription.innerHTML = `
+            <table>
+                <tr><td>Posibilidad de realizar más de 8 reservas por mes <span style="color: green;">✔</span></td></tr>
+                <tr><td>Más de 15 domicilios por mes <span style="color: green;">✔</span></td></tr>
+                <tr><td>Ofrecer restaurantes personalizados de acuerdo a los gustos <span style="color: green;">✔</span></td></tr>
+            </table>
+        `;
     }
     
     modal.style.display = "flex";
+}
+
+function purchasePlan() {
+    window.location.href = "https://payment-gateway-url.com";
 }
 
 function closeModal() {
