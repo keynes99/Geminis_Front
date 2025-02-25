@@ -192,3 +192,9 @@
         gap: 2em;
     }
 }
+@media (min-width: 1900px) {
+    .restaurants-list{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

@@ -32,6 +32,7 @@ h1 {
     justify-content: center;
     gap: 2em;
     flex-wrap: wrap;
+    padding: 5em 0;
 }
 
 /* Estilos de los menús */
