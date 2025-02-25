@@ -103,10 +103,8 @@
 }
 
 .carousel-item .restaurant-img {
-    flex-basis: 100%;
-    width: 100%;
-    height: 200px;
-    max-height: 200px;
+    min-height: 175px;
+    max-height: 175px;
     object-fit: cover;
 }
 
@@ -141,54 +139,16 @@
     display: flex;
     flex-direction: column;
     width: 90%;
+    min-height: 270px;
     align-items: center;
     position: relative;
     color: var(--text-color);
     padding: 1em 1.25em;
+    justify-content: space-between;
 }
 
 .carousel-item .restaurant-info p {
     margin: 0.75em;
-}
-
-@media (min-width: 300px) {
-    .carousel-item {
-        min-width: 260px;
-        max-width: 260px;
-    }
-    .carousel-container .owl-dots {
-        display: flex;
-        overflow: hidden;
-        max-width: 131px;
-        position: absolute;
-        top: -2em;
-        height: 1em;
-    } 
-    
-    .carousel-container .owl-dots .owl-dot {
-        min-width: 5px;
-        max-width: 5px;
-        height: 5px;
-        background-color: #333;
-        border-radius: 50%;
-        margin: 0 0.5em;
-    }
-}
-
-@media (min-width: 768px) {
-    .carousel-item {
-        min-width: 350px;
-        max-width: 350px;
-    }
-
-    .pricing-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 33%;
-        align-items: center;
-    }
-
 }
 
 /* planes */
@@ -216,7 +176,6 @@
 
 .btn-color-mode-switch>label.btn-color-mode-switch-inner {
     margin: 0;
-    width: 20vw;
     height: 40px;
     background-color: var(--secondary-color);
     border-radius: 26px;
@@ -229,24 +188,18 @@
 .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
     content: attr(data-on);
     position: absolute;
-    font-size: 20px;
     font-weight: 600;
-    top: 7px;
-    right:2vw;
     color: var(--text-color);
 }
 
 .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
     content: attr(data-off);
-    width: 10vw;
     height: 24px;
     background: linear-gradient(var(--primary-dark), var(--primary-color), var(--primary-dark));
     border-radius: 26px;
     position: absolute;
-    font-size: 20px;
     display: flex;
     justify-content: center;
-    left: 4px;
     top: 2.5px;
     text-align: center;
     transition: all 0.3s ease;
@@ -254,6 +207,7 @@
     padding: 5px 0px;
     color: #fff;
     font-weight: 600;
+    align-items: center;
 }
 
 .btn-color-mode-switch input[type="checkbox"] {
@@ -271,7 +225,7 @@
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
     content: attr(data-on);
-    left: 9.8vw;
+
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
@@ -314,18 +268,24 @@
 .pricing-card-container-personal,
 .pricing-card-container-empresa {
     display: flex;
-    justify-content: center;
-    gap: 2em;
+    justify-content: space-evenly;
+    gap: 1em;
     margin-top: 2em;
+    width: 100%;
+
 }
 
 .pricing-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 29%;
     background: var(--background-color);
     color: var(--secondary-color);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 .25em .5em rgba(255, 255, 255, 0.1);
-
     transition: transform 0.3s ease;
 }
 
@@ -445,6 +405,7 @@
     .carousel-container .owl-dots .owl-dot.active {
         background-color: var(--primary-color);
     }
+    
     /* planes */
     /* Cards */
     .pricing-plans-section {
@@ -479,9 +440,64 @@
         left: 14.5vw;
     }
 }
+@media (min-width: 300px) {
+    .carousel-item {
+        min-width: 260px;
+        max-width: 260px;
+    }
+    .carousel-container .owl-dots {
+        display: flex;
+        overflow: hidden;
+        max-width: 131px;
+        position: absolute;
+        top: -2em;
+        height: 1em;
+    } 
+    
+    .carousel-container .owl-dots .owl-dot {
+        min-width: 5px;
+        max-width: 5px;
+        height: 5px;
+        background-color: #333;
+        border-radius: 50%;
+        margin: 0 0.5em;
+    }
+    .pricing-plans-section{
+        margin: 0 .25em 3em;
+        padding: 3em 0;
+    }
+    .pricing-card-container-personal,
+    .pricing-card-container-empresa {
+        flex-wrap: wrap;
 
-/* Dispositivos medianos (tablets en horizontal y pantallas pequeñas) */
-@media (min-width: 768px) and (max-width: 991.99px) {
+    }
+    .pricing-card {
+        flex-basis: 95%;
+    }
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+        width: 55vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+        font-size: calc(0.75em + 0.5vw);
+        top: calc(7px + 0.5vw);
+        right: 3.5vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+        width: 25vw;
+        font-size: calc(0.75em + 0.5vw);
+        left: 1vw;
+    }
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+        left: 3.5vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
+        left: 29vw;
+    }
+}
+@media (min-width: 576px){
     .owl-carousel .owl-stage-outer {
         max-width: 83vw;
     }
@@ -492,7 +508,51 @@
     /* planes */
     /* Cards */
     .pricing-plans-section {
-        margin: 0 .5em;
+        margin: 0 .5em 4em;
+        padding: 3em 0 4em;
+    }
+    
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+        width: 30vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+        right: 2.5vw;
+        font-size: 1.25em;
+        top: 7px;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+        left: 2.5vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+        width: 15vw;
+        font-size: 1.25em;
+    }
+}
+/* Dispositivos medianos (tablets en horizontal y pantallas pequeñas) */
+@media (min-width: 768px) and (max-width: 991.99px) {
+    .owl-carousel .owl-stage-outer {
+        max-width: 83vw;
+    }
+    .carousel-container .owl-nav {
+        width: 95vw;
+        left: 2.3vw;
+    } 
+    .carousel-item {
+        min-width: 350px;
+        max-width: 350px;
+    }
+
+    .pricing-card {
+        flex-basis: 40%;
+        gap: 0.5rem;
+    }         
+    /* planes */
+    /* Cards */
+    .pricing-plans-section {
+        margin: 0 .5em 5em;
         padding: 3em 0 4em;
     }
 
@@ -502,6 +562,7 @@
 
     .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
         right: 2.5vw;
+        top: 7px;
     }
 
     .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
@@ -512,13 +573,12 @@
         width: 15vw;
     }
 
-    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:afteR {
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
         left: 14.5vw;
     }
 
 
 }
-
 /* Dispositivos grandes (pantallas grandes y escritorios) */
 @media (min-width: 992px) and (max-width: 1200.98px) {
     .owl-carousel .owl-stage-outer {
@@ -569,10 +629,9 @@
 }
 
 /* Dispositivos muy grandes (pantallas muy grandes) */
-@media (min-width: 1201px) and (max-width: 1399.99px) {
+@media (min-width: 1201px) {
     .owl-carousel .owl-stage-outer {
         max-width: 88vw;
-
     }
 
     .carousel-container .owl-nav {
@@ -588,7 +647,30 @@
     }
 
     .pricing-card {
-        width: 30%;
+        flex-basis: 28%;
+    }
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+        width: 20vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+        right: 1.8vw;
+        font-size: 20px;
+        top: 7px;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+        width: 9.8vw;
+        font-size: 20px;
+        left: 4px;
+        
+    }
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+        left: 2vw;
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
+        left: 9.8vw;
     }
 }
 
@@ -619,6 +701,29 @@
     .pricing-plans-section {
         margin: 4em .5em;
         padding: 3em 0 4em;
+    }
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
+        width: 20vw;
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
+        right: 2.5vw;
+        font-size: calc(0.75em + 0.5556vw);
+        top: calc(16px - 0.5556vw);
+    }
+
+    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
+        width: 10vw;
+        font-size: calc(0.75em + 0.5556vw); 
+   
+    }
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
+        left: 2.5vw;
+        
+    }
+
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
+        left: 9.8vw;
     }
 
 }
