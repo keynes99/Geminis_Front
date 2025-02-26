@@ -92,7 +92,7 @@ const loadComponent = async (id, file) => {
                     // Seleccionar el li padre de domicilios y reservas y establecer display none
                     const domiParent = domi.closest('li');
                     const reservaParent = reserva.closest('li');
-                    
+
                     if (domiParent) {
                         domiParent.style.display = "none";
                     }
@@ -101,9 +101,29 @@ const loadComponent = async (id, file) => {
                         reservaParent.style.display = "none";
                     }
 
-                    if (window.innerWidth < 1200){
-                        logIn.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color: #fdedef;"></i>';
-                    }
+                    let hasReloaded = false;
+
+                    window.addEventListener('resize', () => {
+                        if (window.innerWidth  && !hasReloaded) {
+                            if (!sessionStorage.getItem('reloaded')) {
+                                sessionStorage.setItem('reloaded', 'true');
+                                hasReloaded = true;
+                                location.reload();
+                            }
+                        }
+                    });
+
+                    // Restablecer la variable al cargar la página en caso de que se haya recargado
+                    window.addEventListener('load', () => {
+                        sessionStorage.removeItem('reloaded');
+
+                        if (window.innerWidth < 992) {
+                            logIn.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color: #fdedef;"></i>';
+                        }
+                    });
+
+
+
                 }
             } else {
 
