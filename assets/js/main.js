@@ -1,7 +1,7 @@
 // URL de configuración
 const configURL1 = {
-    baseUrl: 'http://localhost:3000'
-    //baseUrl: 'https://geminisback-production.up.railway.app'
+    //baseUrl: 'http://localhost:3000'
+    baseUrl: 'https://geminisback-production.up.railway.app'
 };
 
 // Cargar componentes comunes
@@ -197,16 +197,24 @@ function toggleCollapseMenu() {
     }
 }
 
-// Cargar Nav y Footer
-document.addEventListener("DOMContentLoaded", () => {
-    loadComponent('nav', 'nav.html').then(() => {
+// Cargar Header, Nav y Footer
+document.addEventListener("DOMContentLoaded", async () => {
+    // Cargar head.html dinámicamente
+    await fetch("../components/head.html")
+        .then(response => response.text())
+        .then(data => {
+            document.head.innerHTML += data;
+        })
+        .catch(error => console.error("Error al cargar head.html:", error));
 
+    // Cargar Nav y Footer después de cargar el <head>
+    loadComponent('nav', 'nav.html').then(() => {
         setActiveNavItem();
         handleNavShadow();
-
     });
     loadComponent('footer', 'footer.html');
-    // animacion mision y vision
+
+    // Animación para misión y visión en about.html
     const about = window.location.pathname;
     if (about.includes('about.html')) {
         toggleSection('mision');
