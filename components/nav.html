@@ -1,0 +1,53 @@
+<nav>
+    <a href="home.html" class="no-hover">
+        <img src="../assets/images/logoGeminis.png" alt="Logotipo de Géminis" class="logo">
+    </a>
+
+
+    <ul class="nav-menu">
+        <button class="collapse-button"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseMenu"
+            aria-label="Toggle navigation" aria-expanded="false" aria-controls="collapseMenu"
+            onclick="toggleCollapseMenu()">
+            <i class="fa-solid fa-bars" style="color: #fdedef;"></i>
+        </button>
+
+        <div id="collapseMenu" class="dropdown-content">
+            <li><a class="inicio" href="home.html">Inicio</a></li>
+            <li><a class="restaurantes" href="verRestaurantes.html">Restaurantes</a></li>
+            <li><a class="domicilios" href="domicilios.html" id="domicilios-link">Domicilios</a></li>
+            <li><a class="reservas" href="reservasCliente.html" id="reservas-link">Reservas</a></li>
+            <li><a href="about.html">Nosotros</a></li>
+        </div>
+        <li class="hidde-on-sm"><a class="inicio" href="home.html">Inicio</a></li>
+        <li class="hidde-on-sm"><a class="restaurantes" href="verRestaurantes.html">Restaurantes</a></li>
+        <li class="hidde-on-sm"><a class="domicilios" href="domicilios.html" id="domicilios-link">Domicilios</a></li>
+        <li class="hidde-on-sm"><a class="reservas" href="reservasCliente.html" id="reservas-link">Reservas</a></li>
+        <li class="hidde-on-sm"><a href="about.html">Nosotros</a></li>
+        <li>
+            <a class="login" href="login.html">Iniciar Sesion</a>
+        </li>
+        <!-- <a href="terms.html">Términos y Condiciones</a> -->
+        <li class="dropdown">
+            <a id="userIcon" class="user-avatar" href="#"><i class="fa-solid fa-user" style="color: #fdedef;"></i></a>
+            <a href="#" class="user-name" id="userName">
+                Usuario
+            </a>
+            <ul class="dropdown-content">
+                <li>
+                    <a href="profile.html">Perfil</a>
+                </li>
+                <li id="miRestaurante">
+                    <a href="editarRestaurante.html">Mi restaurante</a>
+                </li>
+                <li id="misSedes">
+                    <a href="sedes.html">Sedes</a>
+                </li>
+                <li id="Reservas">
+                    <a href="reservasSede.html">Reservas</a>
+                <li>
+                    <a href="#" id="CerrarSes">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

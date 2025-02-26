@@ -197,16 +197,16 @@ function toggleCollapseMenu() {
     }
 }
 
-// Cargar Header, Nav y Footer
-document.addEventListener("DOMContentLoaded", async () => {
-    // Cargar Nav y Footer después de cargar el <head>
+// Cargar Nav y Footer
+document.addEventListener("DOMContentLoaded", () => {
     loadComponent('nav', 'nav.html').then(() => {
+
         setActiveNavItem();
         handleNavShadow();
+
     });
     loadComponent('footer', 'footer.html');
-
-    // Animación para misión y visión en about.html
+    // animacion mision y vision
     const about = window.location.pathname;
     if (about.includes('about.html')) {
         toggleSection('mision');
