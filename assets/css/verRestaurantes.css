@@ -1,9 +1,3 @@
-h1 {
-    text-align: center;
-    margin-top: 5vh;
-    font-size: 2.6em;
-}
-
 .restaurants-list {
     display: flex;
     flex-direction: column;
@@ -133,30 +127,74 @@ h1 {
 #page-info {
     font-size: 1.2em;
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+@media (min-width: 300px) {
     .restaurant-card {
         width: 95%;
     }
-
     .filter-bar {
-        flex-direction: column;
+        justify-content: center;
     }
-
+    .filter-bar div{
+        width: 100%;
+        max-width: 100%;
+    }   
     .filter-bar label,
     .filter-bar input,
-    .filter-bar select,
-    .filter-bar button {
+    .filter-bar select{
         width: 100%;
+        max-width: 100%;
         margin: 5px 0;
     }
-
+    .filter-bar input{
+        width: 97%;
+        padding: 5px 0 5px 5px;
+    }
+    .filter-bar button{
+        width: 50%;
+    }
     .pagination-controls {
         flex-direction: column;
     }
 
     .pagination-btn {
         margin: 10px 0;
+    }
+    
+}
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .filter-bar{
+        justify-content: space-evenly;
+    }
+    .filter-bar select{
+        width: 98.3%;
+    }
+}
+@media (min-width: 1200px) {
+    .filter-bar {
+        flex-direction: row;
+
+    }
+    .filter-bar div{
+        width: auto;
+        max-width: auto;
+    }
+    .filter-bar label,
+    .filter-bar input,
+    .filter-bar select,
+    .filter-bar button {
+        width: auto;
+        margin: 5px 0;
+    }
+    
+    .pagination-controls {
+        flex-direction: row;
+        gap: 2em;
+    }
+}
+@media (min-width: 1900px) {
+    .restaurants-list{
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }

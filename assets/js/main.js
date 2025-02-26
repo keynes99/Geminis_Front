@@ -92,13 +92,17 @@ const loadComponent = async (id, file) => {
                     // Seleccionar el li padre de domicilios y reservas y establecer display none
                     const domiParent = domi.closest('li');
                     const reservaParent = reserva.closest('li');
-
+                    
                     if (domiParent) {
                         domiParent.style.display = "none";
                     }
 
                     if (reservaParent) {
                         reservaParent.style.display = "none";
+                    }
+
+                    if (window.innerWidth < 1200){
+                        logIn.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color: #fdedef;"></i>';
                     }
                 }
             } else {

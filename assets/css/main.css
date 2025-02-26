@@ -3,17 +3,15 @@
     --primary-color: #e22c42;
     --secondary-color: #120204;
     --primary-dark: #901422;
-    --primary-darker:#67131d;
+    --primary-darker: #67131d;
     --background-color: #fdedef;
     --background-color-dark: #333;
     --text-color: #fff;
     --text-color-secondary: #000;
 }
 
-/* Reset y configuración global */
-
-body,
-html {
+/* Reset and global configuration */
+body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,7 +23,7 @@ html {
 
 body {
     background-color: var(--background-color);
-    color:var(--text-color-secondary);
+    color: var(--text-color-secondary);
     opacity: 1;
 }
 
@@ -34,38 +32,26 @@ main {
     background-size: cover;
     background-position: center;
     position: relative;
-    /* Ensure main is positioned relative to its pseudo-element */
 }
 
 main::before {
     content: "";
     position: fixed;
-    /* Change to fixed to cover the entire screen */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Adjust height to cover the entire viewport */
     background-image: url(../images/planes-bg.jpg);
     background-size: cover;
     background-position: center;
     z-index: -3;
-    /* Ensure the pseudo-element is behind the content */
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat", serif;
 }
 
-button,
-input,
-select,
-textarea {
+button, input, select, textarea {
     font-size: 1em;
     font-family: "Open Sans", sans-serif;
 }
@@ -99,7 +85,7 @@ textarea {
     padding: 0 12%;
 }
 
-.hidde-on-sm{
+.hidde-on-sm {
     display: none;
 }
 /* Estilo del nav */
@@ -148,21 +134,16 @@ nav .nav-menu li a {
     display: block;
     font-size: 16px;
     overflow: hidden;
-    /* Asegura que el efecto no se desborde */
     transition: background-size 0.3s ease, color 0.3s ease;
-    /* Animación para el tamaño de fondo y color */
     background-size: 0% 100%;
-    /* Inicialmente el fondo está vacío */
     background-image: linear-gradient(90deg, rgb(103, 19, 29), var(--primary-color), #67131d);
-    /* Color de fondo del centro */
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 1em;
     z-index: 11;
 }
 
-.dropdown-content li a.active,
-nav .nav-menu a.active {
+.dropdown-content li a.active, nav .nav-menu a.active {
     background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--secondary-color));
     box-shadow: 0 0 0.5em var(--background-color);
     border-radius: 1em;
@@ -170,27 +151,33 @@ nav .nav-menu a.active {
 
 nav li a:hover {
     background-size: 100% 100%;
-    /* El fondo se expande a todo el tamaño del enlace */
 }
 
 nav .logo {
     width: 100.5px;
     height: 82.5px;
 }
+
 .collapse-button {
     background: none;
-    border: none;
+    padding-left: .5em;
+    padding-right: .5em;
+    border: 2px solid #fdedef;
+    border-radius: 1rem;
     font-size: 24px;
     cursor: pointer;
-    display: none; /* Oculto por defecto */
+    display: none;
 }
-#collapseMenu.dropdown-content{
+
+#collapseMenu.dropdown-content {
     top: 100px;
     max-width: 134px;
 }
+
 .dropdown-content.show {
-    display: block; /* Se muestra cuando se activa */
+    display: block;
 }
+
 /* Dropdown styles */
 .dropdown {
     padding: 0;
@@ -210,7 +197,6 @@ nav .logo {
     border-radius: 0 0 1em 1em;
     box-shadow: 0 .25em .5em rgba(253, 237, 239, 0.3);
     width: 100%;
-    /* Ensure the dropdown content matches the width of its parent */
 }
 
 .dropdown-content li a {
@@ -220,39 +206,34 @@ nav .logo {
     position: relative;
     margin: 0;
     overflow: hidden;
-    /* Asegura que el efecto no se desborde */
     transition: background-size 0.3s ease, color 0.3s ease;
-    /* Animación para el tamaño de fondo y color */
     background-size: 0% 100%;
-    /* Inicialmente el fondo está vacío */
     background-image: linear-gradient(90deg, #67131d, var(--primary-color), #67131d);
-    /* Color de fondo del centro */
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .dropdown-content li a:hover {
     background-size: 100% 100%;
-    /* El fondo se expande a todo el tamaño del enlace */
     color: var(--text-color);
-    /* Cambiar el color del texto si lo deseas */
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
-#userIcon{
+
+#userIcon {
     display: none;
 }
-/* Estilo de botones */
-button,
-.primary-btn {
+
+/* Button styles */
+button, .primary-btn {
     background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--secondary-color));
     color: var(--text-color);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: .5em;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     transition: background 0.3s, box-shadow 0.3s;
     margin: 1em 0;
@@ -260,14 +241,13 @@ button,
     max-width: 200px;
 }
 
-button:hover,
-.primary-btn:hover {
+button:hover, .primary-btn:hover {
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
     box-shadow: 0 0 1.25em var(--background-color);
     transform: scale(1.06);
 }
 
-/* Estilos del footer */
+/* Footer styles */
 footer {
     background: var(--secondary-color);
     color: var(--text-color);
@@ -283,9 +263,7 @@ footer {
     gap: 20px;
 }
 
-.footer-contact,
-.footer-links,
-.footer-social {
+.footer-contact, .footer-links, .footer-social {
     flex: 1;
     min-width: 200px;
 }
@@ -296,8 +274,7 @@ footer {
     color: var(--primary-color);
 }
 
-.footer-container p,
-.footer-container ul {
+.footer-container p, .footer-container ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -361,7 +338,7 @@ footer {
     right: -549px;
 }
 
-/* MEDIA QUERIES */
+/* Media Queries */
 @media (min-width: 1200px) {
     h1 {
         font-size: 2.5em;
@@ -379,12 +356,12 @@ footer {
     h4 {
         font-size: 1.25em;
     }
-    .hidde-on-sm{
+
+    .hidde-on-sm {
         display: inherit;
     }
 }
 
-/* Pantallas medianas (MD) */
 @media (max-width: 992px) {
     h1 {
         font-size: 2.25em;
@@ -395,7 +372,7 @@ footer {
     }
 
     h3 {
-        font-size: 1.35Rem;
+        font-size: 1.35rem;
     }
 
     h4 {
@@ -403,7 +380,6 @@ footer {
     }
 }
 
-/* Pantallas pequeñas (SM) */
 @media (max-width: 769px) {
     h1 {
         font-size: 2em;
@@ -420,10 +396,12 @@ footer {
     h4 {
         font-size: 1em;
     }
+    /* nav{
+        justify-content: space-between;
+    } */
 }
 
-/* Pantallas extra pequeñas (XS) */
-@media (max-width: 579px) {
+@media (max-width: 425px) {
     h1 {
         font-size: 1.75em;
     }
@@ -439,32 +417,34 @@ footer {
     h4 {
         font-size: 0.9em;
     }
-    nav{
+
+    nav {
         justify-content: center;
     }
 }
-@media (max-width: 579px) {
-    nav{
 
-    }
-}
-@media (max-width: 1200px) {
+@media (max-width: 1199.98px) {
     .collapse-button {
-        display: block; /* Mostrar el botón en pantallas pequeñas */
+        display: block;
     }
     #userIcon{
         display: inherit;
     }
-    nav .nav-menu li a.user-name{
+
+    nav .nav-menu li a.user-name {
         display: none;
     }
-    nav{
+
+    nav {
         flex-wrap: wrap;
     }
-    nav .nav-menu{
+
+    nav .nav-menu {
         gap: .5em;
     }
 }
+
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -473,6 +453,7 @@ footer {
         opacity: 1;
     }
 }
+
 @keyframes slideIn {
     from {
         transform: translateY(-100%);
