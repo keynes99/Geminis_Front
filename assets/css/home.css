@@ -1,5 +1,3 @@
-/* BANNER */
-
 .home-intro {
     text-align: center;
     padding: 2em 2em 3em;
@@ -10,13 +8,11 @@
     animation: slideIn 1s ease-out;
 }
 
-/* CARRUSEL */
 #restaurants-section h1 {
     text-align: center;
     padding-top: 1em;
 }
 
-/* Carrusel de restaurantes */
 .owl-carousel,
 .owl-carousel.owl-loaded {
     display: flex !important;
@@ -26,24 +22,17 @@
 
 .owl-carousel .owl-item.active {
     display: flex;
-
 }
 
 .carousel-container {
     max-height: 30em;
+    display: flex;
+    margin: 4em 0;
+    height: fit-content;
 }
 
 .carousel-container .owl-nav {
     position: absolute;
-
-    /* btn chiquitos */
-    /* top: 175.875px;
-    left: -52px;
-    width: 109%;
-    max-width: 120%;
-    height: 117.25px; */
-
-    /* btn grandes */
     top: 0;
     left: 0;
     height: 469px;
@@ -67,39 +56,27 @@
 
 .carousel-container.owl-carousel .owl-nav button.owl-prev:hover,
 .carousel-container.owl-carousel .owl-nav button.owl-next:hover {
-
     background: rgb(18, 2, 4);
     background: linear-gradient(270deg, rgba(18, 2, 4, 0.8) 0%, var(--primary-color) 60%);
     color: rgb(4, 4, 38);
     transform: none;
 }
 
-.carousel-container {
-    display: flex;
-    margin: 4em 0;
-    height: fit-content;
-}
-
 .carousel-item {
     flex-direction: column;
     flex: 0 0 auto;
-    /* Evitar que los elementos se encojan */
     margin: 0 10px;
     border-radius: 8px;
     overflow: hidden;
     background: var(--primary-dark);
     text-align: center;
     scroll-snap-align: start;
-    /* Alineación de ajuste */
     position: relative;
-    /* Asegura que quede encima */
     display: flex;
-    /* Centra la imagen dentro del contenedor */
     align-items: center;
     justify-content: space-between;
     min-height: 469px;
     max-height: 469px;
-
 }
 
 .carousel-item .restaurant-img {
@@ -110,11 +87,8 @@
 
 .carousel-item .restaurant-logo {
     position: absolute;
-    /* Cambiado de relativo a absoluto */
     top: 10px;
-    /* Ajusta según la posición deseada */
     left: 10px;
-    /* Ajusta según la posición deseada */
     background: var(--background-color);
     padding: 0.75em;
     overflow: hidden;
@@ -122,9 +96,7 @@
     height: 3.5em;
     border-radius: 100%;
     z-index: 10;
-    /* Asegura que quede encima */
     display: flex;
-    /* Centra la imagen dentro del contenedor */
     align-items: center;
     justify-content: center;
 }
@@ -151,21 +123,16 @@
     margin: 0.75em;
 }
 
-/* planes */
-/* Boton */
-/* From Uiverse.io by JaydipPrajapati1910 */
 .pricing-plan-btn-container {
     display: table;
     width: 100%;
     text-align: center;
-
 }
 
 .btn-container {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-
 }
 
 .btn-color-mode-switch {
@@ -225,24 +192,17 @@
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
     content: attr(data-on);
-
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
     content: attr(data-off);
     right: auto;
-    left: 2vw;
 }
 
-/* Cards */
 .pricing-plans-section {
-    position: relative;
-    overflow: hidden;
     background-color: var(--primary-darker);
     color: white;
     border-radius: 1em;
-    background-size: cover;
-    background-position: center;
 }
 
 .pricing-plans-section::before {
@@ -256,13 +216,11 @@
     background-size: cover;
     background-position: center;
     z-index: -1;
-    /* Ensure the pseudo-element is behind the content */
 }
 
 .pricing-container {
     text-align: center;
     padding: 3em 0 4em;
-
 }
 
 .pricing-card-container-personal,
@@ -272,7 +230,6 @@
     gap: 1em;
     margin-top: 2em;
     width: 100%;
-
 }
 
 .pricing-card {
@@ -311,7 +268,6 @@
     margin: 10px 0;
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -376,7 +332,6 @@
     margin-top: 20px;
 }
 
-/* Pricing Card Styles */
 .pricing-card ul {
     list-style: none;
     padding: 0;
@@ -395,13 +350,10 @@
     color: green;
 }
 
-/* FAQ Section */
 .faq-section {
     background-color: var(--primary-darker);
     color: white;
-    padding: 3em 1em;
     border-radius: 1em;
-    margin: 2em 0;
 }
 
 .faq-section .container {
@@ -422,7 +374,6 @@
 }
 
 .faq-item h2 {
-    font-size: 1.25em;
     margin-bottom: 0.5em;
     cursor: pointer;
     display: flex;
@@ -436,55 +387,12 @@
     display: none;
 }
 
-/* Dispositivos pequeños (móviles en horizontal y tablets pequeñas) */
-@media (min-width: 577px) and (max-width: 767.98px) {
-    .owl-carousel .owl-stage-outer {
-        max-width: 89vw;
-    }
-    
-    .carousel-container .owl-dots .owl-dot.active {
-        background-color: var(--primary-color);
-    }
-    
-    /* planes */
-    /* Cards */
-    .pricing-plans-section {
-        margin: 0 .5em;
-        padding: 3em 0 4em;
-    }
-    .pricing-card-container-personal,
-    .pricing-card-container-empresa {
-        flex-direction: column;
-        align-items: center;
-    }
-    .pricing-card {
-        width: 90%;
-    }
-    .btn-color-mode-switch>label.btn-color-mode-switch-inner {
-        width: 38vw;
-    }
-
-    .btn-color-mode-switch>label.btn-color-mode-switch-inner:before {
-        right: 2.5vw;
-    }
-
-    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
-        left: 2.5vw;
-    }
-
-    .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
-        width: 18vw;
-    }
-
-    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:afteR {
-        left: 14.5vw;
-    }
-}
 @media (min-width: 300px) {
     .carousel-item {
         min-width: 260px;
         max-width: 260px;
     }
+
     .carousel-container .owl-dots {
         display: flex;
         overflow: hidden;
@@ -492,8 +400,8 @@
         position: absolute;
         top: -2em;
         height: 1em;
-    } 
-    
+    }
+
     .carousel-container .owl-dots .owl-dot {
         min-width: 5px;
         max-width: 5px;
@@ -502,18 +410,22 @@
         border-radius: 50%;
         margin: 0 0.5em;
     }
-    .pricing-plans-section{
+
+    .pricing-plans-section,
+    .faq-section {
         margin: 0 .25em 3em;
         padding: 3em 0;
     }
+
     .pricing-card-container-personal,
     .pricing-card-container-empresa {
         flex-wrap: wrap;
-
     }
+
     .pricing-card {
         flex-basis: 95%;
     }
+
     .btn-color-mode-switch>label.btn-color-mode-switch-inner {
         width: 55vw;
     }
@@ -529,6 +441,7 @@
         font-size: calc(0.75em + 0.5vw);
         left: 1vw;
     }
+
     .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
         left: 3.5vw;
     }
@@ -537,21 +450,23 @@
         left: 29vw;
     }
 }
-@media (min-width: 576px){
+
+@media (min-width: 576px) {
     .owl-carousel .owl-stage-outer {
         max-width: 83vw;
     }
+
     .carousel-container .owl-nav {
         width: 95vw;
         left: 2.3vw;
-    }           
-    /* planes */
-    /* Cards */
-    .pricing-plans-section {
+    }
+
+    .pricing-plans-section,
+    .faq-section {
         margin: 0 .5em 4em;
         padding: 3em 0 4em;
     }
-    
+
     .btn-color-mode-switch>label.btn-color-mode-switch-inner {
         width: 30vw;
     }
@@ -571,15 +486,17 @@
         font-size: 1.25em;
     }
 }
-/* Dispositivos medianos (tablets en horizontal y pantallas pequeñas) */
+
 @media (min-width: 768px) and (max-width: 991.99px) {
     .owl-carousel .owl-stage-outer {
         max-width: 83vw;
     }
+
     .carousel-container .owl-nav {
         width: 95vw;
         left: 2.3vw;
-    } 
+    }
+
     .carousel-item {
         min-width: 350px;
         max-width: 350px;
@@ -588,10 +505,10 @@
     .pricing-card {
         flex-basis: 40%;
         gap: 0.5rem;
-    }         
-    /* planes */
-    /* Cards */
-    .pricing-plans-section {
+    }
+
+    .pricing-plans-section,
+    .faq-section {
         margin: 0 .5em 5em;
         padding: 3em 0 4em;
     }
@@ -611,19 +528,17 @@
 
     .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
         width: 15vw;
+        left: .5vw;
     }
 
     .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
         left: 14.5vw;
     }
-
-
 }
-/* Dispositivos grandes (pantallas grandes y escritorios) */
+
 @media (min-width: 992px) and (max-width: 1200.98px) {
     .owl-carousel .owl-stage-outer {
         max-width: 86vw;
-
     }
 
     .carousel-container .owl-nav {
@@ -631,12 +546,10 @@
         left: 2.3vw;
     }
 
-    /* planes */
-    /* Cards */
-    .pricing-plans-section {
+    .pricing-plans-section,
+    .faq-section {
         margin: 0 .5em 2em;
         padding: 3em 0 4em;
-
     }
 
     .pricing-container {
@@ -661,14 +574,14 @@
 
     .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
         width: 13vw;
+        left: .4vw;
     }
 
-    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:afteR {
+    .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
         left: 11.6vw;
     }
 }
 
-/* Dispositivos muy grandes (pantallas muy grandes) */
 @media (min-width: 1201px) {
     .owl-carousel .owl-stage-outer {
         max-width: 88vw;
@@ -679,9 +592,8 @@
         left: 2.5vw;
     }
 
-    /* planes */
-    /* Cards */
-    .pricing-plans-section {
+    .pricing-plans-section,
+    .faq-section {
         margin: 4em .5em;
         padding: 3em 0 4em;
     }
@@ -689,6 +601,7 @@
     .pricing-card {
         flex-basis: 28%;
     }
+
     .btn-color-mode-switch>label.btn-color-mode-switch-inner {
         width: 20vw;
     }
@@ -703,8 +616,8 @@
         width: 9.8vw;
         font-size: 20px;
         left: 4px;
-        
     }
+
     .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
         left: 2vw;
     }
@@ -714,13 +627,9 @@
     }
 }
 
-/* Dispositivos superiores a 1400px */
 @media (min-width: 1400px) {
-
-    /* Carrusel de restaurantes */
     .owl-carousel .owl-stage-outer {
         max-width: 89.25vw;
-
     }
 
     .carousel-container .owl-nav {
@@ -736,12 +645,12 @@
         margin: 0 10px;
     }
 
-    /* planes */
-    /* Cards */
-    .pricing-plans-section {
+    .pricing-plans-section,
+    .faq-section {
         margin: 4em .5em;
         padding: 3em 0 4em;
     }
+
     .btn-color-mode-switch>label.btn-color-mode-switch-inner {
         width: 20vw;
     }
@@ -754,16 +663,14 @@
 
     .btn-color-mode-switch>label.btn-color-mode-switch-inner:after {
         width: 10vw;
-        font-size: calc(0.75em + 0.5556vw); 
-   
+        font-size: calc(0.75em + 0.5556vw);
     }
+
     .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:before {
         left: 2.5vw;
-        
     }
 
     .btn-color-mode-switch input[type="checkbox"]:checked+label.btn-color-mode-switch-inner:after {
         left: 9.8vw;
     }
-
 }
