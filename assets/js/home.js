@@ -282,13 +282,48 @@ function openModal(planType) {
     }
     
     modal.style.display = "flex";
+    purchaseButton.setAttribute("data-plan-type", planType);
+}
+
+function getPlanPrice(planType) {
+    switch (planType) {
+        case "personal-premium":
+            return 10000;
+        case "intermediate":
+            return 20000;
+        case "advanced":
+            return 40000;
+        default:
+            return 0;
+    }
 }
 
 function purchasePlan() {
-    window.location.href = "https://payment-gateway-url.com";
+    const planType = document.getElementById("purchase-button").getAttribute("data-plan-type");
+    const amount = getPlanPrice(planType);
+    const email = localStorage.getItem("email");
+
+    fetch(`${configURL1.baseUrl}/api/pagos/crear-preferencia`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: planType,
+            quantity: 1,
+            unit_price: amount,
+            email: email
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        window.location.href = data.init_point; // Redirect to Mercado Pago link
+    })
+    .catch(error => console.error('Error creating preference:', error));
 }
 
 function closeModal() {
     const modal = document.getElementById("pricingModal");
     modal.style.display = "none";
 }
+

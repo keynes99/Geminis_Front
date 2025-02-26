@@ -1,7 +1,7 @@
 // URL de configuración
 const configURL1 = {
-    //baseUrl: 'http://localhost:3000'
-    baseUrl: 'https://geminisback-production.up.railway.app'
+    baseUrl: 'http://localhost:3000'
+    //baseUrl: 'https://geminisback-production.up.railway.app'
 };
 
 // Cargar componentes comunes
