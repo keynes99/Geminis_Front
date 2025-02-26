@@ -199,14 +199,6 @@ function toggleCollapseMenu() {
 
 // Cargar Header, Nav y Footer
 document.addEventListener("DOMContentLoaded", async () => {
-    // Cargar head.html dinámicamente
-    await fetch("../components/head.html")
-        .then(response => response.text())
-        .then(data => {
-            document.head.innerHTML += data;
-        })
-        .catch(error => console.error("Error al cargar head.html:", error));
-
     // Cargar Nav y Footer después de cargar el <head>
     loadComponent('nav', 'nav.html').then(() => {
         setActiveNavItem();
