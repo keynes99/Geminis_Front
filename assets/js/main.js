@@ -193,17 +193,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Function to toggle mission and vision sections
-function toggleSection(section) {
-    const mision = document.querySelector('.mision');
-    const vision = document.querySelector('.vision');
-
-    if (section === 'mision') {
-        vision.classList.add('hidden'); // Oculta visión
-        mision.classList.remove('hidden'); // Muestra misión
-    } else if (section === 'vision') {
-        mision.classList.add('hidden'); // Oculta misión
-        vision.classList.remove('hidden'); // Muestra visión
-    }
-}
-

@@ -147,7 +147,7 @@ const getRestaurantData = async () => {
                 ]
             },
             {
-                id: "2",
+                id: "300",
                 menu: [
                     { img: "../assets/images/img-pizza1.webp", nombre: "Spaghetti Bolognese", descripcion: "Espagueti con salsa de carne y tomate", precio: 49900, tipo: 1 },
                     { img: "../assets/images/img-pizza1.webp", nombre: "Fettuccine Alfredo", descripcion: "Pasta con salsa cremosa de queso y mantequilla", precio: 44900, tipo: 2 },
@@ -156,7 +156,7 @@ const getRestaurantData = async () => {
                 ]
             },
             {
-                id: "1",
+                id: "500",
                 menu: [
                     { img: "../assets/images/img-pizza1.webp", nombre: "Acai Bowl", descripcion: "Tazón con acai, frutas frescas y granola", precio: 35900, tipo: 2 },
                     { img: "../assets/images/img-pizza1.webp", nombre: "Quinoa Salad", descripcion: "Ensalada de quinoa con aguacate, pepino y limón", precio: 30900, tipo: 2 },

@@ -73,12 +73,15 @@ const renderMenus = (menus) => {
         inputCantidad.classList.add('cantidad-input');
         inputCantidad.dataset.precio = menu.Precio;
         inputCantidad.addEventListener('change', updateTotal); // Actualizar total al cambiar cantidad
-
+        
         menuCard.innerHTML = `
             <div class="menu-content"> <!-- Contenedor para el contenido principal -->
-                <h2>${menu.Nombre}</h2>
-                <p><strong>Descripción:</strong> ${menu.Descripcion || 'Sin descripción'}</p>
-                <p><strong>Precio:</strong> $${Math.floor(menu.Precio)}</p>
+                <img src="${menu.ImagenMenu}" alt="Imagen de ${menu.Nombre}" class="menu-img"> <!-- Agregar imagen del plato -->
+                <div>
+                    <h2>${menu.Nombre}</h2>
+                    <p><strong>Descripción:</strong> ${menu.Descripcion || 'Sin descripción'}</p>
+                    <p><strong>Precio:</strong> $${Math.floor(menu.Precio)}</p>
+                </div>
             </div>
         `;
         menuCard.appendChild(inputCantidad); // Input de cantidad fuera del contenedor principal

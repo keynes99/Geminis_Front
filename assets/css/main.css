@@ -462,3 +462,11 @@ footer {
         transform: translateX(0);
     }
 }
+@keyframes slideout {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
