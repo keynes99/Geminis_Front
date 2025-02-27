@@ -212,3 +212,29 @@ document.querySelector('#solicitar-domicilio').addEventListener('click', (event)
     event.preventDefault(); // Evitar recarga de la página
     poblarDomicilio();
 });
+
+document.getElementById('terms-link').addEventListener('click', (event) => {
+    event.preventDefault();
+    document.getElementById('termsModal').style.display = 'flex';
+});
+
+document.getElementById('closeTermsBtn').addEventListener('click', () => {
+    document.getElementById('termsModal').style.display = 'none';
+});
+
+document.getElementById('terms').addEventListener('change', (event) => {
+    document.getElementById('solicitar-domicilio').disabled = !event.target.checked;
+});
+
+ // Obtener los parámetros de la URL
+ const params = new URLSearchParams(window.location.search);
+
+ // Obtener el valor del parámetro 'id'
+ const id = params.get('id');
+
+ // Llamar a la función con el ID extraído
+ if (id) {
+     getMenusDomicilios(id);
+ } else {
+     console.error('No se encontró el parámetro "id" en la URL');
+ }

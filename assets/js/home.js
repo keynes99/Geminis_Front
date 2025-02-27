@@ -212,6 +212,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('color_mode').addEventListener('change', togglePricingPlans);
     togglePricingPlans(); // Initialize the correct state on page load
 });
+
+document.getElementById('terms-link').addEventListener('click', (event) => {
+    event.preventDefault();
+    document.getElementById('termsModal').style.display = 'flex';
+});
+
+document.getElementById('closeTermsBtn').addEventListener('click', () => {
+    document.getElementById('termsModal').style.display = 'none';
+});
+
+document.getElementById('terms').addEventListener('change', (event) => {
+    document.getElementById('purchase-button').disabled = !event.target.checked;
+});
+
 // Ver Detalles del Plan
 function openModal(planType) {
     const modal = document.getElementById("pricingModal");

@@ -225,6 +225,19 @@ document.getElementById('create-form').addEventListener('submit', async (event) 
     }
 });
 
+document.getElementById('terms-link').addEventListener('click', (event) => {
+    event.preventDefault();
+    document.getElementById('termsModal').style.display = 'flex';
+});
+
+document.getElementById('closeTermsBtn').addEventListener('click', () => {
+    document.getElementById('termsModal').style.display = 'none';
+});
+
+document.getElementById('terms').addEventListener('change', (event) => {
+    document.querySelector('button[type="submit"]').disabled = !event.target.checked;
+});
+
 // Llamar a las funciones para cargar los datos del restaurante y del usuario
 getRestaurantData();
 populateUserData();

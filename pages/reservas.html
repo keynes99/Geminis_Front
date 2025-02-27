@@ -51,9 +51,13 @@
                             <option value="4">Aniversario</option>
                             <option value="5">Otro</option>
                         </select>
+                        <div class="terms-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">Acepto los <a href="#" id="terms-link">términos y condiciones</a></label>
+                        </div>
                     </div>
                     <!-- Campos para restaurante -->
-                    <button type="submit">Crear</button>
+                    <button type="submit" disabled>Crear</button>
                     <p id="error-message"></p>
                 </form>
                 <button id="go-to-restaurant" class="primary-btn" onclick="history.back()">Volver al restaurante</button>
@@ -64,7 +68,31 @@
     <!-- Footer -->
     <div id="footer"></div>
 
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <h2>Términos y Condiciones</h2>
+            <div class="terms-text">
+                <!-- ...terms and conditions content... -->
+                <h3>TÉRMINOS Y CONDICIONES SOBRE RESERVAS EN GÉMINIS</h3>
+                <p>Última actualización: 26/02/2025</p>
+                <p>Este documento establece los términos y condiciones aplicables al servicio de reservas gestionado a través de la plataforma GÉMINIS.</p>
+                <h4>1. ACEPTACIÓN Y CANCELACIÓN DE RESERVAS</h4>
+                <p>Los restaurantes se reservan el derecho de aceptar o cancelar reservas según su conveniencia y la disponibilidad de mesas.</p>
+                <p>GÉMINIS no garantiza la disponibilidad de mesas, ya que esto depende exclusivamente de cada restaurante.</p>
+                <h4>2. POLÍTICA DE CANCELACIÓN</h4>
+                <p>Una reserva confirmada no podrá ser cancelada si faltan 20 minutos o menos para la hora de la reserva.</p>
+                <p>Para cancelar una reserva antes de este período, el usuario deberá gestionarlo directamente en la plataforma.</p>
+                <h4>3. USO DE MESAS</h4>
+                <p>Cada reserva garantiza únicamente el uso de una mesa en el restaurante.</p>
+                <p>Si se requiere otra mesa adicional, se deberá realizar una nueva reserva a través de la plataforma.</p>
+                <h4>4. CONTACTO PARA CONSULTAS</h4>
+                <p>Para cualquier consulta sobre el servicio de reservas, puede comunicarse con nuestro equipo de soporte a través de gourmentgeminis@gmail.com o +57 3003776579.</p>
+            </div>
+            <button type="button" id="closeTermsBtn">Cerrar</button>
+        </div>
+    </div>
+
     <script src="../assets/js/main.js"></script>
-<script src="../assets/js/reservas.js"></script>
+    <script src="../assets/js/reservas.js"></script>
 </body>
 </html>

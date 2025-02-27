@@ -134,11 +134,39 @@
                     <h2 id="modal-title"></h2>
                     <p id="modal-description"></p>
                     <div class="modal-button-container">
-                        <button id="purchase-button" style="display: none;" onclick="purchasePlan()">Comprar ya!</button>
+                        <div class="terms-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">Acepto los <a href="#" id="terms-link">términos y condiciones</a></label>
+                        </div>
+                        <button id="purchase-button" style="display: none;" onclick="purchasePlan()" disabled>Comprar ya!</button>
                     </div>
                 </div>
             </div>
         </section>
+        <div id="termsModal" class="modal">
+            <div class="modal-content">
+                <h2>Términos y Condiciones</h2>
+                <div class="terms-text">
+                    <!-- ...terms and conditions content... -->
+                    <h3>TÉRMINOS Y CONDICIONES DE PAGO DE PLANES EN GÉMINIS</h3>
+                    <p>Última actualización: 26/02/2025</p>
+                    <p>Este documento establece los términos y condiciones aplicables a la compra y pago de planes en la plataforma GÉMINIS.</p>
+                    <h4>1. MÉTODO DE PAGO</h4>
+                    <p>La compra de planes dentro de la plataforma se realiza exclusivamente a través de Mercado Pago.</p>
+                    <p>Al suscribirse a un plan, el usuario acepta los términos de pago y facturación de Mercado Pago.</p>
+                    <h4>2. POLÍTICA DE REEMBOLSOS</h4>
+                    <p>No se aceptan devoluciones ni reembolsos una vez realizado el pago de la suscripción.</p>
+                    <p>En caso de error en el cobro, el usuario podrá comunicarse con nuestro equipo de soporte para revisar la situación.</p>
+                    <h4>3. RENOVACIÓN Y CANCELACIÓN</h4>
+                    <p>Los planes tienen una duración definida según lo indicado en la oferta correspondiente.</p>
+                    <p>Si un usuario o restaurante deja de pagar la suscripción, automáticamente será degradado al plan básico, perdiendo el acceso a funcionalidades premium.</p>
+                    <p>El usuario puede cancelar su suscripción en cualquier momento, pero no se realizarán reembolsos por el tiempo restante del período de facturación.</p>
+                    <h4>4. CONTACTO</h4>
+                    <p>Para consultas o asistencia relacionada con los pagos y suscripciones, puede contactarnos a través de gourmetgeminis@gmail.com o +57 3003776579.</p>
+                </div>
+                <button type="button" id="closeTermsBtn">Cerrar</button>
+            </div>
+        </div>
         <hr>
         <section id="faq-section" class="faq-section">
             <div class="container">
