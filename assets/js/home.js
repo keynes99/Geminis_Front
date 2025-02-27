@@ -240,7 +240,9 @@ function openModal(planType) {
         if (userToken) {
             purchaseButton.style.display = "block";
         } else {
-            purchaseButton.style.display = "none";
+            purchaseButton.innerHTML = '<a href="./login.html">Inicia sesión para comprar</a>';
+            purchaseButton.style.display = "block";
+            // purchaseButton.style.display = "none";
         }
     }
     

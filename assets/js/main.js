@@ -101,18 +101,6 @@ const loadComponent = async (id, file) => {
                         reservaParent.style.display = "none";
                     }
 
-                    let hasReloaded = false;
-
-                    window.addEventListener('resize', () => {
-                        if (window.innerWidth  && !hasReloaded) {
-                            if (!sessionStorage.getItem('reloaded')) {
-                                sessionStorage.setItem('reloaded', 'true');
-                                hasReloaded = true;
-                                location.reload();
-                            }
-                        }
-                    });
-
                     // Restablecer la variable al cargar la página en caso de que se haya recargado
                     window.addEventListener('load', () => {
                         sessionStorage.removeItem('reloaded');
@@ -196,17 +184,6 @@ function toggleCollapseMenu() {
 
     }
 }
-const reloadOnResize = (() => {
-    let hasReloaded = false;
-
-    return () => {
-        if (!hasReloaded) {
-            hasReloaded = true;
-            sessionStorage.setItem('reloaded', 'true');
-            location.reload();
-        }
-    };
-})();
 
 // Detectar cambios de tamaño de la ventana
 let lastWidth = window.innerWidth;

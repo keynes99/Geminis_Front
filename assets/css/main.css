@@ -242,6 +242,11 @@ button, .primary-btn {
     min-width: 150px;
     max-width: 200px;
 }
+button a:-webkit-any-link,
+a:-webkit-any-link.primary-btn {
+    color: var(--text-color) !important;
+    text-decoration: none;
+}
 
 button:hover, .primary-btn:hover {
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
@@ -337,7 +342,6 @@ footer {
     cursor: pointer;
     position: relative;
     top: -10px;
-    right: -549px;
 }
 
 /* Media Queries */
