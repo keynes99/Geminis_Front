@@ -118,7 +118,7 @@ const loadComponent = async (id, file) => {
                         sessionStorage.removeItem('reloaded');
 
                         if (window.innerWidth < 992) {
-                            logIn.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color: #fdedef;"></i>';
+                            logIn.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color: #fdedef; font-size: 24px;"></i>';
                         }
                     });
 
@@ -196,7 +196,29 @@ function toggleCollapseMenu() {
 
     }
 }
+const reloadOnResize = (() => {
+    let hasReloaded = false;
 
+    return () => {
+        if (!hasReloaded) {
+            hasReloaded = true;
+            sessionStorage.setItem('reloaded', 'true');
+            location.reload();
+        }
+    };
+})();
+
+// Detectar cambios de tamaño de la ventana
+let lastWidth = window.innerWidth;
+let lastHeight = window.innerHeight;
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
+        lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
+        location.reload();
+    }
+});
 // Cargar Nav y Footer
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent('nav', 'nav.html').then(() => {
@@ -206,10 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
     loadComponent('footer', 'footer.html');
-    // animacion mision y vision
-    const about = window.location.pathname;
-    if (about.includes('about.html')) {
-        toggleSection('mision');
-    }
+
 });
+
 
