@@ -23,3 +23,28 @@ window.addEventListener('scroll', function() {
         developersSection.classList.remove('fadeIn');
     }
 });
+
+function handleBackgroundImage() {
+    const aboutValues = document.querySelector('.about-values');
+    const propositionsBg = document.querySelector('.propositions-bg');
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('image-values');
+
+    if (window.innerWidth < 1050) {
+
+        aboutValues.style.backgroundImage = 'none';
+        propositionsBg.parentNode.insertBefore(newDiv, propositionsBg);
+        newDiv.innerHTML = '<img src="../assets/images/about-md.webp" alt="valores corporativos ">';
+    }
+}
+
+window.addEventListener('resize', handleBackgroundImage);
+window.addEventListener('load', handleBackgroundImage);
+
+document.addEventListener("DOMContentLoaded", () => {
+    // animacion mision y vision
+    const about = window.location.pathname;
+    if (about.includes('about.html')) {
+        toggleSection('mision');
+    }
+});
