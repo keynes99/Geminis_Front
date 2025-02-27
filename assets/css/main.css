@@ -7,7 +7,7 @@
     --background-color: #fdedef;
     --background-color-dark: #333;
     --text-color: #fff;
-    --text-color-secondary: #000;
+    --text-color-secondary: #120204;
 }
 
 /* Reset and global configuration */
@@ -46,7 +46,9 @@ main::before {
     background-position: center;
     z-index: -3;
 }
-
+a:-webkit-any-link{
+    color: var(--primary-darker);
+}
 h1, h2, h3, h4, h5, h6 {
     font-family: "Montserrat", serif;
 }

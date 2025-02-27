@@ -76,7 +76,9 @@ const renderMenus = (menus) => {
         
         menuCard.innerHTML = `
             <div class="menu-content"> <!-- Contenedor para el contenido principal -->
-                <img src="${menu.ImagenMenu}" alt="Imagen de ${menu.Nombre}" class="menu-img"> <!-- Agregar imagen del plato -->
+                
+                    <img src="${menu.ImagenMenu}" alt="Imagen de ${menu.Nombre}" class="menu-img">
+                 <!-- Agregar imagen del plato -->
                 <div>
                     <h2>${menu.Nombre}</h2>
                     <p><strong>Descripción:</strong> ${menu.Descripcion || 'Sin descripción'}</p>
